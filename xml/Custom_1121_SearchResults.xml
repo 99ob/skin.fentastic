@@ -151,6 +151,7 @@
 						<movement>7</movement>
 						<focusposition>0</focusposition>
 						<onfocus>ClearProperty(listposition,home)</onfocus>
+						<onclick>RunScript(script.fentastic.helper,mode=re_search_id,spath_id=$INFO[Container(9000).ListItem.Property(fentastic.spath_id)])</onclick>
 						<onright>SetFocus(2000)</onright>
 						<onup>700</onup>
 						<ondown>700</ondown>
@@ -200,10 +201,7 @@
 								<shadowcolor>text_shadow</shadowcolor>
 							</control>
 						</itemlayout>
-						<content>
-							<!-- SEARCH HISTORY -->
-							<include content="SearchHistory" />
-						</content>
+						<content>plugin://script.fentastic.helper/?mode=search_history&amp;rev=$INFO[Window(Home).Property(fentastic.search.history_rev)]</content>
 					</control>
 					<control type="grouplist" id="700">
 						<visible>String.IsEmpty(Skin.String(DatabaseStatus))</visible>
@@ -225,7 +223,7 @@
 						</include>
 						<include content="IconButton">
 							<param name="control_id" value="802" />
-							<param name="onclick" value="$VAR[CurrentSearchProviderToggleVar]" />
+							<param name="onclick" value="RunScript(script.fentastic.helper,mode=toggle_search_provider)" />
 							<param name="icon" value="icons/infodialogs/configure.png" />
 							<param name="label" value="Switch Search Provider" />
 						</include>

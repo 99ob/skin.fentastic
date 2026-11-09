@@ -2,6 +2,12 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Update searches and search history without full skin reloads
+- Skip disabled/uninstalled search providers, including provider selection
+- Prevent text labels from being passed as clearlogo image filenames
+- Add a valid FENtastic Helper icon and fanart assets
+
+[B][COLOR accent_color]Version 1.0.45[/COLOR][/B]
 - Prevent empty searches from launching POV and other search providers
 - Reduce cached widget SQLite initialization and read connections
 - Join background Helper threads on Kodi shutdown where possible

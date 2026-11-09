@@ -686,7 +686,7 @@
 
 	<variable name="ClearlogoVar">
 		<value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
-		<value>$INFO[ListItem.Label]</value>
+		<value></value>
 	</variable>
 
 	<variable name="BackgroundBrightnessVar">
@@ -739,11 +739,10 @@
 	</variable>
 
 	<variable name="TRAKTButtonActionsVar">
-    <value condition="String.IsEqual(Skin.String(current_search_provider),0)">ActivateWindow(10025,plugin://plugin.video.fen/?&amp;mode=navigator.trakt_lists,return)</value>
-    <value condition="String.IsEqual(Skin.String(current_search_provider),1)">ActivateWindow(10025,plugin://plugin.video.fenlight/?&amp;mode=navigator.my_content&amp;name=My%20Lists,return)</value>
-    <value condition="String.IsEqual(Skin.String(current_search_provider),2)">ActivateWindow(10025,plugin://plugin.video.umbrella/?action=trakt_Navigator,return)</value>
-    <value condition="String.IsEqual(Skin.String(current_search_provider),3)">ActivateWindow(10025,plugin://plugin.video.pov/?mode=navigator.my_content&amp;name=32454,return)</value>
-		<value>ActivateWindow(10025,plugin://plugin.video.fen/?&amp;mode=navigator.trakt_lists,return)</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fen) + String.IsEqual(Skin.String(current_search_provider),0)">ActivateWindow(10025,plugin://plugin.video.fen/?&amp;mode=navigator.trakt_lists,return)</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fenlight) + String.IsEqual(Skin.String(current_search_provider),1)">ActivateWindow(10025,plugin://plugin.video.fenlight/?&amp;mode=navigator.my_content&amp;name=My%20Lists,return)</value>
+    <value condition="System.AddonIsEnabled(plugin.video.umbrella) + String.IsEqual(Skin.String(current_search_provider),2)">ActivateWindow(10025,plugin://plugin.video.umbrella/?action=trakt_Navigator,return)</value>
+    <value condition="System.AddonIsEnabled(plugin.video.pov) + String.IsEqual(Skin.String(current_search_provider),3)">ActivateWindow(10025,plugin://plugin.video.pov/?mode=navigator.my_content&amp;name=32454,return)</value>
 	</variable>
 
 	<variable name="KeywordMoviesLabelVar">
@@ -758,62 +757,55 @@
 
 	<!-- SEARCH PROVIDER VARIABLES -->
 	<variable name="SearchProviderMoviesVar">
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),2)]">plugin://plugin.video.umbrella/?action=movieSearchterm&amp;name=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),4)]">plugin://plugin.video.seren/?action=moviesSearchResults&amp;actionArgs=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fen) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fenlight) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.umbrella) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),2)]">plugin://plugin.video.umbrella/?action=movieSearchterm&amp;name=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.pov) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+		<value condition="System.AddonIsEnabled(plugin.video.seren) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),4)]">plugin://plugin.video.seren/?action=moviesSearchResults&amp;actionArgs=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
 	</variable>
 	<variable name="SearchProviderTVShowsVar">
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),2)]">plugin://plugin.video.umbrella/?action=tvSearchterm&amp;name=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),4)]">plugin://plugin.video.seren/?action=showsSearchResults&amp;actionArgs=$INFO[Skin.String(SearchInputEncoded)]</value>
-		<value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.fen/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fen) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fenlight) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.umbrella) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),2)]">plugin://plugin.video.umbrella/?action=tvSearchterm&amp;name=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.pov) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+		<value condition="System.AddonIsEnabled(plugin.video.seren) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),4)]">plugin://plugin.video.seren/?action=showsSearchResults&amp;actionArgs=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
 	</variable>
 	<variable name="SearchProviderCollectionsVar">
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search_sets&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_movies_search_collections&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search_sets&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
+		<value condition="System.AddonIsEnabled(plugin.video.fen) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search_sets&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.pov) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_movies_search_collections&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
 	</variable>
 	<variable name="SearchProviderPeopleVar">
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=person_direct.search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=person_direct.search&amp;key_id=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=person_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.fen/?mode=person_direct.search&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
+		<value condition="System.AddonIsEnabled(plugin.video.fen) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=person_direct.search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fenlight) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=person_direct.search&amp;key_id=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.pov) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=person_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
 	</variable>
 	<variable name="SearchProviderKeywordMoviesVar">
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=imdb_keywords_list_contents&amp;list_id=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_movie_list&amp;action=tmdb_movie_keyword_results_direct&amp;key_id=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=imdb_build_keyword_results&amp;media_type=movie&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=imdb_keywords_list_contents&amp;list_id=$INFO[Skin.String(SearchInputEncoded)]</value>
+		<value condition="System.AddonIsEnabled(plugin.video.fen) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=imdb_keywords_list_contents&amp;list_id=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fenlight) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_movie_list&amp;action=tmdb_movie_keyword_results_direct&amp;key_id=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.pov) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=imdb_build_keyword_results&amp;media_type=movie&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
 	</variable>
 	<variable name="SearchProviderKeywordTVShowsVar">
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_tvshow_list&amp;action=imdb_keywords_list_contents&amp;list_id=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_tvshow_list&amp;action=tmdb_tv_keyword_results_direct&amp;key_id=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=imdb_build_keyword_results&amp;media_type=tvshow&amp;query=$INFO[Skin.String(SearchInputEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.fen/?mode=build_tvshow_list&amp;action=imdb_keywords_list_contents&amp;list_id=$INFO[Skin.String(SearchInputEncoded)]</value>
+		<value condition="System.AddonIsEnabled(plugin.video.fen) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_tvshow_list&amp;action=imdb_keywords_list_contents&amp;list_id=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fenlight) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_tvshow_list&amp;action=tmdb_tv_keyword_results_direct&amp;key_id=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.pov) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=imdb_build_keyword_results&amp;media_type=tvshow&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
 	</variable>
 	<variable name="SearchProviderTRAKTListsVar">
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=trakt.list.search_trakt_lists&amp;query=$INFO[Skin.String(SearchInputTraktEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=trakt.list.search_trakt_lists&amp;query=$INFO[Skin.String(SearchInputTraktEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_trakt_list.search_trakt_lists&amp;search_title=$INFO[Skin.String(SearchInputTraktEncoded)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.fen/?mode=trakt.list.search_trakt_lists&amp;query=$INFO[Skin.String(SearchInputTraktEncoded)]</value>
+		<value condition="System.AddonIsEnabled(plugin.video.fen) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=trakt.list.search_trakt_lists&amp;query=$INFO[Skin.String(SearchInputTraktEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.fenlight) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=trakt.list.search_trakt_lists&amp;query=$INFO[Skin.String(SearchInputTraktEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
+    <value condition="System.AddonIsEnabled(plugin.video.pov) + !String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_trakt_list.search_trakt_lists&amp;search_title=$INFO[Skin.String(SearchInputTraktEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
 	</variable>
 
     <variable name="FentasticSafeUmbrellaActorMoviesVar">
-        <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.umbrella/?action=actorSearchMovies&amp;name=$INFO[Skin.String(SearchInputEncoded)]</value>
+        <value condition="System.AddonIsEnabled(plugin.video.umbrella) + !String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.umbrella/?action=actorSearchMovies&amp;name=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
     </variable>
     <variable name="FentasticSafeUmbrellaActorTVVar">
-        <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.umbrella/?action=actorSearchTV&amp;name=$INFO[Skin.String(SearchInputEncoded)]</value>
+        <value condition="System.AddonIsEnabled(plugin.video.umbrella) + !String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.umbrella/?action=actorSearchTV&amp;name=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
     </variable>
     <variable name="FentasticSafeUmbrellaTraktMoviesVar">
-        <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.umbrella/?action=trakt_search_lists&amp;media_type=movies&amp;name=$INFO[Skin.String(SearchInputTraktEncoded)]</value>
+        <value condition="System.AddonIsEnabled(plugin.video.umbrella) + !String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.umbrella/?action=trakt_search_lists&amp;media_type=movies&amp;name=$INFO[Skin.String(SearchInputTraktEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
     </variable>
     <variable name="FentasticSafeUmbrellaTraktTVVar">
-        <value condition="!String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.umbrella/?action=trakt_search_lists&amp;media_type=tvshows&amp;name=$INFO[Skin.String(SearchInputTraktEncoded)]</value>
+        <value condition="System.AddonIsEnabled(plugin.video.umbrella) + !String.IsEmpty(Skin.String(SearchInput))">plugin://plugin.video.umbrella/?action=trakt_search_lists&amp;media_type=tvshows&amp;name=$INFO[Skin.String(SearchInputTraktEncoded)]&amp;fentastic_search_rev=$INFO[Window(Home).Property(fentastic.search.query_rev)]</value>
     </variable>
     <variable name="FentasticSafeTraktChild27017Var">
         <value condition="!String.IsEmpty(Skin.String(SearchInput))">$INFO[Window(1121).Property(fentastic.27017.path)]</value>
