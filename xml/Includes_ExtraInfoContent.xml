@@ -2,6 +2,10 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Fix POV people search launching an unexpected keyboard
+- Correct the empty-history New Search button
+
+[B][COLOR accent_color]Version 1.0.26[/COLOR][/B]
 - Fix custom window/include loading for Kodi 22
 - Hide failing POV keyword search rows pending a supported route
 - Include empty search history on first startup
