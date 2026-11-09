@@ -2,6 +2,11 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Fix custom window/include loading for Kodi 22
+- Hide failing POV keyword search rows pending a supported route
+- Include empty search history on first startup
+
+[B][COLOR accent_color]Version 1.0.25[/COLOR][/B]
 - Quick fix for landscape artwork
 
 [B][COLOR accent_color]Version 1.0.24[/COLOR][/B]
