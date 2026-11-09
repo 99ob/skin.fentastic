@@ -2,6 +2,10 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Match Big Poster spacing to regular Poster widgets
+- Keep four large posters visible; also update stacked widgets
+
+[B][COLOR accent_color]Version 1.0.28[/COLOR][/B]
 - Resize regular Poster widgets to the previous Big Poster size
 - Enlarge Big Poster home widgets to show four posters across
 

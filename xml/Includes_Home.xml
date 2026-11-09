@@ -543,7 +543,7 @@
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
 				</include>
-				<itemlayout width="350" height="520">
+				<itemlayout width="331" height="520">
 					<control type="group">
 						<left>68</left>
 						<top>15</top>
@@ -553,7 +553,7 @@
 						</include>
 					</control>
 				</itemlayout>
-				<focusedlayout width="350" height="520">
+				<focusedlayout width="331" height="520">
 					<control type="group">
 						<depth>DepthContentPopout</depth>
 						<left>68</left>
@@ -635,7 +635,7 @@
         <include content="WidgetListCommonStacked">
           <param name="list_id" value="$PARAM[list_id]" />
         </include>
-        <itemlayout width="350" height="520">
+        <itemlayout width="331" height="520">
           <control type="group">
             <left>68</left>
             <top>15</top>
@@ -645,7 +645,7 @@
             </include>
           </control>
         </itemlayout>
-        <focusedlayout width="350" height="520">
+        <focusedlayout width="331" height="520">
           <control type="group">
             <depth>DepthContentPopout</depth>
             <left>68</left>
