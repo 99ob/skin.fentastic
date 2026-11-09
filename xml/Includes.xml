@@ -1776,7 +1776,7 @@
 				<orientation>horizontal</orientation>
 				<itemgap>$PARAM[ratings_spacing]</itemgap>
 				<aligny>center</aligny>
-				<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + !String.IsEmpty(ListItem.Genre)</visible>
+				<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + [!String.IsEmpty(ListItem.Genre) | String.IsEqual(ListItem.Property(fentastic.cache_item),true)]</visible>
 				<control type="grouplist">
 					<width>60</width>
 					<orientation>vertical</orientation>

@@ -2,6 +2,11 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Fix Kodi JSON-RPC widget listing fields to preserve year, runtime, genre, studio and age ratings
+- Restore original InfoPanel rating icons when cached items have sparse metadata
+- Preserve persistent widget snapshots and refresh them automatically without deleting stale results
+
+[B][COLOR accent_color]Version 1.0.34[/COLOR][/B]
 - Restore original IMDb, Rotten Tomatoes and other MDbList widget-label/InfoPanel ratings for cached widgets
 - Read IMDb IDs from the focused widget row and retain existing ratings layout
 - Keep persistent SQLite widget cache and sequential background refresh
