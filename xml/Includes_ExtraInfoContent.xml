@@ -2,6 +2,10 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Refresh only changed widget rows via dynamic content revision; no routine full ReloadSkin
+- Preserve coordinated full reload for widget/menu layout edits
+- Populate cached video metadata through InfoTagVideo (Kodi 22) instead of deprecated setInfo
+- Ship an empty SearchHistory XML include with the skin to avoid startup warnings
 - Serialize MDbList ratings requests, skip stale titles, add HTTP timeouts and retry cooldown
 - Reuse MDbList HTTPS connection and update ratings only for the selected title
 - Avoid repeated rating-property clearing and redundant XML/reloads on search open
