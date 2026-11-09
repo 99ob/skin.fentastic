@@ -485,56 +485,6 @@
 				<top>115</top>
 				<onright>$PARAM[list_id]</onright>
 				<orientation>horizontal</orientation>
-				<movement>5</movement>
-				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
-				<right>0</right>
-				<height>410</height>
-				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
-				<include content="WidgetListCommon">
-					<param name="list_id" value="$PARAM[list_id]"/>
-				</include>
-				<itemlayout width="225" height="393">
-					<control type="group">
-						<left>68</left>
-						<top>15</top>
-						<include content="InfoWallMovieLayout">
-						<param name="focused" value="false" />
-						<param name="list_id" value="$PARAM[list_id]" />
-						</include>
-					</control>
-				</itemlayout>
-				<focusedlayout width="225" height="393">
-					<control type="group">
-						<depth>DepthContentPopout</depth>
-						<left>68</left>
-						<top>15</top>
-						<include content="InfoWallMovieLayout">
-						<param name="focused" value="true" />
-						<param name="list_id" value="$PARAM[list_id]" />
-						</include>
-					</control>
-				</focusedlayout>
-				<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[limit]">$PARAM[content_path]</content>
-			</control>
-		</definition>
-	</include>
-
-	<include name="WidgetListBigPoster">
-		<param name="onclick_condition">false</param>
-		<definition>
-			<include content="CategoryLabel">
-				<param name="label">$PARAM[widget_header]</param>
-				<param name="list_id" value="$PARAM[list_id]"/>
-			</include>
-			<include content="BusyListSpinner">
-				<param name="list_id" value="$PARAM[list_id]"/>
-				<param name="posy" value="240"/>
-			</include>
-			<control type="fixedlist" id="$PARAM[list_id]">
-				<left>0</left>
-				<top>115</top>
-				<onright>$PARAM[list_id]</onright>
-				<orientation>horizontal</orientation>
 				<movement>4</movement>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
@@ -569,53 +519,57 @@
 		</definition>
 	</include>
 
-	<include name="WidgetListPosterStacked">
-    <definition>
-      <include content="CategoryLabelWidget">
-        <param name="label">$PARAM[widget_header]</param>
-        <param name="list_id" value="$PARAM[list_id]" />
-      </include>
-			<include content="BusyListSpinnerWidget">
-				<param name="list_id" value="$PARAM[list_id]" />
+	<include name="WidgetListBigPoster">
+		<param name="onclick_condition">false</param>
+		<definition>
+			<include content="CategoryLabel">
+				<param name="label">$PARAM[widget_header]</param>
+				<param name="list_id" value="$PARAM[list_id]"/>
 			</include>
-      <control type="fixedlist" id="$PARAM[list_id]">
-        <left>0</left>
-        <top>115</top> 
-        <right>0</right>
-        <height>410</height>
+			<include content="BusyListSpinner">
+				<param name="list_id" value="$PARAM[list_id]"/>
+				<param name="posy" value="290"/>
+			</include>
+			<control type="fixedlist" id="$PARAM[list_id]">
+				<left>0</left>
+				<top>115</top>
 				<onright>$PARAM[list_id]</onright>
 				<orientation>horizontal</orientation>
-				<movement>5</movement>
-        <include content="WidgetListCommonStacked">
-          <param name="list_id" value="$PARAM[list_id]" />
-        </include>
-        <itemlayout width="225" height="393">
-          <control type="group">
-            <left>68</left>
-            <top>15</top>
-            <include content="InfoWallMovieLayout">
-            <param name="focused" value="false" />
+				<movement>4</movement>
+				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
+				<right>0</right>
+				<height>535</height>
+				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
+				<include content="WidgetListCommon">
+					<param name="list_id" value="$PARAM[list_id]"/>
+				</include>
+				<itemlayout width="350" height="520">
+					<control type="group">
+						<left>68</left>
+						<top>15</top>
+						<include content="WidgetBigInfoWallMovieLayout">
+						<param name="focused" value="false" />
 						<param name="list_id" value="$PARAM[list_id]" />
-            </include>
-          </control>
-        </itemlayout>
-        <focusedlayout width="225" height="393">
-          <control type="group">
-            <depth>DepthContentPopout</depth>
-            <left>68</left>
-            <top>15</top>
-            <include content="InfoWallMovieLayout">
-            <param name="focused" value="true" />
+						</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="350" height="520">
+					<control type="group">
+						<depth>DepthContentPopout</depth>
+						<left>68</left>
+						<top>15</top>
+						<include content="WidgetBigInfoWallMovieLayout">
+						<param name="focused" value="true" />
 						<param name="list_id" value="$PARAM[list_id]" />
-            </include>
-          </control>
-        </focusedlayout>
-        <content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]" target="$PARAM[widget_target]">$PARAM[content_path]</content>
-      </control>
-    </definition>
-  </include>
+						</include>
+					</control>
+				</focusedlayout>
+				<content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" target="$PARAM[widget_target]" limit="$PARAM[limit]">$PARAM[content_path]</content>
+			</control>
+		</definition>
+	</include>
 
-	<include name="WidgetListBigPosterStacked">
+	<include name="WidgetListPosterStacked">
     <definition>
       <include content="CategoryLabelWidget">
         <param name="label">$PARAM[widget_header]</param>
@@ -651,6 +605,52 @@
             <left>68</left>
             <top>15</top>
             <include content="BigInfoWallMovieLayout">
+            <param name="focused" value="true" />
+						<param name="list_id" value="$PARAM[list_id]" />
+            </include>
+          </control>
+        </focusedlayout>
+        <content sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]" target="$PARAM[widget_target]">$PARAM[content_path]</content>
+      </control>
+    </definition>
+  </include>
+
+	<include name="WidgetListBigPosterStacked">
+    <definition>
+      <include content="CategoryLabelWidget">
+        <param name="label">$PARAM[widget_header]</param>
+        <param name="list_id" value="$PARAM[list_id]" />
+      </include>
+			<include content="BusyListSpinnerWidget">
+				<param name="list_id" value="$PARAM[list_id]" />
+			</include>
+      <control type="fixedlist" id="$PARAM[list_id]">
+        <left>0</left>
+        <top>115</top> 
+        <right>0</right>
+        <height>535</height>
+				<onright>$PARAM[list_id]</onright>
+				<orientation>horizontal</orientation>
+				<movement>4</movement>
+        <include content="WidgetListCommonStacked">
+          <param name="list_id" value="$PARAM[list_id]" />
+        </include>
+        <itemlayout width="350" height="520">
+          <control type="group">
+            <left>68</left>
+            <top>15</top>
+            <include content="WidgetBigInfoWallMovieLayout">
+            <param name="focused" value="false" />
+						<param name="list_id" value="$PARAM[list_id]" />
+            </include>
+          </control>
+        </itemlayout>
+        <focusedlayout width="350" height="520">
+          <control type="group">
+            <depth>DepthContentPopout</depth>
+            <left>68</left>
+            <top>15</top>
+            <include content="WidgetBigInfoWallMovieLayout">
             <param name="focused" value="true" />
 						<param name="list_id" value="$PARAM[list_id]" />
             </include>
@@ -2193,4 +2193,279 @@
 		</control>
 	</include>
 
+	<!-- Enlarged Big Poster artwork, home widgets only. -->
+<include name="WidgetBigInfoWallMovieLayout">
+		<param name="focused">false</param>
+		<definition>
+			<control type="group">
+				<visible>String.IsEmpty(ListItem.Art(poster))</visible>
+				<include content="ProgressBar">
+					<param name="left" value="42.9" />
+					<param name="top" value="325.7" />
+					<param name="width" value="202.1" />
+				</include>
+				<control type="image">
+					<include>FocusBounce</include>
+					<left>-4.9</left>
+					<top>-17.2</top>
+					<width>346.7</width>
+					<height>474.1</height>
+					<texture colordiffuse="button_focus">masks/poster.png</texture>
+					<bordersize>20.8</bordersize>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<include>FocusBounce</include>
+					<left>-4.9</left>
+					<top>-17.2</top>
+					<width>346.7</width>
+					<height>474.1</height>
+					<texture colordiffuse="button_focus">masks/poster.png</texture>
+					<bordersize>20.8</bordersize>
+					<visible>$PARAM[focused] + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="textbox">
+					<left>33.1</left>
+					<top>274.4</top>
+					<width>272.0</width>
+					<height>147</height>
+					<font>font27</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>focused_text</textcolor>
+					<autoscroll time="2000" delay="1000" repeat="2000">$PARAM[focused] + Control.HasFocus($PARAM[list_id])</autoscroll>
+					<visible>!ListItem.IsParentFolder + $PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
+				</control>
+				<control type="textbox">
+					<left>33.1</left>
+					<top>274.4</top>
+					<width>272.0</width>
+					<height>147</height>
+					<font>font27</font>
+					<align>center</align>
+					<aligny>center</aligny>
+					<label>$INFO[ListItem.Label]</label>
+					<textcolor>unfocused_text</textcolor>
+					<textcolor>focused_text</textcolor>
+					<visible>!ListItem.IsParentFolder + ![$PARAM[focused] + Control.HasFocus($PARAM[list_id])]</visible>
+				</control>
+				<control type="image">
+					<left>4.9</left>
+					<top>-1.2</top>
+					<width>333.2</width>
+					<height>333.2</height>
+					<texture colordiffuse="focused_text" fallback="DefaultMovies.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio>scale</aspectratio>
+					<bordersize>24.5</bordersize>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
+				</control>
+				<control type="image">
+					<left>4.9</left>
+					<top>-1.2</top>
+					<width>333.2</width>
+					<height>333.2</height>
+					<texture colordiffuse="unfocused_text" fallback="DefaultMovies.png" background="true">$INFO[ListItem.Icon]</texture>
+					<aspectratio>scale</aspectratio>
+					<bordersize>24.5</bordersize>
+					<visible>![$PARAM[focused] + Control.HasFocus($PARAM[list_id])]</visible>
+				</control>
+			</control>
+			<control type="group">
+				<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+				<include content="ProgressBar">
+					<param name="left" value="52.7" />
+					<param name="top" value="395.7" />
+					<param name="width" value="231.5" />
+				</include>
+				<control type="image">
+					<include>FocusBounce</include>
+					<left>-4.9</left>
+					<top>-17.2</top>
+					<width>346.7</width>
+					<height>474.1</height>
+					<texture colordiffuse="button_focus">masks/poster.png</texture>
+					<bordersize>20.8</bordersize>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<include>FocusBounce</include>
+					<left>-4.9</left>
+					<top>-17.2</top>
+					<width>346.7</width>
+					<height>474.1</height>
+					<texture colordiffuse="button_focus">masks/poster.png</texture>
+					<bordersize>20.8</bordersize>
+					<visible>$PARAM[focused] + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<top>-12.3</top>
+					<width>336.9</width>
+					<height>464.3</height>
+					<texture diffuse="masks/poster.png" background="true">$INFO[ListItem.Art(poster)]</texture>
+					<bordersize>24.5</bordersize>
+				</control>
+				<control type="image">
+					<left>24.5</left>
+					<top>312.4</top>
+					<width>115.2</width>
+					<height>115.2</height>
+					<texture>overlays/overlaybg.png</texture>
+					<visible>Listitem.IsCollection | ListItem.IsPlaying | Integer.IsGreater(ListItem.Playcount,0)</visible>
+				</control>
+				<control type="image">
+					<left>24.5</left>
+					<top>308.7</top>
+					<width>287.9</width>
+					<height>118.8</height>
+					<texture colordiffuse="CCFFFFFF">overlays/overlayfade8.png</texture>
+					<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[list_id]) + String.IsEqual(ListItem.DBtype,movie) + !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedProgress)) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedProgress),0)</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="label">
+					<left>-42.9</left>
+					<top>385.9</top>
+					<width>343</width>
+					<label>$INFO[ListItem.Property(WatchedProgress)]% watched</label>
+					<font>font20_title</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>right</align>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[list_id]) + String.IsEqual(ListItem.DBtype,movie) + !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedProgress)) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedProgress),0)</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<left>24.5</left>
+					<top>308.7</top>
+					<width>287.9</width>
+					<height>118.8</height>
+					<texture colordiffuse="CCFFFFFF">overlays/overlayfade8.png</texture>
+					<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+					<visible>$PARAM[focused] + String.IsEqual(ListItem.DBtype,movie) + !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedProgress)) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedProgress),0) + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="label">
+					<left>-42.9</left>
+					<top>385.9</top>
+					<width>343</width>
+					<label>$INFO[ListItem.Property(WatchedProgress)]% watched</label>
+					<font>font20_title</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>right</align>
+					<visible>$PARAM[focused] + String.IsEqual(ListItem.DBtype,movie) + !String.IsEmpty(Container($PARAM[id]).ListItem.Property(WatchedProgress)) + !Integer.IsEqual(Container($PARAM[id]).ListItem.Property(WatchedProgress),0) + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="label">
+					<left>49</left>
+					<top>441</top>
+					<width>238.9</width>
+					<label>$INFO[ListItem.Label]</label>
+					<font>font10</font>
+					<textcolor>unfocused_text</textcolor>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>
+					<visible>!$PARAM[focused] + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+				</control>
+				<control type="label">
+					<left>49</left>
+					<top>441</top>
+					<width>238.9</width>
+					<label>$INFO[ListItem.Label]</label>
+					<font>font10</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>center</align>
+					<visible>$PARAM[focused] + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+					<scroll>true</scroll>
+				</control>
+			</control>
+			<control type="group">
+				<visible>String.IsEqual(ListItem.DBtype,tvshow)</visible>
+				<top>392</top>
+				<control type="image">
+					<left>24.5</left>
+					<top>-83.3</top>
+					<width>287.9</width>
+					<height>118.8</height>
+					<texture colordiffuse="CCFFFFFF">overlays/overlayfade8.png</texture>
+					<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="label">
+					<left>47.8</left>
+					<top>-4.9</top>
+					<width>207.0</width>
+					<label>$INFO[ListItem.Property(WatchedEpisodes)]$INFO[ListItem.Property(TotalEpisodes), / ,]</label>
+					<font>font20_title</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>right</align>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<left>267.1</left>
+					<top>-2.2</top>
+					<width>29.4</width>
+					<height>29.4</height>
+					<texture>lists/played-total.png</texture>
+					<visible>$PARAM[focused] + Control.HasFocus($PARAM[list_id])</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<left>24.5</left>
+					<top>-83.3</top>
+					<width>287.9</width>
+					<height>118.8</height>
+					<texture colordiffuse="CCFFFFFF">overlays/overlayfade8.png</texture>
+					<visible>!String.IsEmpty(ListItem.Art(poster))</visible>
+					<visible>$PARAM[focused] + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="label">
+					<left>47.8</left>
+					<top>-4.9</top>
+					<width>207.0</width>
+					<label>$INFO[ListItem.Property(WatchedEpisodes)]$INFO[ListItem.Property(TotalEpisodes), / ,]</label>
+					<font>font20_title</font>
+					<shadowcolor>text_shadow</shadowcolor>
+					<align>right</align>
+					<visible>$PARAM[focused] + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+				<control type="image">
+					<left>267.1</left>
+					<top>-2.2</top>
+					<width>29.4</width>
+					<height>29.4</height>
+					<texture>lists/played-total.png</texture>
+					<visible>$PARAM[focused] + [Control.IsVisible(54) | Control.IsVisible(500)]</visible>
+					<include condition="$PARAM[focused]">Animation_FocusTextureFade</include>
+				</control>
+			</control>
+			<control type="image">
+				<left>31.9</left>
+				<top>381.0</top>
+				<width>39.2</width>
+				<height>39.2</height>
+				<texture>$VAR[WallWatchedIconVar]</texture>
+			</control>
+			<control type="group">
+				<left>230.3</left>
+				<top>-9.8</top>
+				<include content="RatingCircle" condition="Skin.HasSetting(circle_rating) | Skin.HasSetting(circle_userrating)">
+					<param name="left">-88.2</param>
+					<param name="top">20.8</param>
+					<param name="width">170.3</param>
+					<param name="height">170.3</param>
+					<param name="label-left">13.5</param>
+					<param name="label-top">30.6</param>
+					<param name="cornerdiffuse">overlays/overlaybg3.png</param>
+				</include>
+			</control>
+		</definition>
+	</include>
 </includes>

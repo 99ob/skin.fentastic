@@ -2,6 +2,10 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Resize regular Poster widgets to the previous Big Poster size
+- Enlarge Big Poster home widgets to show four posters across
+
+[B][COLOR accent_color]Version 1.0.27[/COLOR][/B]
 - Fix POV people search launching an unexpected keyboard
 - Correct the empty-history New Search button
 
