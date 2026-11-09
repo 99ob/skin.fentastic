@@ -757,21 +757,15 @@
 
 	<!-- SEARCH PROVIDER VARIABLES -->
 	<variable name="SearchProviderMoviesVar">
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),2)]">plugin://plugin.video.umbrella/?action=movieSearchterm&amp;name=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),4)]">plugin://plugin.video.seren/?action=moviesSearchResults&amp;actionArgs=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + String.IsEqual(Skin.String(current_search_provider),0)">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-	</variable>
+        <value condition="!String.IsEmpty(Skin.String(SearchInputEncoded)) + String.IsEqual(Skin.String(current_search_provider),2)">plugin://plugin.video.umbrella/?action=movieSearchterm&amp;name=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
+        <value condition="!String.IsEmpty(Skin.String(SearchInputEncoded)) + String.IsEqual(Skin.String(current_search_provider),3)">plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
+        <value>plugin://script.fentastic.helper/?mode=fentastic_empty_results&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
+    </variable>
 	<variable name="SearchProviderTVShowsVar">
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),1)]">plugin://plugin.video.fenlight/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),2)]">plugin://plugin.video.umbrella/?action=tvSearchterm&amp;name=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-    <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),4)]">plugin://plugin.video.seren/?action=showsSearchResults&amp;actionArgs=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + String.IsEqual(Skin.String(current_search_provider),0)">plugin://plugin.video.fen/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
-	</variable>
+        <value condition="!String.IsEmpty(Skin.String(SearchInputEncoded)) + String.IsEqual(Skin.String(current_search_provider),2)">plugin://plugin.video.umbrella/?action=tvSearchterm&amp;name=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
+        <value condition="!String.IsEmpty(Skin.String(SearchInputEncoded)) + String.IsEqual(Skin.String(current_search_provider),3)">plugin://plugin.video.pov/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
+        <value>plugin://script.fentastic.helper/?mode=fentastic_empty_results&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
+    </variable>
 	<variable name="SearchProviderCollectionsVar">
 		<value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),0)]">plugin://plugin.video.fen/?mode=build_movie_list&amp;action=tmdb_movies_search_sets&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
     <value condition="!String.IsEmpty(Skin.String(SearchInput)) + [String.IsEqual(Skin.String(current_search_provider),3)]">plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_movies_search_collections&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]</value>
@@ -990,4 +984,5 @@
 		<value condition="!ListItem.IsCollection + String.IsEqual(ListItem.DBtype,episode)">$VAR[_Aired]$VAR[_Mpaa]$VAR[_Network]$VAR[_RuntimeEpisodes]$VAR[_Endsat][CR]$VAR[_Plot][CR]</value>
 	</variable>
 	
+    <!-- FENTASTIC_QUERY_READY_GUARD_V3 -->
 </includes>
