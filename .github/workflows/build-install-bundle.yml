@@ -4,8 +4,9 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/build-install-bundle.yml'
+  schedule:
+    # Check the helper fork for updates every hour (minute 17 UTC).
+    - cron: '17 * * * *'
 
 permissions:
   contents: read
@@ -26,7 +27,25 @@ jobs:
           ref: main
           path: script.fentastic.helper
 
+      - name: Record source revisions
+        id: versions
+        shell: bash
+        run: |
+          echo "skin=$(git -C skin.fentastic rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "helper=$(git -C script.fentastic.helper rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          mkdir -p build-state
+          git -C skin.fentastic rev-parse HEAD > build-state/revisions.txt
+          git -C script.fentastic.helper rev-parse HEAD >> build-state/revisions.txt
+
+      - name: Check whether these revisions were already built
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: build-state/revisions.txt
+          key: fentastic-bundle-${{ steps.versions.outputs.skin }}-${{ steps.versions.outputs.helper }}
+
       - name: Build Kodi-compatible ZIP files
+        if: steps.cache.outputs.cache-hit != 'true' || github.event_name == 'workflow_dispatch'
         shell: python
         run: |
           from pathlib import Path
@@ -62,8 +81,16 @@ jobs:
           )
 
       - name: Upload install bundle
+        if: steps.cache.outputs.cache-hit != 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
           name: FENtastic-install-bundle
           path: install-bundle/
           if-no-files-found: error
+
+      - name: Remember successfully packaged revisions
+        if: steps.cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: build-state/revisions.txt
+          key: fentastic-bundle-${{ steps.versions.outputs.skin }}-${{ steps.versions.outputs.helper }}
