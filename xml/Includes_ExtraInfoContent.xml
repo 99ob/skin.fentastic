@@ -2,6 +2,11 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Shorten coordinated skin-reload cooldown from 8 to 4 seconds
+- Keep 3-second debounce and avoid reloads during POV directory fetches
+- Preserve SQLite widget cache, ratings, metadata and refresh intervals
+
+[B][COLOR accent_color]Version 1.0.36[/COLOR][/B]
 - Coordinate widget/menu skin reloads in one worker; debounce rapid edits
 - Wait until sequential POV directory fetches finish before reloading
 - Preserve existing SQLite snapshots, cache TTLs, ratings and metadata
