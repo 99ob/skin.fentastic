@@ -19,9 +19,9 @@
 				<include>ButtonMenuList</include>
 				<content>
 					<item>
-						<label>Reload skin (clear widget cache)</label>
-						<onclick>SetProperty(fentastic.widget_cache.reset_requested,true,10000)</onclick>
+						<label>Reload skin</label>
 						<onclick>Dialog.Close(all)</onclick>
+						<onclick>ReloadSkin()</onclick>
 					</item>
 					<item>
 						<label>Skin settings</label>
