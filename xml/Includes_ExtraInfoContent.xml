@@ -2,6 +2,8 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Load configured home widgets sequentially (one provider at a time)
+- No parallel/batch-loading mode; supports stacked widgets
 - Match Big Poster spacing to regular Poster widgets
 - Keep four large posters visible; also update stacked widgets
 
