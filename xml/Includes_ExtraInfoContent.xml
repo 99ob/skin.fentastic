@@ -2,6 +2,11 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- TEMPORARY COLD-BUILD TEST: Power menu Reload skin clears widget cache and rebuilds it
+- Clears only widget_cache.db data, not the separate widget configuration database
+- Logs first sequential cold-cache pass duration; all other reloads keep their normal behavior
+
+[B][COLOR accent_color]Version 1.0.38[/COLOR][/B]
 - Reduce coordinated skin-reload cooldown from 4 to 1 second
 - Reduce both configuration and cache-change debounces from 3 to 1 second
 - Still avoid reloads during POV directory fetches and widget edit dialogs
