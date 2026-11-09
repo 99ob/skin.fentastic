@@ -2,6 +2,11 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- EXPERIMENTAL: 5-second soft timeout per POV widget row; try next row if slow
+- Kodi cannot cancel a call; cap overlapping requests at two and defer further calls
+- Preserve old SQLite widget results and 1-second skin-reload timing
+
+[B][COLOR accent_color]Version 1.0.40[/COLOR][/B]
 - Restore ordinary Reload skin power-menu action (no widget cache clearing)
 - Remove temporary cold-build benchmark instrumentation and keep cache behavior
 
