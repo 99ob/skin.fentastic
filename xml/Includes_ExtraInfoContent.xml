@@ -2,6 +2,12 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Prevent empty searches from launching POV and other search providers
+- Reduce cached widget SQLite initialization and read connections
+- Join background Helper threads on Kodi shutdown where possible
+- Render focused fanart URLs as images, not multiimage directories
+
+[B][COLOR accent_color]Version 1.0.44[/COLOR][/B]
 - Refresh only changed widget rows via dynamic content revision; no routine full ReloadSkin
 - Preserve coordinated full reload for widget/menu layout edits
 - Populate cached video metadata through InfoTagVideo (Kodi 22) instead of deprecated setInfo
