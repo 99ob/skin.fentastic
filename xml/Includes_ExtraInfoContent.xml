@@ -2,6 +2,9 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Fix missing movie and TV show search results by restoring proven search reload path
+- Restore search-history XML regeneration and active provider checks
+- Preserve widget row-only refresh, ratings, cache and other optimizations
 - Update searches and search history without full skin reloads
 - Skip disabled/uninstalled search providers, including provider selection
 - Prevent text labels from being passed as clearlogo image filenames
