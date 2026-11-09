@@ -1,0 +1,69 @@
+name: Build FENtastic install bundle
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-install-bundle.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out FENtastic skin
+        uses: actions/checkout@v4
+        with:
+          path: skin.fentastic
+
+      - name: Check out FENtastic Helper fork
+        uses: actions/checkout@v4
+        with:
+          repository: 99ob/script.fentastic.helper
+          ref: main
+          path: script.fentastic.helper
+
+      - name: Build Kodi-compatible ZIP files
+        shell: python
+        run: |
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          import xml.etree.ElementTree as ET
+
+          output = Path('install-bundle')
+          output.mkdir()
+          for addon_id in ('script.fentastic.helper', 'skin.fentastic'):
+              folder = Path(addon_id)
+              manifest = folder / 'addon.xml'
+              root = ET.parse(manifest).getroot()
+              assert root.attrib['id'] == addon_id, f'Unexpected add-on ID: {manifest}'
+              version = root.attrib['version']
+              output_zip = output / f'{addon_id}-{version}.zip'
+              with ZipFile(output_zip, 'w', ZIP_DEFLATED) as archive:
+                  for path in sorted(folder.rglob('*')):
+                      if path.is_file() and '.git' not in path.parts:
+                          archive.write(path, path.as_posix())
+              print(f'Built {output_zip}')
+
+          (output / 'INSTALL.txt').write_text(
+              'FENtastic fork installation for Kodi\n\n'
+              'These are two separate Kodi add-ons. Kodi cannot install both '
+              'directly from one add-on ZIP.\n\n'
+              '1. Extract the downloaded workflow artifact.\n'
+              '2. In Kodi: Settings > Add-ons > Install from zip file.\n'
+              '3. Install script.fentastic.helper-*.zip first.\n'
+              '4. Install skin.fentastic-*.zip second.\n'
+              '5. Select FENtastic under Settings > Interface > Skin.\n'
+              'Review automatic add-on update settings if keeping these forks.\n',
+              encoding='utf-8'
+          )
+
+      - name: Upload install bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: FENtastic-install-bundle
+          path: install-bundle/
+          if-no-files-found: error
