@@ -2,6 +2,12 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Serialize MDbList ratings requests, skip stale titles, add HTTP timeouts and retry cooldown
+- Reuse MDbList HTTPS connection and update ratings only for the selected title
+- Avoid repeated rating-property clearing and redundant XML/reloads on search open
+- Skip unchanged menu/widget XML writes; preserve widget-cache behavior
+
+[B][COLOR accent_color]Version 1.0.42[/COLOR][/B]
 - Keep successful POV widget responses up to 30s after a 5s soft timeout
 - Continue fetching later rows; commit late results safely to SQLite
 - Never overwrite newer snapshots; preserve cache and widget configuration
