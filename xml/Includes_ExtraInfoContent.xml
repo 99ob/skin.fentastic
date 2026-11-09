@@ -2,6 +2,11 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Restore cached IMDb/TMDb IDs, available ratings and watched/resume metadata
+- Add Open original POV list context-menu option (POV actions remain native)
+- Keep SQLite snapshots and sequential background refresh
+
+[B][COLOR accent_color]Version 1.0.32[/COLOR][/B]
 - Experimental persistent SQLite cache for all configured widgets
 - Sequential upstream refresh; stable Kodi plugin widget paths
 - Retain old cache when a widget provider is temporarily unavailable
