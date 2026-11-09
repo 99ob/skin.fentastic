@@ -520,17 +520,21 @@
 	</include>
 
 	<include name="WidgetListBigPoster">
+		<param name="visible">true</param>
 		<param name="onclick_condition">false</param>
 		<definition>
 			<include content="CategoryLabel">
+				<param name="visible" value="$PARAM[visible]"/>
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
+				<param name="visible" value="$PARAM[visible]"/>
 				<param name="list_id" value="$PARAM[list_id]"/>
 				<param name="posy" value="290"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
+				<visible>$PARAM[visible]</visible>
 				<left>0</left>
 				<top>115</top>
 				<onright>$PARAM[list_id]</onright>
@@ -616,15 +620,19 @@
   </include>
 
 	<include name="WidgetListBigPosterStacked">
+		<param name="visible">true</param>
     <definition>
       <include content="CategoryLabelWidget">
+				<param name="visible" value="$PARAM[visible]"/>
         <param name="label">$PARAM[widget_header]</param>
         <param name="list_id" value="$PARAM[list_id]" />
       </include>
 			<include content="BusyListSpinnerWidget">
+				<param name="visible" value="$PARAM[visible]"/>
 				<param name="list_id" value="$PARAM[list_id]" />
 			</include>
       <control type="fixedlist" id="$PARAM[list_id]">
+				<visible>$PARAM[visible]</visible>
         <left>0</left>
         <top>115</top> 
         <right>0</right>
@@ -1273,6 +1281,7 @@
 				<param name="visible" value="$PARAM[visible]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
+				<param name="visible" value="$PARAM[visible]"/>
 				<param name="list_id" value="$PARAM[list_id]" />
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
@@ -2151,6 +2160,7 @@
 				<height>160</height>
 				<left>55</left>
 				<visible>Container($PARAM[list_id]).IsUpdating</visible>
+				<visible>$PARAM[visible]</visible>
 				<control type="image">
 					<top>$PARAM[posy]</top>
 					<width>50</width>
