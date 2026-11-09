@@ -2,6 +2,11 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Keep successful POV widget responses up to 30s after a 5s soft timeout
+- Continue fetching later rows; commit late results safely to SQLite
+- Never overwrite newer snapshots; preserve cache and widget configuration
+
+[B][COLOR accent_color]Version 1.0.41[/COLOR][/B]
 - EXPERIMENTAL: 5-second soft timeout per POV widget row; try next row if slow
 - Kodi cannot cancel a call; cap overlapping requests at two and defer further calls
 - Preserve old SQLite widget results and 1-second skin-reload timing
