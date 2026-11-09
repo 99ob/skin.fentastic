@@ -2,6 +2,12 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Experimental persistent SQLite cache for all configured widgets
+- Sequential upstream refresh; stable Kodi plugin widget paths
+- Retain old cache when a widget provider is temporarily unavailable
+- WARNING: POV playback, context menus and Kodi 22 rendering require testing
+
+[B][COLOR accent_color]Version 1.0.31[/COLOR][/B]
 - Fix sequential widget loading when switching Movies / TV Shows
 - Retry unopened widgets and skip stalled empty rows sooner
 - Respect numerical order for widgets 1 to 10
