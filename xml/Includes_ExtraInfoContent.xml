@@ -2,6 +2,11 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Fix sequential widget loading when switching Movies / TV Shows
+- Retry unopened widgets and skip stalled empty rows sooner
+- Respect numerical order for widgets 1 to 10
+
+[B][COLOR accent_color]Version 1.0.30[/COLOR][/B]
 - Load configured home widgets sequentially (one provider at a time)
 - No parallel/batch-loading mode; supports stacked widgets
 - Match Big Poster spacing to regular Poster widgets
