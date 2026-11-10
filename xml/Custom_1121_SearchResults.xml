@@ -35,14 +35,14 @@
 						<pagecontrol>27099</pagecontrol>
 						<include content="WidgetListBigPoster">
 							<param name="visible" value="true"/>
-              <param name="content_path" value="plugin://plugin.video.pov/?mode=build_movie_list&amp;action=tmdb_movies_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]"/>
+              <param name="content_path" value="$VAR[SearchProviderMoviesVar]"/>
               <param name="widget_header" value="$LOCALIZE[342]"/>
               <param name="widget_target" value="videos"/>
               <param name="list_id" value="27011"/>
             </include>
             <include content="WidgetListBigPoster">
 							<param name="visible" value="true"/>
-              <param name="content_path" value="plugin://plugin.video.pov/?mode=build_tvshow_list&amp;action=tmdb_tv_search&amp;query=$INFO[Skin.String(SearchInputEncoded)]&amp;fentastic_rev=$INFO[Window(Home).Property(fentastic.search.results_revision)]"/>
+              <param name="content_path" value="$VAR[SearchProviderTVShowsVar]"/>
               <param name="widget_header" value="TV Shows"/>
               <param name="widget_target" value="videos"/>
               <param name="list_id" value="27012"/>
