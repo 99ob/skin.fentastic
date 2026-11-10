@@ -9,10 +9,50 @@
 		<usecontrolcoords>true</usecontrolcoords>
 	</include>
 
+
+    <!-- FENTASTIC_CHARCOAL_HEADER_FOCUS_V1: optional focus stop between configured widget rows -->
+    <include name="FentasticHeaderFocusBar">
+        <param name="enabled">false</param>
+        <param name="list_id">0</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
+            <!-- Image is separate from button: only the active row shows a bar. -->
+            <control type="image">
+                <left>0</left>
+                <top>0</top>
+                <width>290</width>
+                <height>46</height>
+                <texture border="9" colordiffuse="801C1C22">buttons/fentastic-header-charcoal.png</texture>
+                <visible>$PARAM[enabled] + [Control.HasFocus($PARAM[previous_list_id]) | Control.HasFocus($PARAM[previous_stacked_list_id]) | Control.HasFocus($PARAM[list_id]664)]</visible>
+            </control>
+            <!-- The transparent button is the actual keyboard/remote focus stop. -->
+            <control type="button" id="$PARAM[list_id]664">
+                <left>0</left>
+                <top>0</top>
+                <width>290</width>
+                <height>46</height>
+                <label></label>
+                <texturefocus />
+                <texturenofocus />
+                <visible>$PARAM[enabled]</visible>
+                <onleft>9000</onleft>
+                <onback>9000</onback>
+                <!-- FENTASTIC_CHARCOAL_NAV_NO_ENTER_V1: move row-to-row using Up/Down, no Enter required -->
+                <onup>$PARAM[previous_list_id]</onup>
+                <ondown>$PARAM[list_id]</ondown>
+                <onclick>SetFocus($PARAM[list_id])</onclick>
+            </control>
+        </definition>
+    </include>
+
 	<include name="CategoryLabel">
 		<!-- TODO Add one-click functionality for Trakt Manager, viewing of trailers etc -->
 		<param name="visible">true</param>
 		<param name="item_treshold">0</param>
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
 		<param name="label_focus">$INFO[Container($PARAM[list_id]).ListItem.Title,[B] | [/B]]</param>
 		<param name="label_focus_episodes">$INFO[Container($PARAM[list_id]).ListItem.TVShowTitle,[B] | [/B]]$INFO[Container($PARAM[list_id]).ListItem.Title,[B] | [/B]]</param>
 		<param name="label_focus_collections">$INFO[Container($PARAM[list_id]).ListItem.Label,[B]| [/B]]</param>
@@ -25,6 +65,12 @@
 				<width>1350</width>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,$PARAM[item_treshold]) | [Container($PARAM[list_id]).IsUpdating + Integer.IsEqual(Container($PARAM[list_id]).NumItems,0)]</visible>
 				<visible>$PARAM[visible]</visible>
+                <include content="FentasticHeaderFocusBar">
+                    <param name="enabled" value="$PARAM[focusable_header]"/>
+                    <param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
+                </include>
 				<control type="grouplist">
 					<width>1350</width>
 					<orientation>horizontal</orientation>
@@ -235,6 +281,9 @@
 	<include name="CategoryLabelWidget">
 		<param name="visible">true</param>
 		<param name="item_treshold">0</param>
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
 		<param name="label_focus">$INFO[Container($PARAM[list_id]).ListItem.Title,[B] | [/B]]</param>
 		<param name="label_focus_episodes">$INFO[Container($PARAM[list_id]).ListItem.TVShowTitle,[B] | [/B]]$INFO[Container($PARAM[list_id]).ListItem.Title,[B] | [/B]]</param>
 		<param name="label_focus_collections">$INFO[Container($PARAM[list_id]).ListItem.Label,[B]| [/B]]</param>
@@ -247,6 +296,12 @@
 				<width>1350</width>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,$PARAM[item_treshold]) | [Container($PARAM[list_id]).IsUpdating + Integer.IsEqual(Container($PARAM[list_id]).NumItems,0)]</visible>
 				<visible>$PARAM[visible]</visible>
+                <include content="FentasticHeaderFocusBar">
+                    <param name="enabled" value="$PARAM[focusable_header]"/>
+                    <param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
+                </include>
 				<control type="grouplist">
 					<width>1350</width>
 					<orientation>horizontal</orientation>
@@ -471,10 +526,17 @@
 
 	<include name="WidgetListPoster">
 		<param name="onclick_condition">false</param>
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabel">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
 				<param name="list_id" value="$PARAM[list_id]"/>
@@ -522,11 +584,18 @@
 	<include name="WidgetListBigPoster">
 		<param name="visible">true</param>
 		<param name="onclick_condition">false</param>
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabel">
 				<param name="visible" value="$PARAM[visible]"/>
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
 				<param name="visible" value="$PARAM[visible]"/>
@@ -574,10 +643,17 @@
 	</include>
 
 	<include name="WidgetListPosterStacked">
-    <definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
       <include content="CategoryLabelWidget">
         <param name="label">$PARAM[widget_header]</param>
         <param name="list_id" value="$PARAM[list_id]" />
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
       </include>
 			<include content="BusyListSpinnerWidget">
 				<param name="list_id" value="$PARAM[list_id]" />
@@ -621,11 +697,18 @@
 
 	<include name="WidgetListBigPosterStacked">
 		<param name="visible">true</param>
-    <definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
       <include content="CategoryLabelWidget">
 				<param name="visible" value="$PARAM[visible]"/>
         <param name="label">$PARAM[widget_header]</param>
         <param name="list_id" value="$PARAM[list_id]" />
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
       </include>
 			<include content="BusyListSpinnerWidget">
 				<param name="visible" value="$PARAM[visible]"/>
@@ -671,10 +754,17 @@
 
 	<include name="WidgetListLandscape">
 		<param name="onclick_condition">false</param>
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabel">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
 				<param name="list_id" value="$PARAM[list_id]"/>
@@ -721,10 +811,17 @@
 
 	<include name="WidgetListBigLandscape">
 		<param name="onclick_condition">false</param>
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabel">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
 				<param name="list_id" value="$PARAM[list_id]"/>
@@ -771,10 +868,17 @@
 
 	<include name="WidgetListLandscapeStacked">
 		<param name="onclick_condition">false</param>
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabelWidget">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
 				<param name="list_id" value="$PARAM[list_id]" />
@@ -819,10 +923,17 @@
 
 	<include name="WidgetListBigLandscapeStacked">
 		<param name="onclick_condition">false</param>
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabelWidget">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
 				<param name="list_id" value="$PARAM[list_id]" />
@@ -874,10 +985,17 @@
 		<param name="visible">True</param>
 		<param name="sortorder">ascending</param>
 		<!-- <param name="widget_limit">10</param> -->
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabel">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
 				<param name="list_id" value="$PARAM[list_id]"/>
@@ -941,10 +1059,17 @@
 		<param name="visible">True</param>
 		<param name="sortorder">ascending</param>
 		<!-- <param name="widget_limit">10</param> -->
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabel">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
 				<param name="list_id" value="$PARAM[list_id]"/>
@@ -1008,10 +1133,17 @@
 		<param name="visible">True</param>
 		<param name="sortorder">ascending</param>
 		<!-- <param name="widget_limit">10</param> -->
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabelWidget">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
 				<param name="list_id" value="$PARAM[list_id]" />
@@ -1072,10 +1204,17 @@
 		<param name="visible">True</param>
 		<param name="sortorder">ascending</param>
 		<!-- <param name="widget_limit">10</param> -->
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabelWidget">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
 				<param name="list_id" value="$PARAM[list_id]" />
@@ -1134,10 +1273,17 @@
 		<param name="additional_movie_items">false</param>
 		<param name="additional_tvshow_items">false</param>
 		<param name="visible">true</param>
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabel">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 				<param name="visible" value="$PARAM[visible]"/>
 			</include>
 			<include content="BusyListSpinner">
@@ -1274,10 +1420,17 @@
 		<param name="additional_movie_items">false</param>
 		<param name="additional_tvshow_items">false</param>
 		<param name="visible">true</param>
-		<definition>
+
+        <param name="focusable_header">false</param>
+        <param name="previous_list_id">0</param>
+        <param name="previous_stacked_list_id">0</param>
+        <definition>
 			<include content="CategoryLabelWidget">
 				<param name="label">$PARAM[widget_header]</param>
 				<param name="list_id" value="$PARAM[list_id]"/>
+                <param name="focusable_header" value="$PARAM[focusable_header]"/>
+                <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 				<param name="visible" value="$PARAM[visible]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
@@ -1454,7 +1607,7 @@
 			</control>
 		</definition>
 	</include>
-	
+
 	<include name="WidgetListSquare">
 		<param name="sub_label">$INFO[ListItem.Label]</param>
 		<param name="sortby"></param>
