@@ -827,7 +827,7 @@
 				</include>
 				<control type="group">
 					<animation effect="slide" time="300" start="-492,0" end="0,0" tween="sine" easing="inout">VisibleChange</animation>
-					<visible allowhiddenfocus="true">![String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)]</visible>
+					<visible allowhiddenfocus="true">![String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + !String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
 					<!-- TODO Add sideblade panel for direct editing of widgets, hiding sections, other shortcuts -->
 					<control type="fixedlist" id="9000">
 						<left>25</left>
@@ -1123,6 +1123,48 @@
 					</control> -->
 				</control>
 			</control>
+            <!-- FENTASTIC_CHARCOAL_HEADER_INFO_FOCUS_V2: maintain poster details while the charcoal header button has focus -->
+            <control type="group">
+                <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + !Skin.HasSetting(TrailerPlaying)</visible>
+                <width>550</width>
+                <include>OpenClose_Left</include>
+                <control type="image">
+                    <left>30</left>
+                    <top>50</top>
+                    <width>395</width>
+                    <height>153</height>
+                    <texture background="true">$INFO[Window(Home).Property(fentastic.charcoal.clearlogo)]</texture>
+                    <aspectratio align="center">keep</aspectratio>
+                    <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.clearlogo))</visible>
+                </control>
+                <control type="textbox">
+                    <left>30</left>
+                    <top>75</top>
+                    <width>430</width>
+                    <height>98</height>
+                    <font>font36_title</font>
+                    <aligny>center</aligny>
+                    <label>$INFO[Window(Home).Property(fentastic.charcoal.title)]</label>
+                    <visible>String.IsEmpty(Window(Home).Property(fentastic.charcoal.clearlogo))</visible>
+                </control>
+                <control type="textbox">
+                    <left>30</left>
+                    <top>239</top>
+                    <width>410</width>
+                    <height>98</height>
+                    <textcolor>unfocused_text</textcolor>
+                    <label>$INFO[Window(Home).Property(fentastic.charcoal.year)]$INFO[Window(Home).Property(fentastic.charcoal.mpaa), • ]$INFO[Window(Home).Property(fentastic.charcoal.genre), • ][CR]$INFO[Window(Home).Property(fentastic.charcoal.director)]$INFO[Window(Home).Property(fentastic.charcoal.runtime), • ]</label>
+                </control>
+                <control type="textbox">
+                    <left>30</left>
+                    <top>353</top>
+                    <width>410</width>
+                    <bottom>60</bottom>
+                    <label>$INFO[Window(Home).Property(fentastic.charcoal.plot)]</label>
+                    <textcolor>unfocused_text</textcolor>
+                    <autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
+                </control>
+            </control>
 			<control type="group">
 				<depth>DepthBars</depth>
 				<bottom>0</bottom>

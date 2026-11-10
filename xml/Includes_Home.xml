@@ -10,38 +10,61 @@
 	</include>
 
 
-    <!-- FENTASTIC_CHARCOAL_HEADER_FOCUS_V1: optional focus stop between configured widget rows -->
+    <!-- FENTASTIC_CHARCOAL_HEADER_INFO_FOCUS_V2: keep previous poster information available while the row title has focus -->
     <include name="FentasticHeaderFocusBar">
         <param name="enabled">false</param>
         <param name="list_id">0</param>
         <param name="previous_list_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
-            <!-- Image is separate from button: only the active row shows a bar. -->
             <control type="image">
                 <left>0</left>
                 <top>0</top>
                 <width>290</width>
                 <height>46</height>
-                <texture border="9" colordiffuse="801C1C22">buttons/fentastic-header-charcoal.png</texture>
+                <!-- Texture itself is charcoal with alpha 128: apply no second alpha multiplier. -->
+                <texture border="10" colordiffuse="FFFFFFFF">buttons/fentastic-header-charcoal.png</texture>
                 <visible>$PARAM[enabled] + [Control.HasFocus($PARAM[previous_list_id]) | Control.HasFocus($PARAM[previous_stacked_list_id]) | Control.HasFocus($PARAM[list_id]664)]</visible>
             </control>
-            <!-- The transparent button is the actual keyboard/remote focus stop. -->
             <control type="button" id="$PARAM[list_id]664">
                 <left>0</left>
                 <top>0</top>
                 <width>290</width>
                 <height>46</height>
                 <label></label>
-                <texturefocus />
+                <texturefocus border="10">buttons/fentastic-header-white-focus.png</texturefocus>
                 <texturenofocus />
                 <visible>$PARAM[enabled]</visible>
                 <onleft>9000</onleft>
                 <onback>9000</onback>
-                <!-- FENTASTIC_CHARCOAL_NAV_NO_ENTER_V1: move row-to-row using Up/Down, no Enter required -->
                 <onup>$PARAM[previous_list_id]</onup>
                 <ondown>$PARAM[list_id]</ondown>
                 <onclick>SetFocus($PARAM[list_id])</onclick>
+                <onfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Label],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Label],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Art(clearlogo)],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Art(clearlogo)],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Art(fanart)],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Art(fanart)],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.year,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Year],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.year,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Year],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Mpaa],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Mpaa],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.genre,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Genre],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.genre,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Genre],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.director,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Director],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.director,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Director],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.runtime,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Duration],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.runtime,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Duration],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.rating,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Rating],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.rating,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Rating],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.plot,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.Plot],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.plot,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.Plot],Home)</onfocus>
+                <onfocus>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[Container($PARAM[previous_list_id]).ListItem.PlotOutline],Home)</onfocus>
+                <onfocus condition="Integer.IsGreater(Container($PARAM[previous_stacked_list_id]).NumItems,0)">SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[Container($PARAM[previous_stacked_list_id]).ListItem.PlotOutline],Home)</onfocus>
+                <!-- Set active last, after all info values have been collected. -->
+                <onfocus>SetProperty(fentastic.charcoal.active,yes,Home)</onfocus>
+                <onunfocus>ClearProperty(fentastic.charcoal.active,Home)</onunfocus>
             </control>
         </definition>
     </include>
