@@ -1123,7 +1123,7 @@
 					</control> -->
 				</control>
 			</control>
-            <!-- FENTASTIC_CHARCOAL_SELECTED_POSTER_CACHE_V3: show the cached selected poster when the charcoal header has focus -->
+            <!-- FENTASTIC_CHARCOAL_DOWN_SNAPSHOT_V4: show the ondown selected poster when the charcoal header has focus -->
             <control type="group">
                 <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + !Skin.HasSetting(TrailerPlaying)</visible>
                 <width>550</width>

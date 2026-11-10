@@ -11,6 +11,26 @@
 
 
     <!-- FENTASTIC_CHARCOAL_HEADER_INFO_FOCUS_V2: keep previous poster information available while the row title has focus -->
+    <!-- FENTASTIC_CHARCOAL_DOWN_SNAPSHOT_V4: capture while the poster list still owns focus. -->
+    <include name="FentasticHeaderSnapshotDown">
+        <param name="list_id">0</param>
+        <param name="next_header_id">0</param>
+        <definition>
+            <ondown>SetProperty(fentastic.charcoal.title,$ESCINFO[ListItem.Label],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[ListItem.Art(clearlogo)],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.fanart,$ESCINFO[ListItem.Art(fanart)],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.year,$ESCINFO[ListItem.Year],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[ListItem.Mpaa],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.genre,$ESCINFO[ListItem.Genre],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.director,$ESCINFO[ListItem.Director],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.runtime,$ESCINFO[ListItem.Duration],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.rating,$ESCINFO[ListItem.Rating],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.plot,$ESCINFO[ListItem.Plot],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[ListItem.PlotOutline],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.source,$PARAM[list_id],Home)</ondown>
+            <ondown>SetFocus($PARAM[next_header_id])</ondown>
+        </definition>
+    </include>
     <include name="FentasticHeaderFocusBar">
         <param name="enabled">false</param>
         <param name="list_id">0</param>
@@ -40,31 +60,11 @@
                 <onup>$PARAM[previous_list_id]</onup>
                 <ondown>$PARAM[list_id]</ondown>
                 <onclick>SetFocus($PARAM[list_id])</onclick>
-                <!-- FENTASTIC_CHARCOAL_SELECTED_POSTER_CACHE_V3: use the last selected item, saved by the row itself. -->
-                <onfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].title)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.title,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].clearlogo)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].clearlogo)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].fanart)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.fanart,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].fanart)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.year,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].year)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.year,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].year)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].mpaa)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].mpaa)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.genre,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].genre)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.genre,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].genre)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.director,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].director)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.director,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].director)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.runtime,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].runtime)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.runtime,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].runtime)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.rating,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].rating)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.rating,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].rating)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.plot,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].plot)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.plot,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].plot)],Home)</onfocus>
-                <onfocus>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_list_id].plotoutline)],Home)</onfocus>
-                <onfocus condition="!String.IsEmpty(Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].title))">SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[Window(Home).Property(fentastic.charcoal.cache.$PARAM[previous_stacked_list_id].plotoutline)],Home)</onfocus>
+                <!-- FENTASTIC_CHARCOAL_DOWN_SNAPSHOT_V4: ondown stores selected item before focus changes. -->
+                <!-- Only show details for the row that supplied this snapshot. -->
+                <onfocus condition="String.IsEqual(Window(Home).Property(fentastic.charcoal.source),$PARAM[previous_list_id]) | String.IsEqual(Window(Home).Property(fentastic.charcoal.source),$PARAM[previous_stacked_list_id])">SetProperty(fentastic.charcoal.active,yes,Home)</onfocus>
+                <onfocus condition="![String.IsEqual(Window(Home).Property(fentastic.charcoal.source),$PARAM[previous_list_id]) | String.IsEqual(Window(Home).Property(fentastic.charcoal.source),$PARAM[previous_stacked_list_id])]">ClearProperty(fentastic.charcoal.active,Home)</onfocus>
                 <!-- Set active last, after all info values have been collected. -->
-                <onfocus>SetProperty(fentastic.charcoal.active,yes,Home)</onfocus>
                 <onunfocus>ClearProperty(fentastic.charcoal.active,Home)</onunfocus>
             </control>
         </definition>
@@ -549,6 +549,8 @@
 	</include>
 
 	<include name="WidgetListPoster">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="onclick_condition">false</param>
 
         <param name="focusable_header">false</param>
@@ -578,6 +580,8 @@
 				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<itemlayout width="269" height="393">
 					<control type="group">
@@ -606,6 +610,8 @@
 	</include>
 
 	<include name="WidgetListBigPoster">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="visible">true</param>
 		<param name="onclick_condition">false</param>
 
@@ -639,6 +645,8 @@
 				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<itemlayout width="331" height="520">
 					<control type="group">
@@ -667,6 +675,8 @@
 	</include>
 
 	<include name="WidgetListPosterStacked">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
@@ -684,7 +694,7 @@
 			</include>
       <control type="fixedlist" id="$PARAM[list_id]">
         <left>0</left>
-        <top>115</top> 
+        <top>115</top>
         <right>0</right>
         <height>465</height>
 				<onright>$PARAM[list_id]</onright>
@@ -692,6 +702,8 @@
 				<movement>4</movement>
         <include content="WidgetListCommonStacked">
           <param name="list_id" value="$PARAM[list_id]" />
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
         </include>
         <itemlayout width="269" height="393">
           <control type="group">
@@ -720,6 +732,8 @@
   </include>
 
 	<include name="WidgetListBigPosterStacked">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="visible">true</param>
 
         <param name="focusable_header">false</param>
@@ -741,7 +755,7 @@
       <control type="fixedlist" id="$PARAM[list_id]">
 				<visible>$PARAM[visible]</visible>
         <left>0</left>
-        <top>115</top> 
+        <top>115</top>
         <right>0</right>
         <height>535</height>
 				<onright>$PARAM[list_id]</onright>
@@ -749,6 +763,8 @@
 				<movement>4</movement>
         <include content="WidgetListCommonStacked">
           <param name="list_id" value="$PARAM[list_id]" />
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
         </include>
         <itemlayout width="331" height="520">
           <control type="group">
@@ -777,6 +793,8 @@
   </include>
 
 	<include name="WidgetListLandscape">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="onclick_condition">false</param>
 
         <param name="focusable_header">false</param>
@@ -806,6 +824,8 @@
 				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<itemlayout width="337" height="347">
 					<control type="group">
@@ -834,6 +854,8 @@
 	</include>
 
 	<include name="WidgetListBigLandscape">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="onclick_condition">false</param>
 
         <param name="focusable_header">false</param>
@@ -863,6 +885,8 @@
 				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<itemlayout width="448" height="347">
 					<control type="group">
@@ -891,6 +915,8 @@
 	</include>
 
 	<include name="WidgetListLandscapeStacked">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="onclick_condition">false</param>
 
         <param name="focusable_header">false</param>
@@ -917,6 +943,8 @@
 				<height>307</height>
 				<include content="WidgetListCommonStacked">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<itemlayout width="337" height="347">
@@ -946,6 +974,8 @@
 	</include>
 
 	<include name="WidgetListBigLandscapeStacked">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="onclick_condition">false</param>
 
         <param name="focusable_header">false</param>
@@ -972,6 +1002,8 @@
 				<height>366</height>
 				<include content="WidgetListCommonStacked">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<itemlayout width="448" height="347">
@@ -1001,6 +1033,8 @@
 	</include>
 
 	<include name="WidgetListEpisodes">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="main_label">$INFO[ListItem.Title]</param>
 		<param name="sub_label">$INFO[ListItem.TVShowTitle]</param>
 		<param name="networks_label">$INFO[ListItem.Label]</param>
@@ -1037,6 +1071,8 @@
 				<movement>3</movement>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
@@ -1075,6 +1111,8 @@
 	</include>
 
 	<include name="WidgetListBigEpisodes">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="main_label">$INFO[ListItem.Title]</param>
 		<param name="sub_label">$INFO[ListItem.TVShowTitle]</param>
 		<param name="networks_label">$INFO[ListItem.Label]</param>
@@ -1111,6 +1149,8 @@
 				<movement>2</movement>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
@@ -1149,6 +1189,8 @@
 	</include>
 
 	<include name="WidgetListEpisodesStacked">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="main_label">$INFO[ListItem.Title]</param>
 		<param name="sub_label">$INFO[ListItem.TVShowTitle]</param>
 		<param name="networks_label">$INFO[ListItem.Label]</param>
@@ -1183,6 +1225,8 @@
 				<movement>3</movement>
 				<include content="WidgetListCommonStacked">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<visible>$PARAM[visible]</visible>
 				<itemlayout width="337" height="550">
@@ -1220,6 +1264,8 @@
 	</include>
 
 	<include name="WidgetListBigEpisodesStacked">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="main_label">$INFO[ListItem.Title]</param>
 		<param name="sub_label">$INFO[ListItem.TVShowTitle]</param>
 		<param name="networks_label">$INFO[ListItem.Label]</param>
@@ -1254,6 +1300,8 @@
 				<movement>2</movement>
 				<include content="WidgetListCommonStacked">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<visible>$PARAM[visible]</visible>
 				<itemlayout width="448" height="550">
@@ -1291,6 +1339,8 @@
 	</include>
 
 	<include name="WidgetListCategory">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="item_limit">30</param>
 		<param name="icon">$INFO[ListItem.Icon]</param>
 		<param name="icon_height">72</param>
@@ -1326,6 +1376,8 @@
 				<onfocus>Control.Move($PARAM[list_id],$INFO[Window(home).Property(listposition)])</onfocus>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
@@ -1439,6 +1491,8 @@
 	</include>
 
 	<include name="WidgetListCategoryStacked">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="icon">$INFO[ListItem.Icon]</param>
 		<param name="icon_height">72</param>
 		<param name="additional_movie_items">false</param>
@@ -1468,6 +1522,8 @@
 				<height>195</height>
 				<include content="WidgetListCommonStacked">
 					<param name="list_id" value="$PARAM[list_id]" />
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<movement>3</movement>
 				<visible>$PARAM[visible]</visible>
@@ -1633,6 +1689,8 @@
 	</include>
 
 	<include name="WidgetListSquare">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="sub_label">$INFO[ListItem.Label]</param>
 		<param name="sortby"></param>
 		<param name="visible">True</param>
@@ -1663,6 +1721,8 @@
 				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<visible>$PARAM[visible]</visible>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
@@ -1697,6 +1757,8 @@
 	</include>
 
 	<include name="WidgetListPVR">
+        <param name="has_next_header">false</param>
+        <param name="next_header_id">0</param>
 		<param name="item_treshold">0</param>
 		<param name="icon">$INFO[ListItem.Icon]</param>
 		<param name="label">$INFO[ListItem.Label]</param>
@@ -1721,6 +1783,8 @@
 				<onright>$PARAM[list_id]</onright>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,$PARAM[item_treshold]) | [Container($PARAM[list_id]).IsUpdating + Integer.IsEqual(Container($PARAM[list_id]).NumItems,0)]</visible>
 				<itemlayout width="267" height="500" infoupdate="$PARAM[info_update]">
@@ -1901,6 +1965,8 @@
 				<onfocus>Control.Move($PARAM[list_id],$INFO[Window(home).Property(listposition)])</onfocus>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="has_next_header" value="$PARAM[has_next_header]"/>
+                    <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
 				<visible>$PARAM[visible]</visible>
 				<itemlayout width="$PARAM[width]" height="320">
@@ -2286,18 +2352,10 @@
 		<onback>9000</onback>
 		<onfocus>Control.Move($PARAM[list_id],-$INFO[Container($PARAM[list_id]).Position])</onfocus>
 		<onunfocus>SetProperty(listposition,$INFO[Container($PARAM[list_id]).Position],home)</onunfocus>
-		<!-- FENTASTIC_CHARCOAL_SELECTED_POSTER_CACHE_V3: capture selection BEFORE the widget row loses focus. -->
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].title,$ESCINFO[ListItem.Label],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].clearlogo,$ESCINFO[ListItem.Art(clearlogo)],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].fanart,$ESCINFO[ListItem.Art(fanart)],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].year,$ESCINFO[ListItem.Year],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].mpaa,$ESCINFO[ListItem.Mpaa],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].genre,$ESCINFO[ListItem.Genre],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].director,$ESCINFO[ListItem.Director],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].runtime,$ESCINFO[ListItem.Duration],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].rating,$ESCINFO[ListItem.Rating],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].plot,$ESCINFO[ListItem.Plot],Home)</onunfocus>
-		<onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].plotoutline,$ESCINFO[ListItem.PlotOutline],Home)</onunfocus>
+        <include content="FentasticHeaderSnapshotDown" condition="$PARAM[has_next_header]">
+            <param name="list_id" value="$PARAM[list_id]"/>
+            <param name="next_header_id" value="$PARAM[next_header_id]"/>
+        </include>
 		<!-- <preloaditems>2</preloaditems> -->
 	</include>
 
@@ -2309,18 +2367,10 @@
 		<onback>9000</onback>
     <onback>SetFocus($PARAM[list_id],0,absolute)</onback>
     <onfocus>RunScript(script.fentastic.helper,mode=widget_monitor&amp;list_id=$PARAM[list_id])</onfocus>
-    <!-- FENTASTIC_CHARCOAL_SELECTED_POSTER_CACHE_V3: capture selection BEFORE the widget row loses focus. -->
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].title,$ESCINFO[ListItem.Label],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].clearlogo,$ESCINFO[ListItem.Art(clearlogo)],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].fanart,$ESCINFO[ListItem.Art(fanart)],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].year,$ESCINFO[ListItem.Year],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].mpaa,$ESCINFO[ListItem.Mpaa],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].genre,$ESCINFO[ListItem.Genre],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].director,$ESCINFO[ListItem.Director],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].runtime,$ESCINFO[ListItem.Duration],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].rating,$ESCINFO[ListItem.Rating],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].plot,$ESCINFO[ListItem.Plot],Home)</onunfocus>
-    <onunfocus>SetProperty(fentastic.charcoal.cache.$PARAM[list_id].plotoutline,$ESCINFO[ListItem.PlotOutline],Home)</onunfocus>
+        <include content="FentasticHeaderSnapshotDown" condition="$PARAM[has_next_header]">
+            <param name="list_id" value="$PARAM[list_id]"/>
+            <param name="next_header_id" value="$PARAM[next_header_id]"/>
+        </include>
     <!-- <preloaditems>2</preloaditems> -->
   </include>
 
