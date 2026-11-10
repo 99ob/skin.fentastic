@@ -60,12 +60,150 @@
                 <onup>$PARAM[previous_list_id]</onup>
                 <ondown>$PARAM[list_id]</ondown>
                 <onclick>SetFocus($PARAM[list_id])</onclick>
-                <!-- FENTASTIC_CHARCOAL_DOWN_SNAPSHOT_V4: ondown stores selected item before focus changes. -->
-                <!-- Only show details for the row that supplied this snapshot. -->
-                <onfocus condition="String.IsEqual(Window(Home).Property(fentastic.charcoal.source),$PARAM[previous_list_id]) | String.IsEqual(Window(Home).Property(fentastic.charcoal.source),$PARAM[previous_stacked_list_id])">SetProperty(fentastic.charcoal.active,yes,Home)</onfocus>
-                <onfocus condition="![String.IsEqual(Window(Home).Property(fentastic.charcoal.source),$PARAM[previous_list_id]) | String.IsEqual(Window(Home).Property(fentastic.charcoal.source),$PARAM[previous_stacked_list_id])]">ClearProperty(fentastic.charcoal.active,Home)</onfocus>
-                <!-- Set active last, after all info values have been collected. -->
+                <!-- FENTASTIC_CHARCOAL_FIRST_PRESS_V5: row unfocus already copied the selected item. -->
+                <onfocus>SetProperty(fentastic.charcoal.active,yes,Home)</onfocus>
                 <onunfocus>ClearProperty(fentastic.charcoal.active,Home)</onunfocus>
+            </control>
+        </definition>
+    </include>
+
+	    <!-- Header-only title and rating icons; the regular widget header remains unchanged. -->
+    <include name="FentasticCharcoalHeaderSnapshotScores">
+        <param name="list_id">0</param>
+        <param name="label"></param>
+        <definition>
+            <control type="label">
+                <width max="695">auto</width>
+                <label>$PARAM[label]$INFO[Window(Home).Property(fentastic.charcoal.title),[B] | [/B]]</label>
+                <shadowcolor>text_shadow</shadowcolor>
+                <scroll>true</scroll>
+                <visible>Control.HasFocus($PARAM[list_id]664) + String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
+            </control>
+            <control type="grouplist">
+                <orientation>horizontal</orientation>
+                <aligny>center</aligny>
+                <itemgap>25</itemgap>
+                <visible>!Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key)) + [!String.IsEmpty(Window(Home).Property(fentastic.charcoal.metascore)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.tomatoMeter)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.tomatoUserMeter)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.imdbRating)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.popularRating)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.tmdbRating))] + Control.HasFocus($PARAM[list_id]664) + String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
+                <control type="grouplist">
+                    <width>95</width>
+                    <orientation>horizontal</orientation>
+                    <itemgap>8</itemgap>
+                    <align>left</align>
+                    <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.metascore)) + !Skin.HasSetting(Disable.MetacriticRating)</visible>
+                    <control type="image">
+                        <width>35</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[Window(Home).Property(fentastic.charcoal.metascoreImage)]</texture>
+                    </control>
+                    <control type="label">
+                        <width max="60">auto</width>
+                        <height>32</height>
+                        <align>left</align>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.metascore)]</label>
+                        <shadowcolor>text_shadow</shadowcolor>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <width>95</width>
+                    <orientation>horizontal</orientation>
+                    <itemgap>8</itemgap>
+                    <align>left</align>
+                    <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.tomatoMeter)) + !Skin.HasSetting(Disable.RTCRating)</visible>
+                    <control type="image">
+                        <width>35</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[Window(Home).Property(fentastic.charcoal.tomatoImage)]</texture>
+                    </control>
+                    <control type="label">
+                        <width max="60">auto</width>
+                        <height>32</height>
+                        <align>left</align>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.tomatoMeter)]</label>
+                        <shadowcolor>text_shadow</shadowcolor>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <width>95</width>
+                    <orientation>horizontal</orientation>
+                    <itemgap>8</itemgap>
+                    <align>left</align>
+                    <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.tomatoUserMeter)) + !Skin.HasSetting(Disable.RTARating)</visible>
+                    <control type="image">
+                        <width>35</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[Window(Home).Property(fentastic.charcoal.tomatoUserImage)]</texture>
+                    </control>
+                    <control type="label">
+                        <width max="60">auto</width>
+                        <height>32</height>
+                        <align>left</align>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.tomatoUserMeter)]</label>
+                        <shadowcolor>text_shadow</shadowcolor>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <width>95</width>
+                    <orientation>horizontal</orientation>
+                    <itemgap>8</itemgap>
+                    <align>left</align>
+                    <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.imdbRating)) + !Skin.HasSetting(Disable.IMDbRating)</visible>
+                    <control type="image">
+                        <width>35</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[Window(Home).Property(fentastic.charcoal.imdbImage)]</texture>
+                    </control>
+                    <control type="label">
+                        <width max="60">auto</width>
+                        <height>32</height>
+                        <align>left</align>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.imdbRating)]</label>
+                        <shadowcolor>text_shadow</shadowcolor>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <width>95</width>
+                    <orientation>horizontal</orientation>
+                    <itemgap>8</itemgap>
+                    <align>left</align>
+                    <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.popularRating)) + !Skin.HasSetting(Disable.IMDbPopularRating)</visible>
+                    <control type="image">
+                        <width>35</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[Window(Home).Property(fentastic.charcoal.popularImage)]</texture>
+                    </control>
+                    <control type="label">
+                        <width max="60">auto</width>
+                        <height>32</height>
+                        <align>left</align>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.popularRating)]</label>
+                        <shadowcolor>text_shadow</shadowcolor>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <width>95</width>
+                    <orientation>horizontal</orientation>
+                    <itemgap>8</itemgap>
+                    <align>left</align>
+                    <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.tmdbRating)) + !Skin.HasSetting(Disable.TMDbRating)</visible>
+                    <control type="image">
+                        <width>35</width>
+                        <height>32</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$INFO[Window(Home).Property(fentastic.charcoal.tmdbImage)]</texture>
+                    </control>
+                    <control type="label">
+                        <width max="60">auto</width>
+                        <height>32</height>
+                        <align>left</align>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.tmdbRating)]</label>
+                        <shadowcolor>text_shadow</shadowcolor>
+                    </control>
+                </control>
             </control>
         </definition>
     </include>
@@ -105,8 +243,12 @@
 						<textcolor>unfocused_text</textcolor>
 						<shadowcolor>text_shadow</shadowcolor>
 						<scroll>true</scroll>
-						<visible>!Control.HasFocus($PARAM[list_id])</visible>
+						<visible>!Control.HasFocus($PARAM[list_id]) + !Control.HasFocus($PARAM[list_id]664)</visible>
 					</control>
+                <include content="FentasticCharcoalHeaderSnapshotScores">
+                    <param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="label" value="$PARAM[label]"/>
+                </include>
 					<!-- RATINGS VISIBLE -->
 					<control type="label">
 						<width max="695">auto</width>
@@ -339,8 +481,12 @@
 						<scroll>true</scroll>
 						<scrollspeed>100</scrollspeed>
 						<visible>$PARAM[visible]</visible>
-						<visible>!Control.HasFocus($PARAM[list_id])</visible>
+						<visible>!Control.HasFocus($PARAM[list_id]) + !Control.HasFocus($PARAM[list_id]664)</visible>
 					</control>
+                <include content="FentasticCharcoalHeaderSnapshotScores">
+                    <param name="list_id" value="$PARAM[list_id]"/>
+                    <param name="label" value="$PARAM[label]"/>
+                </include>
 					<!-- RATINGS VISIBLE -->
 					<control type="label" id="$PARAM[list_id]667">
 						<visible>!Container($PARAM[list_id]).IsUpdating</visible>
@@ -2352,6 +2498,31 @@
 		<onback>9000</onback>
 		<onfocus>Control.Move($PARAM[list_id],-$INFO[Container($PARAM[list_id]).Position])</onfocus>
 		<onunfocus>SetProperty(listposition,$INFO[Container($PARAM[list_id]).Position],home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[list_id]).ListItem.Label],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(clearlogo)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(fanart)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.year,$ESCINFO[Container($PARAM[list_id]).ListItem.Year],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Container($PARAM[list_id]).ListItem.Mpaa],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.genre,$ESCINFO[Container($PARAM[list_id]).ListItem.Genre],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.director,$ESCINFO[Container($PARAM[list_id]).ListItem.Director],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.runtime,$ESCINFO[Container($PARAM[list_id]).ListItem.Duration],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.rating,$ESCINFO[Container($PARAM[list_id]).ListItem.Rating],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.plot,$ESCINFO[Container($PARAM[list_id]).ListItem.Plot],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[Container($PARAM[list_id]).ListItem.PlotOutline],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.metascore,$ESCINFO[Window(Home).Property(fentastic.metascore)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.metascoreImage,$ESCINFO[Window(Home).Property(fentastic.metascoreImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tomatoMeter,$ESCINFO[Window(Home).Property(fentastic.tomatoMeter)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tomatoImage,$ESCINFO[Window(Home).Property(fentastic.tomatoImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tomatoUserMeter,$ESCINFO[Window(Home).Property(fentastic.tomatoUserMeter)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tomatoUserImage,$ESCINFO[Window(Home).Property(fentastic.tomatoUserImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.imdbRating,$ESCINFO[Window(Home).Property(fentastic.imdbRating)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.imdbImage,$ESCINFO[Window(Home).Property(fentastic.imdbImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.popularRating,$ESCINFO[Window(Home).Property(fentastic.popularRating)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.popularImage,$ESCINFO[Window(Home).Property(fentastic.popularImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tmdbRating,$ESCINFO[Window(Home).Property(fentastic.tmdbRating)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tmdbImage,$ESCINFO[Window(Home).Property(fentastic.tmdbImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.endtime,$ESCINFO[Container($PARAM[list_id]).ListItem.EndTime],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.source,$PARAM[list_id],Home)</onunfocus>
         <include content="FentasticHeaderSnapshotDown" condition="$PARAM[has_next_header]">
             <param name="list_id" value="$PARAM[list_id]"/>
             <param name="next_header_id" value="$PARAM[next_header_id]"/>
@@ -2367,6 +2538,31 @@
 		<onback>9000</onback>
     <onback>SetFocus($PARAM[list_id],0,absolute)</onback>
     <onfocus>RunScript(script.fentastic.helper,mode=widget_monitor&amp;list_id=$PARAM[list_id])</onfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[list_id]).ListItem.Label],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(clearlogo)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(fanart)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.year,$ESCINFO[Container($PARAM[list_id]).ListItem.Year],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Container($PARAM[list_id]).ListItem.Mpaa],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.genre,$ESCINFO[Container($PARAM[list_id]).ListItem.Genre],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.director,$ESCINFO[Container($PARAM[list_id]).ListItem.Director],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.runtime,$ESCINFO[Container($PARAM[list_id]).ListItem.Duration],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.rating,$ESCINFO[Container($PARAM[list_id]).ListItem.Rating],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.plot,$ESCINFO[Container($PARAM[list_id]).ListItem.Plot],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[Container($PARAM[list_id]).ListItem.PlotOutline],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.metascore,$ESCINFO[Window(Home).Property(fentastic.metascore)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.metascoreImage,$ESCINFO[Window(Home).Property(fentastic.metascoreImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tomatoMeter,$ESCINFO[Window(Home).Property(fentastic.tomatoMeter)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tomatoImage,$ESCINFO[Window(Home).Property(fentastic.tomatoImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tomatoUserMeter,$ESCINFO[Window(Home).Property(fentastic.tomatoUserMeter)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tomatoUserImage,$ESCINFO[Window(Home).Property(fentastic.tomatoUserImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.imdbRating,$ESCINFO[Window(Home).Property(fentastic.imdbRating)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.imdbImage,$ESCINFO[Window(Home).Property(fentastic.imdbImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.popularRating,$ESCINFO[Window(Home).Property(fentastic.popularRating)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.popularImage,$ESCINFO[Window(Home).Property(fentastic.popularImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tmdbRating,$ESCINFO[Window(Home).Property(fentastic.tmdbRating)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.tmdbImage,$ESCINFO[Window(Home).Property(fentastic.tmdbImage)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.endtime,$ESCINFO[Container($PARAM[list_id]).ListItem.EndTime],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.source,$PARAM[list_id],Home)</onunfocus>
         <include content="FentasticHeaderSnapshotDown" condition="$PARAM[has_next_header]">
             <param name="list_id" value="$PARAM[list_id]"/>
             <param name="next_header_id" value="$PARAM[next_header_id]"/>

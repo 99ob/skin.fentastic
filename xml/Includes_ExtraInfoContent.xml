@@ -2,6 +2,9 @@
 <includes>
   <include name="Changelog">
     <label>[B][COLOR accent_color]Version $INFO[System.AddonVersion(skin.fentastic)][/COLOR][/B]
+- Keep the selected poster's metadata, artwork and MDbList scores when the charcoal widget header has focus
+- Update poster details on the first Up or Down press from either adjacent widget row
+- Fix clipped metadata and plot text, and prevent the generic Kodi logo overlapping movie artwork
 - Fix missing movie and TV show search results by restoring proven search reload path
 - Restore search-history XML regeneration and active provider checks
 - Preserve widget row-only refresh, ratings, cache and other optimizations
