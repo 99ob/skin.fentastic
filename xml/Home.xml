@@ -1048,7 +1048,7 @@
 				<control type="group">
 					<animation effect="slide" time="300" start="-492,0" end="0,0" tween="sine" easing="inout">VisibleChange</animation>
 					<width>550</width>
-					<visible>String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)</visible>
+					<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + !String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
 					<include>OpenClose_Left</include>
 					<control type="image">
 						<left>30</left>
@@ -1123,7 +1123,7 @@
 					</control> -->
 				</control>
 			</control>
-            <!-- FENTASTIC_CHARCOAL_HEADER_INFO_FOCUS_V2: maintain poster details while the charcoal header button has focus -->
+            <!-- FENTASTIC_CHARCOAL_SELECTED_POSTER_CACHE_V3: show the cached selected poster when the charcoal header has focus -->
             <control type="group">
                 <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + !Skin.HasSetting(TrailerPlaying)</visible>
                 <width>550</width>
