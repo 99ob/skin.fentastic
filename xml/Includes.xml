@@ -1139,7 +1139,7 @@
 	</include>
 	<include name="ColoredBackgroundImages">
 		<control type="image">
-			<visible>[Skin.HasSetting(no_fanart) | String.IsEmpty(Listitem.Art(fanart))] + !Player.HasMedia + !Skin.HasSetting(TrailerPlaying)</visible>
+			<visible>[Skin.HasSetting(no_fanart) | [String.IsEmpty(Listitem.Art(fanart)) + ![Window.IsActive(Home) + [String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) | String.IsEqual(Window(Home).Property(fentastic.charcoal.hold),yes)] + !String.IsEmpty(Window(Home).Property(fentastic.charcoal.fanart))]]] + !Player.HasMedia + !Skin.HasSetting(TrailerPlaying)</visible>
 			<depth>DepthBackground</depth>
 			<include>FullScreenDimensions</include>
 			<aspectratio>scale</aspectratio>
@@ -1401,7 +1401,7 @@
 				<right>$PARAM[right]</right>
 				<top>$PARAM[top]</top>
 				<height>$PARAM[height]</height>
-				<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode) | VideoPlayer.Content(LiveTV)]</visible>
+				<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode) | VideoPlayer.Content(LiveTV)] | [Window.IsActive(Home) + [String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) | [String.IsEqual(Window(Home).Property(fentastic.charcoal.hold),yes) + String.IsEmpty(ListItem.DBtype)]]]</visible>
 			</control>
 		</definition>
 	</include>

@@ -19,6 +19,7 @@
             <ondown>SetProperty(fentastic.charcoal.title,$ESCINFO[ListItem.Label],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[ListItem.Art(clearlogo)],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.fanart,$ESCINFO[ListItem.Art(fanart)],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.hold,yes,Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.year,$ESCINFO[ListItem.Year],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[ListItem.Mpaa],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.genre,$ESCINFO[ListItem.Genre],Home)</ondown>
@@ -2501,6 +2502,7 @@
         <onunfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[list_id]).ListItem.Label],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(clearlogo)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(fanart)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.hold,yes,Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.year,$ESCINFO[Container($PARAM[list_id]).ListItem.Year],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Container($PARAM[list_id]).ListItem.Mpaa],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.genre,$ESCINFO[Container($PARAM[list_id]).ListItem.Genre],Home)</onunfocus>
@@ -2541,6 +2543,7 @@
         <onunfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[list_id]).ListItem.Label],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(clearlogo)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(fanart)],Home)</onunfocus>
+        <onunfocus>SetProperty(fentastic.charcoal.hold,yes,Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.year,$ESCINFO[Container($PARAM[list_id]).ListItem.Year],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Container($PARAM[list_id]).ListItem.Mpaa],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.genre,$ESCINFO[Container($PARAM[list_id]).ListItem.Genre],Home)</onunfocus>
