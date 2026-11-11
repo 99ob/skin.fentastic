@@ -20,24 +20,6 @@
             <ondown>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[ListItem.Art(clearlogo)],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.fanart,$ESCINFO[ListItem.Art(fanart)],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.hold,yes,Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.year,$ESCINFO[ListItem.Year],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[ListItem.Mpaa],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.genre,$ESCINFO[ListItem.Genre],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.director,$ESCINFO[ListItem.Director],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.runtime,$ESCINFO[ListItem.Duration],Home)</ondown>
-            <!-- FENTASTIC_CHARCOAL_EXACT_INFO_SNAPSHOT_TEST_V1: capture original formatted variables BEFORE losing list focus. -->
-            <ondown>SetProperty(fentastic.charcoal.info_top,$ESCVAR[InfoPanelTop],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.info_bottom,$ESCVAR[InfoPanelBottom],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.info_source_title,$ESCINFO[ListItem.Label],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.info_plain,$ESCVAR[InfoPanel],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.info_episode,$ESCVAR[InfoPanelEpisode],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.dbtype,$ESCINFO[ListItem.DBtype],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.season,$ESCINFO[ListItem.Season],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.episode,$ESCINFO[ListItem.Episode],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.cache_item,$ESCINFO[ListItem.Property(fentastic.cache_item)],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.rating,$ESCINFO[ListItem.Rating],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.plot,$ESCINFO[ListItem.Plot],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[ListItem.PlotOutline],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.source,$PARAM[list_id],Home)</ondown>
             <!-- FENTASTIC_SINGLE_PERSISTENT_HOME_PANEL_V1: keep the same panel visible during focus transfer. -->
             <ondown>SetProperty(fentastic.charcoal.panel_transfer,yes,Home)</ondown>
@@ -2511,30 +2493,12 @@
 		<onback>9000</onback>
 		<onfocus>Control.Move($PARAM[list_id],-$INFO[Container($PARAM[list_id]).Position])</onfocus>
         <onfocus>ClearProperty(fentastic.charcoal.panel_transfer,Home)</onfocus>
+        <onfocus>SetProperty(fentastic.unified.source,$PARAM[list_id],Home)</onfocus>
 		<onunfocus>SetProperty(listposition,$INFO[Container($PARAM[list_id]).Position],home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[list_id]).ListItem.Label],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(clearlogo)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(fanart)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.hold,yes,Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.year,$ESCINFO[Container($PARAM[list_id]).ListItem.Year],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Container($PARAM[list_id]).ListItem.Mpaa],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.genre,$ESCINFO[Container($PARAM[list_id]).ListItem.Genre],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.director,$ESCINFO[Container($PARAM[list_id]).ListItem.Director],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.runtime,$ESCINFO[Container($PARAM[list_id]).ListItem.Duration],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.rating,$ESCINFO[Container($PARAM[list_id]).ListItem.Rating],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.plot,$ESCINFO[Container($PARAM[list_id]).ListItem.Plot],Home)</onunfocus>
-        <!-- FENTASTIC_UNIFIED_CHARCOAL_INFO_HANDOFF_V2: preserve original panel formatting on focus loss. -->
-        <!-- FENTASTIC_CHARCOAL_PERSISTENT_HANDOFF_GUARD_V1: the preceding Down snapshot wins during header focus transfer. -->
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_source_title,$ESCINFO[ListItem.Label],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_top,$ESCVAR[InfoPanelTop],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_bottom,$ESCVAR[InfoPanelBottom],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_plain,$ESCVAR[InfoPanel],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_episode,$ESCVAR[InfoPanelEpisode],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.dbtype,$ESCINFO[Container($PARAM[list_id]).ListItem.DBtype],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.season,$ESCINFO[Container($PARAM[list_id]).ListItem.Season],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.episode,$ESCINFO[Container($PARAM[list_id]).ListItem.Episode],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.cache_item,$ESCINFO[Container($PARAM[list_id]).ListItem.Property(fentastic.cache_item)],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[Container($PARAM[list_id]).ListItem.PlotOutline],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.metascore,$ESCINFO[Window(Home).Property(fentastic.metascore)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.metascoreImage,$ESCINFO[Window(Home).Property(fentastic.metascoreImage)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.tomatoMeter,$ESCINFO[Window(Home).Property(fentastic.tomatoMeter)],Home)</onunfocus>
@@ -2547,7 +2511,6 @@
         <onunfocus>SetProperty(fentastic.charcoal.popularImage,$ESCINFO[Window(Home).Property(fentastic.popularImage)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.tmdbRating,$ESCINFO[Window(Home).Property(fentastic.tmdbRating)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.tmdbImage,$ESCINFO[Window(Home).Property(fentastic.tmdbImage)],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.endtime,$ESCINFO[Container($PARAM[list_id]).ListItem.EndTime],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.source,$PARAM[list_id],Home)</onunfocus>
         <include content="FentasticHeaderSnapshotDown" condition="$PARAM[has_next_header]">
             <param name="list_id" value="$PARAM[list_id]"/>
@@ -2565,29 +2528,11 @@
     <onback>SetFocus($PARAM[list_id],0,absolute)</onback>
     <onfocus>RunScript(script.fentastic.helper,mode=widget_monitor&amp;list_id=$PARAM[list_id])</onfocus>
         <onfocus>ClearProperty(fentastic.charcoal.panel_transfer,Home)</onfocus>
+        <onfocus>SetProperty(fentastic.unified.source,$PARAM[list_id],Home)</onfocus>
         <onunfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[list_id]).ListItem.Label],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(clearlogo)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(fanart)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.hold,yes,Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.year,$ESCINFO[Container($PARAM[list_id]).ListItem.Year],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.mpaa,$ESCINFO[Container($PARAM[list_id]).ListItem.Mpaa],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.genre,$ESCINFO[Container($PARAM[list_id]).ListItem.Genre],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.director,$ESCINFO[Container($PARAM[list_id]).ListItem.Director],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.runtime,$ESCINFO[Container($PARAM[list_id]).ListItem.Duration],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.rating,$ESCINFO[Container($PARAM[list_id]).ListItem.Rating],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.plot,$ESCINFO[Container($PARAM[list_id]).ListItem.Plot],Home)</onunfocus>
-        <!-- FENTASTIC_UNIFIED_CHARCOAL_INFO_HANDOFF_V2: preserve original panel formatting on focus loss. -->
-        <!-- FENTASTIC_CHARCOAL_PERSISTENT_HANDOFF_GUARD_V1: the preceding Down snapshot wins during header focus transfer. -->
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_source_title,$ESCINFO[ListItem.Label],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_top,$ESCVAR[InfoPanelTop],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_bottom,$ESCVAR[InfoPanelBottom],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_plain,$ESCVAR[InfoPanel],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_episode,$ESCVAR[InfoPanelEpisode],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.dbtype,$ESCINFO[Container($PARAM[list_id]).ListItem.DBtype],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.season,$ESCINFO[Container($PARAM[list_id]).ListItem.Season],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.episode,$ESCINFO[Container($PARAM[list_id]).ListItem.Episode],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.cache_item,$ESCINFO[Container($PARAM[list_id]).ListItem.Property(fentastic.cache_item)],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[Container($PARAM[list_id]).ListItem.PlotOutline],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.metascore,$ESCINFO[Window(Home).Property(fentastic.metascore)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.metascoreImage,$ESCINFO[Window(Home).Property(fentastic.metascoreImage)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.tomatoMeter,$ESCINFO[Window(Home).Property(fentastic.tomatoMeter)],Home)</onunfocus>
@@ -2600,7 +2545,6 @@
         <onunfocus>SetProperty(fentastic.charcoal.popularImage,$ESCINFO[Window(Home).Property(fentastic.popularImage)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.tmdbRating,$ESCINFO[Window(Home).Property(fentastic.tmdbRating)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.tmdbImage,$ESCINFO[Window(Home).Property(fentastic.tmdbImage)],Home)</onunfocus>
-        <onunfocus>SetProperty(fentastic.charcoal.endtime,$ESCINFO[Container($PARAM[list_id]).ListItem.EndTime],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.source,$PARAM[list_id],Home)</onunfocus>
         <include content="FentasticHeaderSnapshotDown" condition="$PARAM[has_next_header]">
             <param name="list_id" value="$PARAM[list_id]"/>

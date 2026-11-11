@@ -1054,6 +1054,19 @@
 					<visible>$EXP[FentasticUnifiedPanelAvailable]</visible>
 					<include>OpenClose_Left</include>
 					<include content="FentasticUnifiedHomeInfoPanel" />
+                    <!-- FENTASTIC_DIRECT_WIDGET_PANEL_V1: show failures instead of falling back to charcoal text. -->
+                    <control type="textbox">
+                        <left>30</left><top>232</top><width>440</width><height>120</height>
+                        <font>font22</font><textcolor>FFFF4444</textcolor>
+                        <label>UNIFIED WIDGET ERROR: Original selected widget data is unavailable. Widget ID: $INFO[Window(Home).Property(fentastic.unified.source)]</label>
+                        <visible>!$EXP[FentasticUnifiedSourceValid]</visible>
+                    </control>
+                    <control type="textbox">
+                        <left>30</left><top>397</top><width>440</width><height>125</height>
+                        <font>font22</font><textcolor>FFFF4444</textcolor>
+                        <label>UNIFIED PLOT ERROR: The original selected widget has no readable plot. No fallback is used.</label>
+                        <visible>$EXP[FentasticUnifiedSourceValid] + $EXP[FentasticUnifiedPlotMissing]</visible>
+                    </control>
 				</control>
 			</control>
 			<control type="group">
