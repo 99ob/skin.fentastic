@@ -834,13 +834,13 @@
 				<texture colordiffuse="dialog_bg">$PARAM[diffusetexture]</texture>
 			</control>
 			<control type="label" id="$PARAM[header_id]">
-				<posx>0</posx> 
+				<posx>0</posx>
 				<top>20</top>
-				<width>$PARAM[width]</width> 
+				<width>$PARAM[width]</width>
 				<height>70</height>
 				<font>font32_title</font>
 				<label>$PARAM[header_label]</label>
-				<align>center</align> 
+				<align>center</align>
 				<aligny>center</aligny>
 				<textcolor>unfocused_text</textcolor>
 				<shadowcolor>black</shadowcolor>
@@ -1139,7 +1139,7 @@
 	</include>
 	<include name="ColoredBackgroundImages">
 		<control type="image">
-			<visible>[Skin.HasSetting(no_fanart) | [String.IsEmpty(Listitem.Art(fanart)) + ![Window.IsActive(Home) + $EXP[FentasticUnifiedPanelAvailable]]]] + !Player.HasMedia + !Skin.HasSetting(TrailerPlaying)</visible>
+			<visible>[Skin.HasSetting(no_fanart) | [String.IsEmpty(Listitem.Art(fanart)) + ![Window.IsActive(Home) + String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)]]] + !Player.HasMedia + !Skin.HasSetting(TrailerPlaying)</visible>
 			<depth>DepthBackground</depth>
 			<include>FullScreenDimensions</include>
 			<aspectratio>scale</aspectratio>
@@ -1401,7 +1401,7 @@
 				<right>$PARAM[right]</right>
 				<top>$PARAM[top]</top>
 				<height>$PARAM[height]</height>
-				<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode) | VideoPlayer.Content(LiveTV)] | [Window.IsActive(Home) + String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)]</visible>
+			<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode) | VideoPlayer.Content(LiveTV)] | [Window.IsActive(Home) + String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)]</visible>
 			</control>
 		</definition>
 	</include>
@@ -1604,7 +1604,7 @@
 	<include name="VisibleFadeEffect">
 		<animation effect="fade" time="1300">VisibleChange</animation>
 	</include>
-	
+
 	<include name="RainDropAnimationBackground">
 		<control type="group">
 			<visible>Skin.HasSetting(HideRainDrops) + ![Player.HasVideo + Player.HasAudio] + Skin.HasSetting(no_fanart)</visible>
@@ -1737,7 +1737,7 @@
 			</control>
 		</control>
 	</include>
-	
+
 	<include name="ProgressBar">
 		<control type="progress">
 			<left>$PARAM[left]</left>
@@ -1752,110 +1752,7 @@
 		</control>
 	</include>
 
-    <!-- FENTASTIC_DIRECT_WIDGET_PANEL_V1: one real container source for poster and its following header. -->
-    <expression name="FentasticUnifiedPanelAvailable">[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] | String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) | String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)</expression>
-    <expression name="FentasticDirect_IsMovie_Section0">[String.IsEqual(Window(Home).Property(fentastic.unified.source),19011) + String.IsEqual(Container(19011).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19012) + String.IsEqual(Container(19012).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19013) + String.IsEqual(Container(19013).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19014) + String.IsEqual(Container(19014).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19015) + String.IsEqual(Container(19015).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19016) + String.IsEqual(Container(19016).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19017) + String.IsEqual(Container(19017).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19018) + String.IsEqual(Container(19018).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19019) + String.IsEqual(Container(19019).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19020) + String.IsEqual(Container(19020).ListItem.DBtype,movie)]</expression>
-    <expression name="FentasticDirect_IsMovie_Section1">[String.IsEqual(Window(Home).Property(fentastic.unified.source),22011) + String.IsEqual(Container(22011).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22012) + String.IsEqual(Container(22012).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22013) + String.IsEqual(Container(22013).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22014) + String.IsEqual(Container(22014).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22015) + String.IsEqual(Container(22015).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22016) + String.IsEqual(Container(22016).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22017) + String.IsEqual(Container(22017).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22018) + String.IsEqual(Container(22018).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22019) + String.IsEqual(Container(22019).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22020) + String.IsEqual(Container(22020).ListItem.DBtype,movie)]</expression>
-    <expression name="FentasticDirect_IsMovie_Section2">[String.IsEqual(Window(Home).Property(fentastic.unified.source),23011) + String.IsEqual(Container(23011).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23012) + String.IsEqual(Container(23012).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23013) + String.IsEqual(Container(23013).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23014) + String.IsEqual(Container(23014).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23015) + String.IsEqual(Container(23015).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23016) + String.IsEqual(Container(23016).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23017) + String.IsEqual(Container(23017).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23018) + String.IsEqual(Container(23018).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23019) + String.IsEqual(Container(23019).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23020) + String.IsEqual(Container(23020).ListItem.DBtype,movie)]</expression>
-    <expression name="FentasticDirect_IsMovie_Section3">[String.IsEqual(Window(Home).Property(fentastic.unified.source),24011) + String.IsEqual(Container(24011).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24012) + String.IsEqual(Container(24012).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24013) + String.IsEqual(Container(24013).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24014) + String.IsEqual(Container(24014).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24015) + String.IsEqual(Container(24015).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24016) + String.IsEqual(Container(24016).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24017) + String.IsEqual(Container(24017).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24018) + String.IsEqual(Container(24018).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24019) + String.IsEqual(Container(24019).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24020) + String.IsEqual(Container(24020).ListItem.DBtype,movie)]</expression>
-    <expression name="FentasticDirect_IsMovie_Section4">[String.IsEqual(Window(Home).Property(fentastic.unified.source),25011) + String.IsEqual(Container(25011).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25012) + String.IsEqual(Container(25012).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25013) + String.IsEqual(Container(25013).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25014) + String.IsEqual(Container(25014).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25015) + String.IsEqual(Container(25015).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25016) + String.IsEqual(Container(25016).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25017) + String.IsEqual(Container(25017).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25018) + String.IsEqual(Container(25018).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25019) + String.IsEqual(Container(25019).ListItem.DBtype,movie)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25020) + String.IsEqual(Container(25020).ListItem.DBtype,movie)]</expression>
-    <expression name="FentasticUnifiedIsMovie">$EXP[FentasticDirect_IsMovie_Section0] | $EXP[FentasticDirect_IsMovie_Section1] | $EXP[FentasticDirect_IsMovie_Section2] | $EXP[FentasticDirect_IsMovie_Section3] | $EXP[FentasticDirect_IsMovie_Section4]</expression>
-    <expression name="FentasticDirect_IsTvshow_Section0">[String.IsEqual(Window(Home).Property(fentastic.unified.source),19011) + String.IsEqual(Container(19011).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19012) + String.IsEqual(Container(19012).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19013) + String.IsEqual(Container(19013).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19014) + String.IsEqual(Container(19014).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19015) + String.IsEqual(Container(19015).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19016) + String.IsEqual(Container(19016).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19017) + String.IsEqual(Container(19017).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19018) + String.IsEqual(Container(19018).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19019) + String.IsEqual(Container(19019).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19020) + String.IsEqual(Container(19020).ListItem.DBtype,tvshow)]</expression>
-    <expression name="FentasticDirect_IsTvshow_Section1">[String.IsEqual(Window(Home).Property(fentastic.unified.source),22011) + String.IsEqual(Container(22011).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22012) + String.IsEqual(Container(22012).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22013) + String.IsEqual(Container(22013).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22014) + String.IsEqual(Container(22014).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22015) + String.IsEqual(Container(22015).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22016) + String.IsEqual(Container(22016).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22017) + String.IsEqual(Container(22017).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22018) + String.IsEqual(Container(22018).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22019) + String.IsEqual(Container(22019).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22020) + String.IsEqual(Container(22020).ListItem.DBtype,tvshow)]</expression>
-    <expression name="FentasticDirect_IsTvshow_Section2">[String.IsEqual(Window(Home).Property(fentastic.unified.source),23011) + String.IsEqual(Container(23011).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23012) + String.IsEqual(Container(23012).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23013) + String.IsEqual(Container(23013).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23014) + String.IsEqual(Container(23014).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23015) + String.IsEqual(Container(23015).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23016) + String.IsEqual(Container(23016).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23017) + String.IsEqual(Container(23017).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23018) + String.IsEqual(Container(23018).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23019) + String.IsEqual(Container(23019).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23020) + String.IsEqual(Container(23020).ListItem.DBtype,tvshow)]</expression>
-    <expression name="FentasticDirect_IsTvshow_Section3">[String.IsEqual(Window(Home).Property(fentastic.unified.source),24011) + String.IsEqual(Container(24011).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24012) + String.IsEqual(Container(24012).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24013) + String.IsEqual(Container(24013).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24014) + String.IsEqual(Container(24014).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24015) + String.IsEqual(Container(24015).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24016) + String.IsEqual(Container(24016).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24017) + String.IsEqual(Container(24017).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24018) + String.IsEqual(Container(24018).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24019) + String.IsEqual(Container(24019).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24020) + String.IsEqual(Container(24020).ListItem.DBtype,tvshow)]</expression>
-    <expression name="FentasticDirect_IsTvshow_Section4">[String.IsEqual(Window(Home).Property(fentastic.unified.source),25011) + String.IsEqual(Container(25011).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25012) + String.IsEqual(Container(25012).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25013) + String.IsEqual(Container(25013).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25014) + String.IsEqual(Container(25014).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25015) + String.IsEqual(Container(25015).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25016) + String.IsEqual(Container(25016).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25017) + String.IsEqual(Container(25017).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25018) + String.IsEqual(Container(25018).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25019) + String.IsEqual(Container(25019).ListItem.DBtype,tvshow)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25020) + String.IsEqual(Container(25020).ListItem.DBtype,tvshow)]</expression>
-    <expression name="FentasticUnifiedIsTvshow">$EXP[FentasticDirect_IsTvshow_Section0] | $EXP[FentasticDirect_IsTvshow_Section1] | $EXP[FentasticDirect_IsTvshow_Section2] | $EXP[FentasticDirect_IsTvshow_Section3] | $EXP[FentasticDirect_IsTvshow_Section4]</expression>
-    <expression name="FentasticDirect_IsSeason_Section0">[String.IsEqual(Window(Home).Property(fentastic.unified.source),19011) + String.IsEqual(Container(19011).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19012) + String.IsEqual(Container(19012).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19013) + String.IsEqual(Container(19013).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19014) + String.IsEqual(Container(19014).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19015) + String.IsEqual(Container(19015).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19016) + String.IsEqual(Container(19016).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19017) + String.IsEqual(Container(19017).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19018) + String.IsEqual(Container(19018).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19019) + String.IsEqual(Container(19019).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19020) + String.IsEqual(Container(19020).ListItem.DBtype,season)]</expression>
-    <expression name="FentasticDirect_IsSeason_Section1">[String.IsEqual(Window(Home).Property(fentastic.unified.source),22011) + String.IsEqual(Container(22011).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22012) + String.IsEqual(Container(22012).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22013) + String.IsEqual(Container(22013).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22014) + String.IsEqual(Container(22014).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22015) + String.IsEqual(Container(22015).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22016) + String.IsEqual(Container(22016).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22017) + String.IsEqual(Container(22017).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22018) + String.IsEqual(Container(22018).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22019) + String.IsEqual(Container(22019).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22020) + String.IsEqual(Container(22020).ListItem.DBtype,season)]</expression>
-    <expression name="FentasticDirect_IsSeason_Section2">[String.IsEqual(Window(Home).Property(fentastic.unified.source),23011) + String.IsEqual(Container(23011).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23012) + String.IsEqual(Container(23012).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23013) + String.IsEqual(Container(23013).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23014) + String.IsEqual(Container(23014).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23015) + String.IsEqual(Container(23015).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23016) + String.IsEqual(Container(23016).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23017) + String.IsEqual(Container(23017).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23018) + String.IsEqual(Container(23018).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23019) + String.IsEqual(Container(23019).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23020) + String.IsEqual(Container(23020).ListItem.DBtype,season)]</expression>
-    <expression name="FentasticDirect_IsSeason_Section3">[String.IsEqual(Window(Home).Property(fentastic.unified.source),24011) + String.IsEqual(Container(24011).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24012) + String.IsEqual(Container(24012).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24013) + String.IsEqual(Container(24013).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24014) + String.IsEqual(Container(24014).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24015) + String.IsEqual(Container(24015).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24016) + String.IsEqual(Container(24016).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24017) + String.IsEqual(Container(24017).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24018) + String.IsEqual(Container(24018).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24019) + String.IsEqual(Container(24019).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24020) + String.IsEqual(Container(24020).ListItem.DBtype,season)]</expression>
-    <expression name="FentasticDirect_IsSeason_Section4">[String.IsEqual(Window(Home).Property(fentastic.unified.source),25011) + String.IsEqual(Container(25011).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25012) + String.IsEqual(Container(25012).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25013) + String.IsEqual(Container(25013).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25014) + String.IsEqual(Container(25014).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25015) + String.IsEqual(Container(25015).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25016) + String.IsEqual(Container(25016).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25017) + String.IsEqual(Container(25017).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25018) + String.IsEqual(Container(25018).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25019) + String.IsEqual(Container(25019).ListItem.DBtype,season)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25020) + String.IsEqual(Container(25020).ListItem.DBtype,season)]</expression>
-    <expression name="FentasticUnifiedIsSeason">$EXP[FentasticDirect_IsSeason_Section0] | $EXP[FentasticDirect_IsSeason_Section1] | $EXP[FentasticDirect_IsSeason_Section2] | $EXP[FentasticDirect_IsSeason_Section3] | $EXP[FentasticDirect_IsSeason_Section4]</expression>
-    <expression name="FentasticDirect_IsEpisode_Section0">[String.IsEqual(Window(Home).Property(fentastic.unified.source),19011) + String.IsEqual(Container(19011).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19012) + String.IsEqual(Container(19012).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19013) + String.IsEqual(Container(19013).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19014) + String.IsEqual(Container(19014).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19015) + String.IsEqual(Container(19015).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19016) + String.IsEqual(Container(19016).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19017) + String.IsEqual(Container(19017).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19018) + String.IsEqual(Container(19018).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19019) + String.IsEqual(Container(19019).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19020) + String.IsEqual(Container(19020).ListItem.DBtype,episode)]</expression>
-    <expression name="FentasticDirect_IsEpisode_Section1">[String.IsEqual(Window(Home).Property(fentastic.unified.source),22011) + String.IsEqual(Container(22011).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22012) + String.IsEqual(Container(22012).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22013) + String.IsEqual(Container(22013).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22014) + String.IsEqual(Container(22014).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22015) + String.IsEqual(Container(22015).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22016) + String.IsEqual(Container(22016).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22017) + String.IsEqual(Container(22017).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22018) + String.IsEqual(Container(22018).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22019) + String.IsEqual(Container(22019).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22020) + String.IsEqual(Container(22020).ListItem.DBtype,episode)]</expression>
-    <expression name="FentasticDirect_IsEpisode_Section2">[String.IsEqual(Window(Home).Property(fentastic.unified.source),23011) + String.IsEqual(Container(23011).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23012) + String.IsEqual(Container(23012).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23013) + String.IsEqual(Container(23013).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23014) + String.IsEqual(Container(23014).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23015) + String.IsEqual(Container(23015).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23016) + String.IsEqual(Container(23016).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23017) + String.IsEqual(Container(23017).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23018) + String.IsEqual(Container(23018).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23019) + String.IsEqual(Container(23019).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23020) + String.IsEqual(Container(23020).ListItem.DBtype,episode)]</expression>
-    <expression name="FentasticDirect_IsEpisode_Section3">[String.IsEqual(Window(Home).Property(fentastic.unified.source),24011) + String.IsEqual(Container(24011).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24012) + String.IsEqual(Container(24012).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24013) + String.IsEqual(Container(24013).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24014) + String.IsEqual(Container(24014).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24015) + String.IsEqual(Container(24015).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24016) + String.IsEqual(Container(24016).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24017) + String.IsEqual(Container(24017).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24018) + String.IsEqual(Container(24018).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24019) + String.IsEqual(Container(24019).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24020) + String.IsEqual(Container(24020).ListItem.DBtype,episode)]</expression>
-    <expression name="FentasticDirect_IsEpisode_Section4">[String.IsEqual(Window(Home).Property(fentastic.unified.source),25011) + String.IsEqual(Container(25011).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25012) + String.IsEqual(Container(25012).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25013) + String.IsEqual(Container(25013).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25014) + String.IsEqual(Container(25014).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25015) + String.IsEqual(Container(25015).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25016) + String.IsEqual(Container(25016).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25017) + String.IsEqual(Container(25017).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25018) + String.IsEqual(Container(25018).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25019) + String.IsEqual(Container(25019).ListItem.DBtype,episode)] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25020) + String.IsEqual(Container(25020).ListItem.DBtype,episode)]</expression>
-    <expression name="FentasticUnifiedIsEpisode">$EXP[FentasticDirect_IsEpisode_Section0] | $EXP[FentasticDirect_IsEpisode_Section1] | $EXP[FentasticDirect_IsEpisode_Section2] | $EXP[FentasticDirect_IsEpisode_Section3] | $EXP[FentasticDirect_IsEpisode_Section4]</expression>
-    <expression name="FentasticDirect_NoClearlogo_Section0">[String.IsEqual(Window(Home).Property(fentastic.unified.source),19011) + String.IsEmpty(Container(19011).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19012) + String.IsEmpty(Container(19012).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19013) + String.IsEmpty(Container(19013).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19014) + String.IsEmpty(Container(19014).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19015) + String.IsEmpty(Container(19015).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19016) + String.IsEmpty(Container(19016).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19017) + String.IsEmpty(Container(19017).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19018) + String.IsEmpty(Container(19018).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19019) + String.IsEmpty(Container(19019).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19020) + String.IsEmpty(Container(19020).ListItem.Art(clearlogo))]</expression>
-    <expression name="FentasticDirect_NoClearlogo_Section1">[String.IsEqual(Window(Home).Property(fentastic.unified.source),22011) + String.IsEmpty(Container(22011).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22012) + String.IsEmpty(Container(22012).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22013) + String.IsEmpty(Container(22013).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22014) + String.IsEmpty(Container(22014).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22015) + String.IsEmpty(Container(22015).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22016) + String.IsEmpty(Container(22016).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22017) + String.IsEmpty(Container(22017).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22018) + String.IsEmpty(Container(22018).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22019) + String.IsEmpty(Container(22019).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22020) + String.IsEmpty(Container(22020).ListItem.Art(clearlogo))]</expression>
-    <expression name="FentasticDirect_NoClearlogo_Section2">[String.IsEqual(Window(Home).Property(fentastic.unified.source),23011) + String.IsEmpty(Container(23011).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23012) + String.IsEmpty(Container(23012).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23013) + String.IsEmpty(Container(23013).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23014) + String.IsEmpty(Container(23014).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23015) + String.IsEmpty(Container(23015).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23016) + String.IsEmpty(Container(23016).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23017) + String.IsEmpty(Container(23017).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23018) + String.IsEmpty(Container(23018).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23019) + String.IsEmpty(Container(23019).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23020) + String.IsEmpty(Container(23020).ListItem.Art(clearlogo))]</expression>
-    <expression name="FentasticDirect_NoClearlogo_Section3">[String.IsEqual(Window(Home).Property(fentastic.unified.source),24011) + String.IsEmpty(Container(24011).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24012) + String.IsEmpty(Container(24012).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24013) + String.IsEmpty(Container(24013).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24014) + String.IsEmpty(Container(24014).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24015) + String.IsEmpty(Container(24015).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24016) + String.IsEmpty(Container(24016).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24017) + String.IsEmpty(Container(24017).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24018) + String.IsEmpty(Container(24018).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24019) + String.IsEmpty(Container(24019).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24020) + String.IsEmpty(Container(24020).ListItem.Art(clearlogo))]</expression>
-    <expression name="FentasticDirect_NoClearlogo_Section4">[String.IsEqual(Window(Home).Property(fentastic.unified.source),25011) + String.IsEmpty(Container(25011).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25012) + String.IsEmpty(Container(25012).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25013) + String.IsEmpty(Container(25013).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25014) + String.IsEmpty(Container(25014).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25015) + String.IsEmpty(Container(25015).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25016) + String.IsEmpty(Container(25016).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25017) + String.IsEmpty(Container(25017).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25018) + String.IsEmpty(Container(25018).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25019) + String.IsEmpty(Container(25019).ListItem.Art(clearlogo))] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25020) + String.IsEmpty(Container(25020).ListItem.Art(clearlogo))]</expression>
-    <expression name="FentasticUnifiedNoClearlogo">$EXP[FentasticDirect_NoClearlogo_Section0] | $EXP[FentasticDirect_NoClearlogo_Section1] | $EXP[FentasticDirect_NoClearlogo_Section2] | $EXP[FentasticDirect_NoClearlogo_Section3] | $EXP[FentasticDirect_NoClearlogo_Section4]</expression>
-    <expression name="FentasticDirect_RatingsRow_Section0">[String.IsEqual(Window(Home).Property(fentastic.unified.source),19011) + [!String.IsEmpty(Container(19011).ListItem.Genre) | String.IsEqual(Container(19011).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19012) + [!String.IsEmpty(Container(19012).ListItem.Genre) | String.IsEqual(Container(19012).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19013) + [!String.IsEmpty(Container(19013).ListItem.Genre) | String.IsEqual(Container(19013).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19014) + [!String.IsEmpty(Container(19014).ListItem.Genre) | String.IsEqual(Container(19014).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19015) + [!String.IsEmpty(Container(19015).ListItem.Genre) | String.IsEqual(Container(19015).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19016) + [!String.IsEmpty(Container(19016).ListItem.Genre) | String.IsEqual(Container(19016).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19017) + [!String.IsEmpty(Container(19017).ListItem.Genre) | String.IsEqual(Container(19017).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19018) + [!String.IsEmpty(Container(19018).ListItem.Genre) | String.IsEqual(Container(19018).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19019) + [!String.IsEmpty(Container(19019).ListItem.Genre) | String.IsEqual(Container(19019).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19020) + [!String.IsEmpty(Container(19020).ListItem.Genre) | String.IsEqual(Container(19020).ListItem.Property(fentastic.cache_item),true)]]</expression>
-    <expression name="FentasticDirect_RatingsRow_Section1">[String.IsEqual(Window(Home).Property(fentastic.unified.source),22011) + [!String.IsEmpty(Container(22011).ListItem.Genre) | String.IsEqual(Container(22011).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22012) + [!String.IsEmpty(Container(22012).ListItem.Genre) | String.IsEqual(Container(22012).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22013) + [!String.IsEmpty(Container(22013).ListItem.Genre) | String.IsEqual(Container(22013).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22014) + [!String.IsEmpty(Container(22014).ListItem.Genre) | String.IsEqual(Container(22014).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22015) + [!String.IsEmpty(Container(22015).ListItem.Genre) | String.IsEqual(Container(22015).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22016) + [!String.IsEmpty(Container(22016).ListItem.Genre) | String.IsEqual(Container(22016).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22017) + [!String.IsEmpty(Container(22017).ListItem.Genre) | String.IsEqual(Container(22017).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22018) + [!String.IsEmpty(Container(22018).ListItem.Genre) | String.IsEqual(Container(22018).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22019) + [!String.IsEmpty(Container(22019).ListItem.Genre) | String.IsEqual(Container(22019).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22020) + [!String.IsEmpty(Container(22020).ListItem.Genre) | String.IsEqual(Container(22020).ListItem.Property(fentastic.cache_item),true)]]</expression>
-    <expression name="FentasticDirect_RatingsRow_Section2">[String.IsEqual(Window(Home).Property(fentastic.unified.source),23011) + [!String.IsEmpty(Container(23011).ListItem.Genre) | String.IsEqual(Container(23011).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23012) + [!String.IsEmpty(Container(23012).ListItem.Genre) | String.IsEqual(Container(23012).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23013) + [!String.IsEmpty(Container(23013).ListItem.Genre) | String.IsEqual(Container(23013).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23014) + [!String.IsEmpty(Container(23014).ListItem.Genre) | String.IsEqual(Container(23014).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23015) + [!String.IsEmpty(Container(23015).ListItem.Genre) | String.IsEqual(Container(23015).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23016) + [!String.IsEmpty(Container(23016).ListItem.Genre) | String.IsEqual(Container(23016).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23017) + [!String.IsEmpty(Container(23017).ListItem.Genre) | String.IsEqual(Container(23017).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23018) + [!String.IsEmpty(Container(23018).ListItem.Genre) | String.IsEqual(Container(23018).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23019) + [!String.IsEmpty(Container(23019).ListItem.Genre) | String.IsEqual(Container(23019).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23020) + [!String.IsEmpty(Container(23020).ListItem.Genre) | String.IsEqual(Container(23020).ListItem.Property(fentastic.cache_item),true)]]</expression>
-    <expression name="FentasticDirect_RatingsRow_Section3">[String.IsEqual(Window(Home).Property(fentastic.unified.source),24011) + [!String.IsEmpty(Container(24011).ListItem.Genre) | String.IsEqual(Container(24011).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24012) + [!String.IsEmpty(Container(24012).ListItem.Genre) | String.IsEqual(Container(24012).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24013) + [!String.IsEmpty(Container(24013).ListItem.Genre) | String.IsEqual(Container(24013).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24014) + [!String.IsEmpty(Container(24014).ListItem.Genre) | String.IsEqual(Container(24014).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24015) + [!String.IsEmpty(Container(24015).ListItem.Genre) | String.IsEqual(Container(24015).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24016) + [!String.IsEmpty(Container(24016).ListItem.Genre) | String.IsEqual(Container(24016).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24017) + [!String.IsEmpty(Container(24017).ListItem.Genre) | String.IsEqual(Container(24017).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24018) + [!String.IsEmpty(Container(24018).ListItem.Genre) | String.IsEqual(Container(24018).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24019) + [!String.IsEmpty(Container(24019).ListItem.Genre) | String.IsEqual(Container(24019).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24020) + [!String.IsEmpty(Container(24020).ListItem.Genre) | String.IsEqual(Container(24020).ListItem.Property(fentastic.cache_item),true)]]</expression>
-    <expression name="FentasticDirect_RatingsRow_Section4">[String.IsEqual(Window(Home).Property(fentastic.unified.source),25011) + [!String.IsEmpty(Container(25011).ListItem.Genre) | String.IsEqual(Container(25011).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25012) + [!String.IsEmpty(Container(25012).ListItem.Genre) | String.IsEqual(Container(25012).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25013) + [!String.IsEmpty(Container(25013).ListItem.Genre) | String.IsEqual(Container(25013).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25014) + [!String.IsEmpty(Container(25014).ListItem.Genre) | String.IsEqual(Container(25014).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25015) + [!String.IsEmpty(Container(25015).ListItem.Genre) | String.IsEqual(Container(25015).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25016) + [!String.IsEmpty(Container(25016).ListItem.Genre) | String.IsEqual(Container(25016).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25017) + [!String.IsEmpty(Container(25017).ListItem.Genre) | String.IsEqual(Container(25017).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25018) + [!String.IsEmpty(Container(25018).ListItem.Genre) | String.IsEqual(Container(25018).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25019) + [!String.IsEmpty(Container(25019).ListItem.Genre) | String.IsEqual(Container(25019).ListItem.Property(fentastic.cache_item),true)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25020) + [!String.IsEmpty(Container(25020).ListItem.Genre) | String.IsEqual(Container(25020).ListItem.Property(fentastic.cache_item),true)]]</expression>
-    <expression name="FentasticUnifiedRatingsRow">$EXP[FentasticDirect_RatingsRow_Section0] | $EXP[FentasticDirect_RatingsRow_Section1] | $EXP[FentasticDirect_RatingsRow_Section2] | $EXP[FentasticDirect_RatingsRow_Section3] | $EXP[FentasticDirect_RatingsRow_Section4]</expression>
-    <expression name="FentasticDirect_SourceValid_Section0">[String.IsEqual(Window(Home).Property(fentastic.unified.source),19011) + [!String.IsEmpty(Container(19011).ListItem.Label) + [String.IsEqual(Container(19011).ListItem.DBtype,movie) | String.IsEqual(Container(19011).ListItem.DBtype,tvshow) | String.IsEqual(Container(19011).ListItem.DBtype,season) | String.IsEqual(Container(19011).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19012) + [!String.IsEmpty(Container(19012).ListItem.Label) + [String.IsEqual(Container(19012).ListItem.DBtype,movie) | String.IsEqual(Container(19012).ListItem.DBtype,tvshow) | String.IsEqual(Container(19012).ListItem.DBtype,season) | String.IsEqual(Container(19012).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19013) + [!String.IsEmpty(Container(19013).ListItem.Label) + [String.IsEqual(Container(19013).ListItem.DBtype,movie) | String.IsEqual(Container(19013).ListItem.DBtype,tvshow) | String.IsEqual(Container(19013).ListItem.DBtype,season) | String.IsEqual(Container(19013).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19014) + [!String.IsEmpty(Container(19014).ListItem.Label) + [String.IsEqual(Container(19014).ListItem.DBtype,movie) | String.IsEqual(Container(19014).ListItem.DBtype,tvshow) | String.IsEqual(Container(19014).ListItem.DBtype,season) | String.IsEqual(Container(19014).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19015) + [!String.IsEmpty(Container(19015).ListItem.Label) + [String.IsEqual(Container(19015).ListItem.DBtype,movie) | String.IsEqual(Container(19015).ListItem.DBtype,tvshow) | String.IsEqual(Container(19015).ListItem.DBtype,season) | String.IsEqual(Container(19015).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19016) + [!String.IsEmpty(Container(19016).ListItem.Label) + [String.IsEqual(Container(19016).ListItem.DBtype,movie) | String.IsEqual(Container(19016).ListItem.DBtype,tvshow) | String.IsEqual(Container(19016).ListItem.DBtype,season) | String.IsEqual(Container(19016).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19017) + [!String.IsEmpty(Container(19017).ListItem.Label) + [String.IsEqual(Container(19017).ListItem.DBtype,movie) | String.IsEqual(Container(19017).ListItem.DBtype,tvshow) | String.IsEqual(Container(19017).ListItem.DBtype,season) | String.IsEqual(Container(19017).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19018) + [!String.IsEmpty(Container(19018).ListItem.Label) + [String.IsEqual(Container(19018).ListItem.DBtype,movie) | String.IsEqual(Container(19018).ListItem.DBtype,tvshow) | String.IsEqual(Container(19018).ListItem.DBtype,season) | String.IsEqual(Container(19018).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19019) + [!String.IsEmpty(Container(19019).ListItem.Label) + [String.IsEqual(Container(19019).ListItem.DBtype,movie) | String.IsEqual(Container(19019).ListItem.DBtype,tvshow) | String.IsEqual(Container(19019).ListItem.DBtype,season) | String.IsEqual(Container(19019).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19020) + [!String.IsEmpty(Container(19020).ListItem.Label) + [String.IsEqual(Container(19020).ListItem.DBtype,movie) | String.IsEqual(Container(19020).ListItem.DBtype,tvshow) | String.IsEqual(Container(19020).ListItem.DBtype,season) | String.IsEqual(Container(19020).ListItem.DBtype,episode)]]]</expression>
-    <expression name="FentasticDirect_SourceValid_Section1">[String.IsEqual(Window(Home).Property(fentastic.unified.source),22011) + [!String.IsEmpty(Container(22011).ListItem.Label) + [String.IsEqual(Container(22011).ListItem.DBtype,movie) | String.IsEqual(Container(22011).ListItem.DBtype,tvshow) | String.IsEqual(Container(22011).ListItem.DBtype,season) | String.IsEqual(Container(22011).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22012) + [!String.IsEmpty(Container(22012).ListItem.Label) + [String.IsEqual(Container(22012).ListItem.DBtype,movie) | String.IsEqual(Container(22012).ListItem.DBtype,tvshow) | String.IsEqual(Container(22012).ListItem.DBtype,season) | String.IsEqual(Container(22012).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22013) + [!String.IsEmpty(Container(22013).ListItem.Label) + [String.IsEqual(Container(22013).ListItem.DBtype,movie) | String.IsEqual(Container(22013).ListItem.DBtype,tvshow) | String.IsEqual(Container(22013).ListItem.DBtype,season) | String.IsEqual(Container(22013).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22014) + [!String.IsEmpty(Container(22014).ListItem.Label) + [String.IsEqual(Container(22014).ListItem.DBtype,movie) | String.IsEqual(Container(22014).ListItem.DBtype,tvshow) | String.IsEqual(Container(22014).ListItem.DBtype,season) | String.IsEqual(Container(22014).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22015) + [!String.IsEmpty(Container(22015).ListItem.Label) + [String.IsEqual(Container(22015).ListItem.DBtype,movie) | String.IsEqual(Container(22015).ListItem.DBtype,tvshow) | String.IsEqual(Container(22015).ListItem.DBtype,season) | String.IsEqual(Container(22015).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22016) + [!String.IsEmpty(Container(22016).ListItem.Label) + [String.IsEqual(Container(22016).ListItem.DBtype,movie) | String.IsEqual(Container(22016).ListItem.DBtype,tvshow) | String.IsEqual(Container(22016).ListItem.DBtype,season) | String.IsEqual(Container(22016).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22017) + [!String.IsEmpty(Container(22017).ListItem.Label) + [String.IsEqual(Container(22017).ListItem.DBtype,movie) | String.IsEqual(Container(22017).ListItem.DBtype,tvshow) | String.IsEqual(Container(22017).ListItem.DBtype,season) | String.IsEqual(Container(22017).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22018) + [!String.IsEmpty(Container(22018).ListItem.Label) + [String.IsEqual(Container(22018).ListItem.DBtype,movie) | String.IsEqual(Container(22018).ListItem.DBtype,tvshow) | String.IsEqual(Container(22018).ListItem.DBtype,season) | String.IsEqual(Container(22018).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22019) + [!String.IsEmpty(Container(22019).ListItem.Label) + [String.IsEqual(Container(22019).ListItem.DBtype,movie) | String.IsEqual(Container(22019).ListItem.DBtype,tvshow) | String.IsEqual(Container(22019).ListItem.DBtype,season) | String.IsEqual(Container(22019).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22020) + [!String.IsEmpty(Container(22020).ListItem.Label) + [String.IsEqual(Container(22020).ListItem.DBtype,movie) | String.IsEqual(Container(22020).ListItem.DBtype,tvshow) | String.IsEqual(Container(22020).ListItem.DBtype,season) | String.IsEqual(Container(22020).ListItem.DBtype,episode)]]]</expression>
-    <expression name="FentasticDirect_SourceValid_Section2">[String.IsEqual(Window(Home).Property(fentastic.unified.source),23011) + [!String.IsEmpty(Container(23011).ListItem.Label) + [String.IsEqual(Container(23011).ListItem.DBtype,movie) | String.IsEqual(Container(23011).ListItem.DBtype,tvshow) | String.IsEqual(Container(23011).ListItem.DBtype,season) | String.IsEqual(Container(23011).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23012) + [!String.IsEmpty(Container(23012).ListItem.Label) + [String.IsEqual(Container(23012).ListItem.DBtype,movie) | String.IsEqual(Container(23012).ListItem.DBtype,tvshow) | String.IsEqual(Container(23012).ListItem.DBtype,season) | String.IsEqual(Container(23012).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23013) + [!String.IsEmpty(Container(23013).ListItem.Label) + [String.IsEqual(Container(23013).ListItem.DBtype,movie) | String.IsEqual(Container(23013).ListItem.DBtype,tvshow) | String.IsEqual(Container(23013).ListItem.DBtype,season) | String.IsEqual(Container(23013).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23014) + [!String.IsEmpty(Container(23014).ListItem.Label) + [String.IsEqual(Container(23014).ListItem.DBtype,movie) | String.IsEqual(Container(23014).ListItem.DBtype,tvshow) | String.IsEqual(Container(23014).ListItem.DBtype,season) | String.IsEqual(Container(23014).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23015) + [!String.IsEmpty(Container(23015).ListItem.Label) + [String.IsEqual(Container(23015).ListItem.DBtype,movie) | String.IsEqual(Container(23015).ListItem.DBtype,tvshow) | String.IsEqual(Container(23015).ListItem.DBtype,season) | String.IsEqual(Container(23015).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23016) + [!String.IsEmpty(Container(23016).ListItem.Label) + [String.IsEqual(Container(23016).ListItem.DBtype,movie) | String.IsEqual(Container(23016).ListItem.DBtype,tvshow) | String.IsEqual(Container(23016).ListItem.DBtype,season) | String.IsEqual(Container(23016).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23017) + [!String.IsEmpty(Container(23017).ListItem.Label) + [String.IsEqual(Container(23017).ListItem.DBtype,movie) | String.IsEqual(Container(23017).ListItem.DBtype,tvshow) | String.IsEqual(Container(23017).ListItem.DBtype,season) | String.IsEqual(Container(23017).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23018) + [!String.IsEmpty(Container(23018).ListItem.Label) + [String.IsEqual(Container(23018).ListItem.DBtype,movie) | String.IsEqual(Container(23018).ListItem.DBtype,tvshow) | String.IsEqual(Container(23018).ListItem.DBtype,season) | String.IsEqual(Container(23018).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23019) + [!String.IsEmpty(Container(23019).ListItem.Label) + [String.IsEqual(Container(23019).ListItem.DBtype,movie) | String.IsEqual(Container(23019).ListItem.DBtype,tvshow) | String.IsEqual(Container(23019).ListItem.DBtype,season) | String.IsEqual(Container(23019).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23020) + [!String.IsEmpty(Container(23020).ListItem.Label) + [String.IsEqual(Container(23020).ListItem.DBtype,movie) | String.IsEqual(Container(23020).ListItem.DBtype,tvshow) | String.IsEqual(Container(23020).ListItem.DBtype,season) | String.IsEqual(Container(23020).ListItem.DBtype,episode)]]]</expression>
-    <expression name="FentasticDirect_SourceValid_Section3">[String.IsEqual(Window(Home).Property(fentastic.unified.source),24011) + [!String.IsEmpty(Container(24011).ListItem.Label) + [String.IsEqual(Container(24011).ListItem.DBtype,movie) | String.IsEqual(Container(24011).ListItem.DBtype,tvshow) | String.IsEqual(Container(24011).ListItem.DBtype,season) | String.IsEqual(Container(24011).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24012) + [!String.IsEmpty(Container(24012).ListItem.Label) + [String.IsEqual(Container(24012).ListItem.DBtype,movie) | String.IsEqual(Container(24012).ListItem.DBtype,tvshow) | String.IsEqual(Container(24012).ListItem.DBtype,season) | String.IsEqual(Container(24012).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24013) + [!String.IsEmpty(Container(24013).ListItem.Label) + [String.IsEqual(Container(24013).ListItem.DBtype,movie) | String.IsEqual(Container(24013).ListItem.DBtype,tvshow) | String.IsEqual(Container(24013).ListItem.DBtype,season) | String.IsEqual(Container(24013).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24014) + [!String.IsEmpty(Container(24014).ListItem.Label) + [String.IsEqual(Container(24014).ListItem.DBtype,movie) | String.IsEqual(Container(24014).ListItem.DBtype,tvshow) | String.IsEqual(Container(24014).ListItem.DBtype,season) | String.IsEqual(Container(24014).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24015) + [!String.IsEmpty(Container(24015).ListItem.Label) + [String.IsEqual(Container(24015).ListItem.DBtype,movie) | String.IsEqual(Container(24015).ListItem.DBtype,tvshow) | String.IsEqual(Container(24015).ListItem.DBtype,season) | String.IsEqual(Container(24015).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24016) + [!String.IsEmpty(Container(24016).ListItem.Label) + [String.IsEqual(Container(24016).ListItem.DBtype,movie) | String.IsEqual(Container(24016).ListItem.DBtype,tvshow) | String.IsEqual(Container(24016).ListItem.DBtype,season) | String.IsEqual(Container(24016).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24017) + [!String.IsEmpty(Container(24017).ListItem.Label) + [String.IsEqual(Container(24017).ListItem.DBtype,movie) | String.IsEqual(Container(24017).ListItem.DBtype,tvshow) | String.IsEqual(Container(24017).ListItem.DBtype,season) | String.IsEqual(Container(24017).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24018) + [!String.IsEmpty(Container(24018).ListItem.Label) + [String.IsEqual(Container(24018).ListItem.DBtype,movie) | String.IsEqual(Container(24018).ListItem.DBtype,tvshow) | String.IsEqual(Container(24018).ListItem.DBtype,season) | String.IsEqual(Container(24018).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24019) + [!String.IsEmpty(Container(24019).ListItem.Label) + [String.IsEqual(Container(24019).ListItem.DBtype,movie) | String.IsEqual(Container(24019).ListItem.DBtype,tvshow) | String.IsEqual(Container(24019).ListItem.DBtype,season) | String.IsEqual(Container(24019).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24020) + [!String.IsEmpty(Container(24020).ListItem.Label) + [String.IsEqual(Container(24020).ListItem.DBtype,movie) | String.IsEqual(Container(24020).ListItem.DBtype,tvshow) | String.IsEqual(Container(24020).ListItem.DBtype,season) | String.IsEqual(Container(24020).ListItem.DBtype,episode)]]]</expression>
-    <expression name="FentasticDirect_SourceValid_Section4">[String.IsEqual(Window(Home).Property(fentastic.unified.source),25011) + [!String.IsEmpty(Container(25011).ListItem.Label) + [String.IsEqual(Container(25011).ListItem.DBtype,movie) | String.IsEqual(Container(25011).ListItem.DBtype,tvshow) | String.IsEqual(Container(25011).ListItem.DBtype,season) | String.IsEqual(Container(25011).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25012) + [!String.IsEmpty(Container(25012).ListItem.Label) + [String.IsEqual(Container(25012).ListItem.DBtype,movie) | String.IsEqual(Container(25012).ListItem.DBtype,tvshow) | String.IsEqual(Container(25012).ListItem.DBtype,season) | String.IsEqual(Container(25012).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25013) + [!String.IsEmpty(Container(25013).ListItem.Label) + [String.IsEqual(Container(25013).ListItem.DBtype,movie) | String.IsEqual(Container(25013).ListItem.DBtype,tvshow) | String.IsEqual(Container(25013).ListItem.DBtype,season) | String.IsEqual(Container(25013).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25014) + [!String.IsEmpty(Container(25014).ListItem.Label) + [String.IsEqual(Container(25014).ListItem.DBtype,movie) | String.IsEqual(Container(25014).ListItem.DBtype,tvshow) | String.IsEqual(Container(25014).ListItem.DBtype,season) | String.IsEqual(Container(25014).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25015) + [!String.IsEmpty(Container(25015).ListItem.Label) + [String.IsEqual(Container(25015).ListItem.DBtype,movie) | String.IsEqual(Container(25015).ListItem.DBtype,tvshow) | String.IsEqual(Container(25015).ListItem.DBtype,season) | String.IsEqual(Container(25015).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25016) + [!String.IsEmpty(Container(25016).ListItem.Label) + [String.IsEqual(Container(25016).ListItem.DBtype,movie) | String.IsEqual(Container(25016).ListItem.DBtype,tvshow) | String.IsEqual(Container(25016).ListItem.DBtype,season) | String.IsEqual(Container(25016).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25017) + [!String.IsEmpty(Container(25017).ListItem.Label) + [String.IsEqual(Container(25017).ListItem.DBtype,movie) | String.IsEqual(Container(25017).ListItem.DBtype,tvshow) | String.IsEqual(Container(25017).ListItem.DBtype,season) | String.IsEqual(Container(25017).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25018) + [!String.IsEmpty(Container(25018).ListItem.Label) + [String.IsEqual(Container(25018).ListItem.DBtype,movie) | String.IsEqual(Container(25018).ListItem.DBtype,tvshow) | String.IsEqual(Container(25018).ListItem.DBtype,season) | String.IsEqual(Container(25018).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25019) + [!String.IsEmpty(Container(25019).ListItem.Label) + [String.IsEqual(Container(25019).ListItem.DBtype,movie) | String.IsEqual(Container(25019).ListItem.DBtype,tvshow) | String.IsEqual(Container(25019).ListItem.DBtype,season) | String.IsEqual(Container(25019).ListItem.DBtype,episode)]]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25020) + [!String.IsEmpty(Container(25020).ListItem.Label) + [String.IsEqual(Container(25020).ListItem.DBtype,movie) | String.IsEqual(Container(25020).ListItem.DBtype,tvshow) | String.IsEqual(Container(25020).ListItem.DBtype,season) | String.IsEqual(Container(25020).ListItem.DBtype,episode)]]]</expression>
-    <expression name="FentasticUnifiedSourceValid">$EXP[FentasticDirect_SourceValid_Section0] | $EXP[FentasticDirect_SourceValid_Section1] | $EXP[FentasticDirect_SourceValid_Section2] | $EXP[FentasticDirect_SourceValid_Section3] | $EXP[FentasticDirect_SourceValid_Section4]</expression>
-    <expression name="FentasticDirect_PlotMissing_Section0">[String.IsEqual(Window(Home).Property(fentastic.unified.source),19011) + [!String.IsEmpty(Container(19011).ListItem.Label) + String.IsEmpty(Container(19011).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19012) + [!String.IsEmpty(Container(19012).ListItem.Label) + String.IsEmpty(Container(19012).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19013) + [!String.IsEmpty(Container(19013).ListItem.Label) + String.IsEmpty(Container(19013).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19014) + [!String.IsEmpty(Container(19014).ListItem.Label) + String.IsEmpty(Container(19014).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19015) + [!String.IsEmpty(Container(19015).ListItem.Label) + String.IsEmpty(Container(19015).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19016) + [!String.IsEmpty(Container(19016).ListItem.Label) + String.IsEmpty(Container(19016).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19017) + [!String.IsEmpty(Container(19017).ListItem.Label) + String.IsEmpty(Container(19017).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19018) + [!String.IsEmpty(Container(19018).ListItem.Label) + String.IsEmpty(Container(19018).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19019) + [!String.IsEmpty(Container(19019).ListItem.Label) + String.IsEmpty(Container(19019).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),19020) + [!String.IsEmpty(Container(19020).ListItem.Label) + String.IsEmpty(Container(19020).ListItem.Plot)]]</expression>
-    <expression name="FentasticDirect_PlotMissing_Section1">[String.IsEqual(Window(Home).Property(fentastic.unified.source),22011) + [!String.IsEmpty(Container(22011).ListItem.Label) + String.IsEmpty(Container(22011).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22012) + [!String.IsEmpty(Container(22012).ListItem.Label) + String.IsEmpty(Container(22012).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22013) + [!String.IsEmpty(Container(22013).ListItem.Label) + String.IsEmpty(Container(22013).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22014) + [!String.IsEmpty(Container(22014).ListItem.Label) + String.IsEmpty(Container(22014).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22015) + [!String.IsEmpty(Container(22015).ListItem.Label) + String.IsEmpty(Container(22015).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22016) + [!String.IsEmpty(Container(22016).ListItem.Label) + String.IsEmpty(Container(22016).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22017) + [!String.IsEmpty(Container(22017).ListItem.Label) + String.IsEmpty(Container(22017).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22018) + [!String.IsEmpty(Container(22018).ListItem.Label) + String.IsEmpty(Container(22018).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22019) + [!String.IsEmpty(Container(22019).ListItem.Label) + String.IsEmpty(Container(22019).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),22020) + [!String.IsEmpty(Container(22020).ListItem.Label) + String.IsEmpty(Container(22020).ListItem.Plot)]]</expression>
-    <expression name="FentasticDirect_PlotMissing_Section2">[String.IsEqual(Window(Home).Property(fentastic.unified.source),23011) + [!String.IsEmpty(Container(23011).ListItem.Label) + String.IsEmpty(Container(23011).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23012) + [!String.IsEmpty(Container(23012).ListItem.Label) + String.IsEmpty(Container(23012).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23013) + [!String.IsEmpty(Container(23013).ListItem.Label) + String.IsEmpty(Container(23013).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23014) + [!String.IsEmpty(Container(23014).ListItem.Label) + String.IsEmpty(Container(23014).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23015) + [!String.IsEmpty(Container(23015).ListItem.Label) + String.IsEmpty(Container(23015).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23016) + [!String.IsEmpty(Container(23016).ListItem.Label) + String.IsEmpty(Container(23016).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23017) + [!String.IsEmpty(Container(23017).ListItem.Label) + String.IsEmpty(Container(23017).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23018) + [!String.IsEmpty(Container(23018).ListItem.Label) + String.IsEmpty(Container(23018).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23019) + [!String.IsEmpty(Container(23019).ListItem.Label) + String.IsEmpty(Container(23019).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),23020) + [!String.IsEmpty(Container(23020).ListItem.Label) + String.IsEmpty(Container(23020).ListItem.Plot)]]</expression>
-    <expression name="FentasticDirect_PlotMissing_Section3">[String.IsEqual(Window(Home).Property(fentastic.unified.source),24011) + [!String.IsEmpty(Container(24011).ListItem.Label) + String.IsEmpty(Container(24011).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24012) + [!String.IsEmpty(Container(24012).ListItem.Label) + String.IsEmpty(Container(24012).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24013) + [!String.IsEmpty(Container(24013).ListItem.Label) + String.IsEmpty(Container(24013).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24014) + [!String.IsEmpty(Container(24014).ListItem.Label) + String.IsEmpty(Container(24014).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24015) + [!String.IsEmpty(Container(24015).ListItem.Label) + String.IsEmpty(Container(24015).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24016) + [!String.IsEmpty(Container(24016).ListItem.Label) + String.IsEmpty(Container(24016).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24017) + [!String.IsEmpty(Container(24017).ListItem.Label) + String.IsEmpty(Container(24017).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24018) + [!String.IsEmpty(Container(24018).ListItem.Label) + String.IsEmpty(Container(24018).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24019) + [!String.IsEmpty(Container(24019).ListItem.Label) + String.IsEmpty(Container(24019).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),24020) + [!String.IsEmpty(Container(24020).ListItem.Label) + String.IsEmpty(Container(24020).ListItem.Plot)]]</expression>
-    <expression name="FentasticDirect_PlotMissing_Section4">[String.IsEqual(Window(Home).Property(fentastic.unified.source),25011) + [!String.IsEmpty(Container(25011).ListItem.Label) + String.IsEmpty(Container(25011).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25012) + [!String.IsEmpty(Container(25012).ListItem.Label) + String.IsEmpty(Container(25012).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25013) + [!String.IsEmpty(Container(25013).ListItem.Label) + String.IsEmpty(Container(25013).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25014) + [!String.IsEmpty(Container(25014).ListItem.Label) + String.IsEmpty(Container(25014).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25015) + [!String.IsEmpty(Container(25015).ListItem.Label) + String.IsEmpty(Container(25015).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25016) + [!String.IsEmpty(Container(25016).ListItem.Label) + String.IsEmpty(Container(25016).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25017) + [!String.IsEmpty(Container(25017).ListItem.Label) + String.IsEmpty(Container(25017).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25018) + [!String.IsEmpty(Container(25018).ListItem.Label) + String.IsEmpty(Container(25018).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25019) + [!String.IsEmpty(Container(25019).ListItem.Label) + String.IsEmpty(Container(25019).ListItem.Plot)]] | [String.IsEqual(Window(Home).Property(fentastic.unified.source),25020) + [!String.IsEmpty(Container(25020).ListItem.Label) + String.IsEmpty(Container(25020).ListItem.Plot)]]</expression>
-    <expression name="FentasticUnifiedPlotMissing">$EXP[FentasticDirect_PlotMissing_Section0] | $EXP[FentasticDirect_PlotMissing_Section1] | $EXP[FentasticDirect_PlotMissing_Section2] | $EXP[FentasticDirect_PlotMissing_Section3] | $EXP[FentasticDirect_PlotMissing_Section4]</expression>
-    <expression name="FentasticUnifiedHasmetascore">!String.IsEmpty(Window.Property(fentastic.metascore))</expression>
-    <expression name="FentasticUnifiedHastomatoMeter">!String.IsEmpty(Window.Property(fentastic.tomatoMeter))</expression>
-    <expression name="FentasticUnifiedHastomatoUserMeter">!String.IsEmpty(Window.Property(fentastic.tomatoUserMeter))</expression>
-    <expression name="FentasticUnifiedHasimdbRating">!String.IsEmpty(Window.Property(fentastic.imdbRating))</expression>
-    <expression name="FentasticUnifiedHaspopularRating">!String.IsEmpty(Window.Property(fentastic.popularRating))</expression>
-    <expression name="FentasticUnifiedHastmdbRating">!String.IsEmpty(Window.Property(fentastic.tmdbRating))</expression>
-    <!-- FENTASTIC_DIRECT_WIDGET_IDENTITY_V2: missing live ratings are an error, not a hidden snapshot. -->
-    <expression name="FentasticUnifiedRatingsMissing">String.IsEmpty(Window.Property(fentastic.metascore)) + String.IsEmpty(Window.Property(fentastic.tomatoMeter)) + String.IsEmpty(Window.Property(fentastic.tomatoUserMeter)) + String.IsEmpty(Window.Property(fentastic.imdbRating)) + String.IsEmpty(Window.Property(fentastic.popularRating)) + String.IsEmpty(Window.Property(fentastic.tmdbRating))</expression>
 	<include name="RatingsInfoPanel">
-		<param name="dbtype" default="ListItem.DBtype"/>
-		<param name="dbtype_episode" default="ListItem.DbType"/>
-		<param name="season" default="ListItem.Season"/>
-		<param name="episode" default="ListItem.Episode"/>
-		<param name="info_top_label" default="$VAR[InfoPanelTop]"/>
-		<param name="info_bottom_label" default="$VAR[InfoPanelBottom]"/>
-		<param name="episode_visible" default="String.IsEqual(ListItem.DbType,episode)"/>
-		<param name="ratings_row_visible" default="[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + [!String.IsEmpty(ListItem.Genre) | String.IsEqual(ListItem.Property(fentastic.cache_item),true)]"/>
-		<param name="alt_movie_visible" default="[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,episode) | String.IsEqual(ListItem.DBtype,season)]"/>
-		<param name="alt_show_visible" default="String.IsEqual(ListItem.DBtype,tvshow)"/>
-		<param name="metascore_visible" default="![String.IsEmpty(Window.Property(fentastic.metascore)) | Skin.HasSetting(Disable.MetacriticRating)]"/>
-		<param name="tomatoMeter_visible" default="![String.IsEmpty(Window.Property(fentastic.tomatoMeter)) | Skin.HasSetting(Disable.RTCRating)]"/>
-		<param name="tomatoUserMeter_visible" default="![String.IsEmpty(Window.Property(fentastic.tomatoUserMeter)) | Skin.HasSetting(Disable.RTARating)]"/>
-		<param name="imdbRating_visible" default="![String.IsEmpty(Window.Property(fentastic.imdbRating)) | Skin.HasSetting(Disable.IMDbRating)]"/>
-		<param name="popularRating_visible" default="![String.IsEmpty(Window.Property(fentastic.popularRating)) | Skin.HasSetting(Disable.IMDbPopularRating)]"/>
-		<param name="tmdbRating_visible" default="![String.IsEmpty(Window.Property(fentastic.tmdbRating)) | Skin.HasSetting(Disable.TMDbRating)]"/>
-		<param name="metascore_label" default="$INFO[Window.Property(fentastic.metascore)]"/>
-		<param name="metascoreImage_label" default="$INFO[Window.Property(fentastic.metascoreImage)]"/>
-		<param name="tomatoMeter_label" default="$INFO[Window.Property(fentastic.tomatoMeter)]"/>
-		<param name="tomatoImage_label" default="$INFO[Window.Property(fentastic.tomatoImage)]"/>
-		<param name="tomatoUserMeter_label" default="$INFO[Window.Property(fentastic.tomatoUserMeter)]"/>
-		<param name="tomatoUserImage_label" default="$INFO[Window.Property(fentastic.tomatoUserImage)]"/>
-		<param name="imdbRating_label" default="$INFO[Window.Property(fentastic.imdbRating)]"/>
-		<param name="imdbImage_label" default="$INFO[Window.Property(fentastic.imdbImage)]"/>
-		<param name="popularRating_label" default="$INFO[Window.Property(fentastic.popularRating)]"/>
-		<param name="popularImage_label" default="$INFO[Window.Property(fentastic.popularImage)]"/>
-		<param name="tmdbRating_label" default="$INFO[Window.Property(fentastic.tmdbRating)]"/>
-		<param name="tmdbImage_label" default="$INFO[Window.Property(fentastic.tmdbImage)]"/>
-		<param name="season_label" default="$INFO[ListItem.Season]"/>
-		<param name="episode_label" default="$INFO[ListItem.Episode]"/>
-		<param name="genre" default="ListItem.Genre"/>
-		<param name="cache_item" default="ListItem.Property(fentastic.cache_item)"/>
-		<param name="metascore" default="Window.Property(fentastic.metascore)"/>
-		<param name="metascoreImage" default="Window.Property(fentastic.metascoreImage)"/>
-		<param name="tomatoMeter" default="Window.Property(fentastic.tomatoMeter)"/>
-		<param name="tomatoImage" default="Window.Property(fentastic.tomatoImage)"/>
-		<param name="tomatoUserMeter" default="Window.Property(fentastic.tomatoUserMeter)"/>
-		<param name="tomatoUserImage" default="Window.Property(fentastic.tomatoUserImage)"/>
-		<param name="imdbRating" default="Window.Property(fentastic.imdbRating)"/>
-		<param name="imdbImage" default="Window.Property(fentastic.imdbImage)"/>
-		<param name="popularRating" default="Window.Property(fentastic.popularRating)"/>
-		<param name="popularImage" default="Window.Property(fentastic.popularImage)"/>
-		<param name="tmdbRating" default="Window.Property(fentastic.tmdbRating)"/>
-		<param name="tmdbImage" default="Window.Property(fentastic.tmdbImage)"/>
-		<definition>
 		<control type="grouplist">
 			<left>$PARAM[left]</left>
 			<width>$PARAM[width]</width>
@@ -1865,13 +1762,13 @@
 			<control type="textbox">
 				<height>auto</height>
 				<font>font36_title</font>
-				<label>Season $PARAM[season_label], Episode $PARAM[episode_label]</label>
+				<label>Season $INFO[ListItem.Season], Episode $INFO[ListItem.Episode]</label>
 				<textcolor>unfocused_text</textcolor>
-				<visible>$PARAM[episode_visible]</visible>
+				<visible>String.IsEqual(ListItem.DbType,episode)</visible>
 			</control>
 			<control type="textbox">
 				<height>auto</height>
-				<label>$PARAM[info_top_label]</label>
+				<label>$VAR[InfoPanelTop]</label>
 				<textcolor>unfocused_text</textcolor>
 			</control>
 			<control type="grouplist">
@@ -1879,27 +1776,27 @@
 				<orientation>horizontal</orientation>
 				<itemgap>$PARAM[ratings_spacing]</itemgap>
 				<aligny>center</aligny>
-				<visible>$PARAM[ratings_row_visible]</visible>
+				<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + [!String.IsEmpty(ListItem.Genre) | String.IsEqual(ListItem.Property(fentastic.cache_item),true)]</visible>
 				<control type="grouplist">
 					<width>60</width>
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>$PARAM[metascore_visible]</visible>
+					<visible>![String.IsEmpty(Window.Property(fentastic.metascore)) | Skin.HasSetting(Disable.MetacriticRating)]</visible>
 					<control type="image">
 						<width>60</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$PARAM[metascoreImage_label]</texture>
+						<texture>$INFO[Window.Property(fentastic.metascoreImage)]</texture>
 					</control>
 					<control type="label">
 						<width max="60">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$PARAM[metascore_label]</label>
+						<label>$INFO[Window.Property(fentastic.metascore)]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1908,21 +1805,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>$PARAM[tomatoMeter_visible]</visible>
+					<visible>![String.IsEmpty(Window.Property(fentastic.tomatoMeter)) | Skin.HasSetting(Disable.RTCRating)]</visible>
 					<control type="image">
 						<width>60</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$PARAM[tomatoImage_label]</texture>
+						<texture>$INFO[Window.Property(fentastic.tomatoImage)]</texture>
 					</control>
 					<control type="label">
 						<width max="60">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$PARAM[tomatoMeter_label]</label>
+						<label>$INFO[Window.Property(fentastic.tomatoMeter)]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1931,21 +1828,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>$PARAM[tomatoUserMeter_visible]</visible>
+					<visible>![String.IsEmpty(Window.Property(fentastic.tomatoUserMeter)) | Skin.HasSetting(Disable.RTARating)]</visible>
 					<control type="image">
 						<width>60</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$PARAM[tomatoUserImage_label]</texture>
+						<texture>$INFO[Window.Property(fentastic.tomatoUserImage)]</texture>
 					</control>
 					<control type="label">
 						<width max="60">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$PARAM[tomatoUserMeter_label]</label>
+						<label>$INFO[Window.Property(fentastic.tomatoUserMeter)]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1954,21 +1851,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>$PARAM[imdbRating_visible]</visible>
+					<visible>![String.IsEmpty(Window.Property(fentastic.imdbRating)) | Skin.HasSetting(Disable.IMDbRating)]</visible>
 					<control type="image">
 						<width>60</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$PARAM[imdbImage_label]</texture>
+						<texture>$INFO[Window.Property(fentastic.imdbImage)]</texture>
 					</control>
 					<control type="label">
 						<width max="60">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$PARAM[imdbRating_label]</label>
+						<label>$INFO[Window.Property(fentastic.imdbRating)]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1977,21 +1874,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>$PARAM[popularRating_visible]</visible>
+					<visible>![String.IsEmpty(Window.Property(fentastic.popularRating)) | Skin.HasSetting(Disable.IMDbPopularRating)]</visible>
 					<control type="image">
 						<width>87</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$PARAM[popularImage_label]</texture>
+						<texture>$INFO[Window.Property(fentastic.popularImage)]</texture>
 					</control>
 					<control type="label">
 						<width max="87">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$PARAM[popularRating_label]</label>
+						<label>$INFO[Window.Property(fentastic.popularRating)]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -2000,21 +1897,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>8</itemgap>
 					<align>center</align>
-					<visible>$PARAM[tmdbRating_visible]</visible>
+					<visible>![String.IsEmpty(Window.Property(fentastic.tmdbRating)) | Skin.HasSetting(Disable.TMDbRating)]</visible>
 					<control type="image">
 						<width>65</width>
 						<height>33</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$PARAM[tmdbImage_label]</texture>
+						<texture>$INFO[Window.Property(fentastic.tmdbImage)]</texture>
 					</control>
 					<control type="label">
 						<width max="65">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$PARAM[tmdbRating_label]</label>
+						<label>$INFO[Window.Property(fentastic.tmdbRating)]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -2022,7 +1919,7 @@
 			<control type="textbox">
 				<height max="$PARAM[height_noalt]">auto</height>
 				<bottom>70</bottom>
-				<label>$PARAM[info_bottom_label]</label>
+				<label>$VAR[InfoPanelBottom]</label>
 				<textcolor>unfocused_text</textcolor>
 				<autoscroll delay="7000" time="2000" repeat="7000">Skin.HasSetting(autoscroll)</autoscroll>
 				<visible>!Skin.HasSetting(Enable.AlternateInfo)</visible>
@@ -2030,155 +1927,20 @@
 			<control type="textbox">
 				<height max="$PARAM[height_alt_movie]">auto</height>
 				<bottom>70</bottom>
-				<label>$PARAM[info_bottom_label]</label>
+				<label>$VAR[InfoPanelBottom]</label>
 				<textcolor>unfocused_text</textcolor>
 				<autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
-				<visible>Skin.HasSetting(Enable.AlternateInfo) + $PARAM[alt_movie_visible]</visible>
+				<visible>Skin.HasSetting(Enable.AlternateInfo) + [String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,episode) | String.IsEqual(ListItem.DBtype,season)]</visible>
 			</control>
 			<control type="textbox">
 				<height max="$PARAM[height_alt_tvshow]">auto</height>
 				<bottom>70</bottom>
-				<label>$PARAM[info_bottom_label]</label>
+				<label>$VAR[InfoPanelBottom]</label>
 				<textcolor>unfocused_text</textcolor>
 				<autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
-				<visible>Skin.HasSetting(Enable.AlternateInfo) + $PARAM[alt_show_visible]</visible>
+				<visible>Skin.HasSetting(Enable.AlternateInfo) + String.IsEqual(ListItem.DBtype,tvshow)</visible>
 			</control>
 		</control>
-		</definition>
-	</include>
-	
-	<!-- FENTASTIC_HOME_UNIFIED_INFO_PANEL_V2: one Home information-panel layout, using direct widget inputs only. -->
-	<include name="FentasticUnifiedHomeInfoPanel">
-		<param name="clearlogo_label" default="$VAR[FentasticUnifiedClearlogo]"/>
-		<param name="item_clearlogo" default="ListItem.Art(clearlogo)"/>
-		<param name="title_label" default="$VAR[FentasticUnifiedTitle]"/>
-		<param name="info_plain_label" default="$VAR[FentasticUnifiedPlain]"/>
-		<param name="info_episode_label" default="$VAR[FentasticUnifiedEpisode]"/>
-		<param name="season" default="ListItem.Season"/>
-		<param name="episode" default="ListItem.Episode"/>
-		<param name="dbtype" default="ListItem.DBtype"/>
-		<param name="dbtype_episode" default="ListItem.DbType"/>
-		<param name="info_top_label" default="$VAR[FentasticUnifiedTop]"/>
-		<param name="info_bottom_label" default="$VAR[FentasticUnifiedBottom]"/>
-		<param name="genre" default="ListItem.Genre"/>
-		<param name="cache_item" default="ListItem.Property(fentastic.cache_item)"/>
-		<param name="metascore" default="Window.Property(fentastic.metascore)"/>
-		<param name="metascoreImage" default="Window.Property(fentastic.metascoreImage)"/>
-		<param name="tomatoMeter" default="Window.Property(fentastic.tomatoMeter)"/>
-		<param name="tomatoImage" default="Window.Property(fentastic.tomatoImage)"/>
-		<param name="tomatoUserMeter" default="Window.Property(fentastic.tomatoUserMeter)"/>
-		<param name="tomatoUserImage" default="Window.Property(fentastic.tomatoUserImage)"/>
-		<param name="imdbRating" default="Window.Property(fentastic.imdbRating)"/>
-		<param name="imdbImage" default="Window.Property(fentastic.imdbImage)"/>
-		<param name="popularRating" default="Window.Property(fentastic.popularRating)"/>
-		<param name="popularImage" default="Window.Property(fentastic.popularImage)"/>
-		<param name="tmdbRating" default="Window.Property(fentastic.tmdbRating)"/>
-		<param name="tmdbImage" default="Window.Property(fentastic.tmdbImage)"/>
-		<definition>
-					<control type="image">
-						<left>30</left>
-						<top>50</top>
-						<width>395</width>
-						<height>153</height>
-						<texture background="true">$PARAM[clearlogo_label]</texture>
-						<aspectratio align="center">keep</aspectratio>
-					</control>
-					<control type="textbox">
-						<top>75</top>
-						<left>30</left>
-						<width>430</width>
-						<aligny>center</aligny>
-						<height>98</height>
-						<font>font36_title</font>
-						<label>$PARAM[title_label]</label>
-						<visible>$EXP[FentasticUnifiedNoClearlogo]</visible>
-					</control>
-					<control type="group">
-						<visible>Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))</visible>
-						<control type="textbox">
-							<left>30</left>
-							<top>239</top>
-							<width>410</width>
-							<bottom>60</bottom>
-							<label>$PARAM[info_plain_label]</label>
-							<textcolor>unfocused_text</textcolor>
-							<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-						</control>
-						<control type="textbox">
-							<left>30</left>
-							<top>323</top>
-							<width>410</width>
-							<bottom>60</bottom>
-							<label>$PARAM[info_episode_label]</label>
-							<textcolor>unfocused_text</textcolor>
-							<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-						</control>
-						<control type="textbox">
-							<left>30</left>
-							<top>213</top>
-							<width>410</width>
-							<aligny>center</aligny>
-							<height>110</height>
-							<bottom>60</bottom>
-							<font>font36_title</font>
-							<label>Season $VAR[FentasticUnifiedSeason], Episode $VAR[FentasticUnifiedEpisodeNumber]</label>
-							<visible>$EXP[FentasticUnifiedIsEpisode]</visible>
-						</control>
-					</control>
-					<include condition="![Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))]" content="RatingsInfoPanel">
-						<param name="episode_visible" value="$EXP[FentasticUnifiedIsEpisode]" />
-						<param name="ratings_row_visible" value="$EXP[FentasticUnifiedRatingsRow]" />
-						<param name="alt_movie_visible" value="[$EXP[FentasticUnifiedIsMovie] | $EXP[FentasticUnifiedIsEpisode] | $EXP[FentasticUnifiedIsSeason]]" />
-						<param name="alt_show_visible" value="$EXP[FentasticUnifiedIsTvshow]" />
-						<param name="metascore_visible" value="$EXP[FentasticUnifiedHasmetascore] + !Skin.HasSetting(Disable.MetacriticRating)" />
-						<param name="tomatoMeter_visible" value="$EXP[FentasticUnifiedHastomatoMeter] + !Skin.HasSetting(Disable.RTCRating)" />
-						<param name="tomatoUserMeter_visible" value="$EXP[FentasticUnifiedHastomatoUserMeter] + !Skin.HasSetting(Disable.RTARating)" />
-						<param name="imdbRating_visible" value="$EXP[FentasticUnifiedHasimdbRating] + !Skin.HasSetting(Disable.IMDbRating)" />
-						<param name="popularRating_visible" value="$EXP[FentasticUnifiedHaspopularRating] + !Skin.HasSetting(Disable.IMDbPopularRating)" />
-						<param name="tmdbRating_visible" value="$EXP[FentasticUnifiedHastmdbRating] + !Skin.HasSetting(Disable.TMDbRating)" />
-						<param name="metascore_label" value="$VAR[FentasticUnifiedRatingmetascore]" />
-						<param name="metascoreImage_label" value="$VAR[FentasticUnifiedRatingmetascoreImage]" />
-						<param name="tomatoMeter_label" value="$VAR[FentasticUnifiedRatingtomatoMeter]" />
-						<param name="tomatoImage_label" value="$VAR[FentasticUnifiedRatingtomatoImage]" />
-						<param name="tomatoUserMeter_label" value="$VAR[FentasticUnifiedRatingtomatoUserMeter]" />
-						<param name="tomatoUserImage_label" value="$VAR[FentasticUnifiedRatingtomatoUserImage]" />
-						<param name="imdbRating_label" value="$VAR[FentasticUnifiedRatingimdbRating]" />
-						<param name="imdbImage_label" value="$VAR[FentasticUnifiedRatingimdbImage]" />
-						<param name="popularRating_label" value="$VAR[FentasticUnifiedRatingpopularRating]" />
-						<param name="popularImage_label" value="$VAR[FentasticUnifiedRatingpopularImage]" />
-						<param name="tmdbRating_label" value="$VAR[FentasticUnifiedRatingtmdbRating]" />
-						<param name="tmdbImage_label" value="$VAR[FentasticUnifiedRatingtmdbImage]" />
-						<param name="season_label" value="$VAR[FentasticUnifiedSeason]" />
-						<param name="episode_label" value="$VAR[FentasticUnifiedEpisodeNumber]" />
-						<param name="left" value="30" />
-						<param name="width" value="410" />
-						<param name="top" value="239" />
-						<param name="ratings_spacing" value="7" />
-						<param name="height_noalt" value="460" />
-						<param name="height_alt_movie" value="330" />
-						<param name="height_alt_tvshow" value="290" />
-						<param name="dbtype" value="$PARAM[dbtype]" />
-						<param name="dbtype_episode" value="$PARAM[dbtype_episode]" />
-						<param name="season" value="$PARAM[season]" />
-						<param name="episode" value="$PARAM[episode]" />
-						<param name="info_top_label" value="$PARAM[info_top_label]" />
-						<param name="info_bottom_label" value="$PARAM[info_bottom_label]" />
-						<param name="genre" value="$PARAM[genre]" />
-						<param name="cache_item" value="$PARAM[cache_item]" />
-						<param name="metascore" value="$PARAM[metascore]" />
-						<param name="metascoreImage" value="$PARAM[metascoreImage]" />
-						<param name="tomatoMeter" value="$PARAM[tomatoMeter]" />
-						<param name="tomatoImage" value="$PARAM[tomatoImage]" />
-						<param name="tomatoUserMeter" value="$PARAM[tomatoUserMeter]" />
-						<param name="tomatoUserImage" value="$PARAM[tomatoUserImage]" />
-						<param name="imdbRating" value="$PARAM[imdbRating]" />
-						<param name="imdbImage" value="$PARAM[imdbImage]" />
-						<param name="popularRating" value="$PARAM[popularRating]" />
-						<param name="popularImage" value="$PARAM[popularImage]" />
-						<param name="tmdbRating" value="$PARAM[tmdbRating]" />
-						<param name="tmdbImage" value="$PARAM[tmdbImage]" />
-					</include>
-		</definition>
 	</include>
 
 </includes>

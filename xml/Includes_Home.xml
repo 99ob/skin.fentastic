@@ -16,8 +16,6 @@
         <param name="list_id">0</param>
         <param name="next_header_id">0</param>
         <definition>
-            <ondown>SetProperty(fentastic.unified.source,$PARAM[list_id],Home)</ondown>
-            <ondown>SetProperty(fentastic.charcoal.panel_transfer,yes,Home)</ondown>
             <ondown>SetFocus($PARAM[next_header_id])</ondown>
         </definition>
     </include>
@@ -25,6 +23,7 @@
         <param name="enabled">false</param>
         <param name="list_id">0</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
             <control type="image">
@@ -47,11 +46,12 @@
                 <visible>$PARAM[enabled]</visible>
                 <onleft>9000</onleft>
                 <onback>9000</onback>
-                <onup>$PARAM[previous_list_id]</onup>
+                <onup>$PARAM[previous_widget_id]</onup>
                 <ondown>$PARAM[list_id]</ondown>
                 <onclick>SetFocus($PARAM[list_id])</onclick>
                 <!-- Keep only the selected widget control ID, never media details. -->
-                <onfocus>SetProperty(fentastic.unified.source,$PARAM[previous_list_id],Home)</onfocus>
+                <!-- Static widget ID signal for Helper; no media data is copied. -->
+                <onfocus>SetProperty(fentastic.charcoal.widget_id,$PARAM[previous_widget_id],Home)</onfocus>
                 <onfocus>SetProperty(fentastic.charcoal.active,yes,Home)</onfocus>
                 <onunfocus>ClearProperty(fentastic.charcoal.active,Home)</onunfocus>
             </control>
@@ -62,11 +62,12 @@
     <include name="FentasticCharcoalHeaderDirectScores">
         <param name="list_id">0</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="label"></param>
         <definition>
             <control type="label">
                 <width max="695">auto</width>
-                <label>$PARAM[label]$INFO[Container($PARAM[previous_list_id]).ListItem.Label,[B] | [/B]]</label>
+                <label>$PARAM[label]$INFO[Container($PARAM[previous_widget_id]).ListItem.Label,[B] | [/B]]</label>
                 <shadowcolor>text_shadow</shadowcolor>
                 <scroll>true</scroll>
                 <visible>Control.HasFocus($PARAM[list_id]664) + String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
@@ -77,8 +78,8 @@
                 <height>38</height>
                 <font>font12</font>
                 <textcolor>FFFF4444</textcolor>
-                <label>UNIFIED RATINGS ERROR: live MDbList data unavailable</label>
-                <visible>Control.HasFocus($PARAM[list_id]664) + !Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key)) + $EXP[FentasticUnifiedRatingsMissing]</visible>
+                <label>CHARCOAL RATINGS UNAVAILABLE</label>
+                <visible>Control.HasFocus($PARAM[list_id]664) + !Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key)) + String.IsEmpty(Window(Home).Property(fentastic.imdbRating))</visible>
             </control>
             <control type="grouplist">
                 <orientation>horizontal</orientation>
@@ -215,6 +216,7 @@
 		<param name="item_treshold">0</param>
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
 		<param name="label_focus">$INFO[Container($PARAM[list_id]).ListItem.Title,[B] | [/B]]</param>
 		<param name="label_focus_episodes">$INFO[Container($PARAM[list_id]).ListItem.TVShowTitle,[B] | [/B]]$INFO[Container($PARAM[list_id]).ListItem.Title,[B] | [/B]]</param>
@@ -232,6 +234,7 @@
                     <param name="enabled" value="$PARAM[focusable_header]"/>
                     <param name="list_id" value="$PARAM[list_id]"/>
                     <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                     <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
                 </include>
 				<control type="grouplist">
@@ -248,6 +251,7 @@
 					</control>
                 <include content="FentasticCharcoalHeaderDirectScores">
                     <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                     <param name="list_id" value="$PARAM[list_id]"/>
                     <param name="label" value="$PARAM[label]"/>
                 </include>
@@ -451,6 +455,7 @@
 		<param name="item_treshold">0</param>
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
 		<param name="label_focus">$INFO[Container($PARAM[list_id]).ListItem.Title,[B] | [/B]]</param>
 		<param name="label_focus_episodes">$INFO[Container($PARAM[list_id]).ListItem.TVShowTitle,[B] | [/B]]$INFO[Container($PARAM[list_id]).ListItem.Title,[B] | [/B]]</param>
@@ -468,6 +473,7 @@
                     <param name="enabled" value="$PARAM[focusable_header]"/>
                     <param name="list_id" value="$PARAM[list_id]"/>
                     <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                     <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
                 </include>
 				<control type="grouplist">
@@ -487,6 +493,7 @@
 					</control>
                 <include content="FentasticCharcoalHeaderDirectScores">
                     <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                     <param name="list_id" value="$PARAM[list_id]"/>
                     <param name="label" value="$PARAM[label]"/>
                 </include>
@@ -704,6 +711,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabel">
@@ -711,6 +719,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
@@ -766,6 +775,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabel">
@@ -774,6 +784,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
@@ -829,6 +840,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
       <include content="CategoryLabelWidget">
@@ -836,6 +848,7 @@
         <param name="list_id" value="$PARAM[list_id]" />
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
       </include>
 			<include content="BusyListSpinnerWidget">
@@ -887,6 +900,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
       <include content="CategoryLabelWidget">
@@ -895,6 +909,7 @@
         <param name="list_id" value="$PARAM[list_id]" />
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
       </include>
 			<include content="BusyListSpinnerWidget">
@@ -948,6 +963,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabel">
@@ -955,6 +971,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
@@ -1009,6 +1026,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabel">
@@ -1016,6 +1034,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
@@ -1070,6 +1089,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabelWidget">
@@ -1077,6 +1097,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
@@ -1129,6 +1150,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabelWidget">
@@ -1136,6 +1158,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
@@ -1195,6 +1218,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabel">
@@ -1202,6 +1226,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
@@ -1273,6 +1298,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabel">
@@ -1280,6 +1306,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinner">
@@ -1351,6 +1378,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabelWidget">
@@ -1358,6 +1386,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
@@ -1426,6 +1455,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabelWidget">
@@ -1433,6 +1463,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 			</include>
 			<include content="BusyListSpinnerWidget">
@@ -1499,6 +1530,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabel">
@@ -1506,6 +1538,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 				<param name="visible" value="$PARAM[visible]"/>
 			</include>
@@ -1521,8 +1554,6 @@
 				<height>195</height>
 				<onright>$PARAM[list_id]</onright>
 				<movement>3</movement>
-				<onfocus>Control.Move($PARAM[list_id],-$INFO[Container($PARAM[list_id]).Position])</onfocus>
-				<onfocus>Control.Move($PARAM[list_id],$INFO[Window(home).Property(listposition)])</onfocus>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
@@ -1650,6 +1681,7 @@
 
         <param name="focusable_header">false</param>
         <param name="previous_list_id">0</param>
+        <param name="previous_widget_id">0</param>
         <param name="previous_stacked_list_id">0</param>
         <definition>
 			<include content="CategoryLabelWidget">
@@ -1657,6 +1689,7 @@
 				<param name="list_id" value="$PARAM[list_id]"/>
                 <param name="focusable_header" value="$PARAM[focusable_header]"/>
                 <param name="previous_list_id" value="$PARAM[previous_list_id]"/>
+                    <param name="previous_widget_id" value="$PARAM[previous_widget_id]"/>
                 <param name="previous_stacked_list_id" value="$PARAM[previous_stacked_list_id]"/>
 				<param name="visible" value="$PARAM[visible]"/>
 			</include>
@@ -1865,8 +1898,6 @@
 				<height>415</height>
 				<movement>4</movement>
 				<onright>$PARAM[list_id]</onright>
-				<onfocus>Control.Move($PARAM[list_id],-$INFO[Container($PARAM[list_id]).Position])</onfocus>
-				<onfocus>Control.Move($PARAM[list_id],$INFO[Window(home).Property(listposition)])</onfocus>
 				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
@@ -2110,8 +2141,6 @@
 				<height>391</height>
 				<movement>4</movement>
 				<onright>$PARAM[list_id]</onright>
-				<onfocus>Control.Move($PARAM[list_id],-$INFO[Container($PARAM[list_id]).Position])</onfocus>
-				<onfocus>Control.Move($PARAM[list_id],$INFO[Window(home).Property(listposition)])</onfocus>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
@@ -2499,12 +2528,6 @@
 		<onright>$PARAM[list_id]</onright>
 		<onback>SetFocus($PARAM[list_id],0,absolute)</onback>
 		<onback>9000</onback>
-		<!-- Preserve the selected poster when focus returns from its charcoal header.
-             The existing panel_transfer flag is navigation state, NOT movie data. -->
-        <onfocus condition="!String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">Control.Move($PARAM[list_id],-$INFO[Container($PARAM[list_id]).Position])</onfocus>
-        <onfocus>ClearProperty(fentastic.charcoal.panel_transfer,Home)</onfocus>
-        <onfocus>SetProperty(fentastic.unified.source,$PARAM[list_id],Home)</onfocus>
-		<onunfocus>SetProperty(listposition,$INFO[Container($PARAM[list_id]).Position],home)</onunfocus>
         <include content="FentasticHeaderDirectDown" condition="$PARAM[has_next_header]">
             <param name="list_id" value="$PARAM[list_id]"/>
             <param name="next_header_id" value="$PARAM[next_header_id]"/>
@@ -2520,8 +2543,6 @@
 		<onback>9000</onback>
     <onback>SetFocus($PARAM[list_id],0,absolute)</onback>
     <onfocus>RunScript(script.fentastic.helper,mode=widget_monitor&amp;list_id=$PARAM[list_id])</onfocus>
-        <onfocus>ClearProperty(fentastic.charcoal.panel_transfer,Home)</onfocus>
-        <onfocus>SetProperty(fentastic.unified.source,$PARAM[list_id],Home)</onfocus>
         <include content="FentasticHeaderDirectDown" condition="$PARAM[has_next_header]">
             <param name="list_id" value="$PARAM[list_id]"/>
             <param name="next_header_id" value="$PARAM[next_header_id]"/>
@@ -2884,4 +2905,143 @@
 			</control>
 		</definition>
 	</include>
+    <!-- Charcoal belongs to one generated widget. No dynamic source switch. -->
+    <include name="FentasticCharcoalLivePanel">
+        <param name="widget_id">0</param>
+        <param name="header_id">0</param>
+        <definition>
+            <control type="group">
+                <width>550</width>
+                <visible>Control.HasFocus($PARAM[header_id]) + !Skin.HasSetting(TrailerPlaying)</visible>
+                <include>OpenClose_Left</include>
+                <control type="image">
+                    <left>30</left><top>50</top><width>395</width><height>153</height>
+                    <texture background="true">$INFO[Container($PARAM[widget_id]).ListItem.Art(clearlogo)]</texture>
+                    <aspectratio align="center">keep</aspectratio>
+                </control>
+                <control type="textbox">
+                    <left>30</left><top>75</top><width>430</width><height>98</height>
+                    <font>font36_title</font><aligny>center</aligny>
+                    <label>$INFO[Container($PARAM[widget_id]).ListItem.Label]</label>
+                    <visible>String.IsEmpty(Container($PARAM[widget_id]).ListItem.Art(clearlogo))</visible>
+                </control>
+                <control type="grouplist">
+                    <left>30</left><top>239</top><width>410</width>
+                    <orientation>vertical</orientation><itemgap>13</itemgap>
+                    <control type="textbox">
+                        <height>auto</height>
+                        <label>$INFO[Container($PARAM[widget_id]).ListItem.Year]$INFO[Container($PARAM[widget_id]).ListItem.Mpaa, • ]$INFO[Container($PARAM[widget_id]).ListItem.Genre, • ]$INFO[Container($PARAM[widget_id]).ListItem.Director, • ]$INFO[Container($PARAM[widget_id]).ListItem.Duration, • ]$INFO[Container($PARAM[widget_id]).ListItem.EndTime, • Ends at: ]</label>
+                        <textcolor>unfocused_text</textcolor>
+                    </control>
+                    <control type="grouplist">
+                        <orientation>horizontal</orientation><aligny>center</aligny>
+                        <itemgap>7</itemgap><height>90</height>
+                        <visible>!Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key))</visible>
+                        <control type="grouplist">
+                            <width>60</width><orientation>vertical</orientation>
+                            <itemgap>5</itemgap><align>center</align>
+                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.metascore)) + !Skin.HasSetting(Disable.MetacriticRating)</visible>
+                            <control type="image">
+                                <width>60</width><height>36</height><aspectratio>keep</aspectratio>
+                                <texture>$INFO[Window(Home).Property(fentastic.metascoreImage)]</texture>
+                            </control>
+                            <control type="label">
+                                <width max="60">auto</width><height>42</height>
+                                <align>center</align><textcolor>unfocused_text</textcolor>
+                                <label>$INFO[Window(Home).Property(fentastic.metascore)]</label>
+                            </control>
+                        </control>
+                        <control type="grouplist">
+                            <width>60</width><orientation>vertical</orientation>
+                            <itemgap>5</itemgap><align>center</align>
+                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.tomatoMeter)) + !Skin.HasSetting(Disable.RTCRating)</visible>
+                            <control type="image">
+                                <width>60</width><height>36</height><aspectratio>keep</aspectratio>
+                                <texture>$INFO[Window(Home).Property(fentastic.tomatoImage)]</texture>
+                            </control>
+                            <control type="label">
+                                <width max="60">auto</width><height>42</height>
+                                <align>center</align><textcolor>unfocused_text</textcolor>
+                                <label>$INFO[Window(Home).Property(fentastic.tomatoMeter)]</label>
+                            </control>
+                        </control>
+                        <control type="grouplist">
+                            <width>60</width><orientation>vertical</orientation>
+                            <itemgap>5</itemgap><align>center</align>
+                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.tomatoUserMeter)) + !Skin.HasSetting(Disable.RTARating)</visible>
+                            <control type="image">
+                                <width>60</width><height>36</height><aspectratio>keep</aspectratio>
+                                <texture>$INFO[Window(Home).Property(fentastic.tomatoUserImage)]</texture>
+                            </control>
+                            <control type="label">
+                                <width max="60">auto</width><height>42</height>
+                                <align>center</align><textcolor>unfocused_text</textcolor>
+                                <label>$INFO[Window(Home).Property(fentastic.tomatoUserMeter)]</label>
+                            </control>
+                        </control>
+                        <control type="grouplist">
+                            <width>60</width><orientation>vertical</orientation>
+                            <itemgap>5</itemgap><align>center</align>
+                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.imdbRating)) + !Skin.HasSetting(Disable.IMDbRating)</visible>
+                            <control type="image">
+                                <width>60</width><height>36</height><aspectratio>keep</aspectratio>
+                                <texture>$INFO[Window(Home).Property(fentastic.imdbImage)]</texture>
+                            </control>
+                            <control type="label">
+                                <width max="60">auto</width><height>42</height>
+                                <align>center</align><textcolor>unfocused_text</textcolor>
+                                <label>$INFO[Window(Home).Property(fentastic.imdbRating)]</label>
+                            </control>
+                        </control>
+                        <control type="grouplist">
+                            <width>77</width><orientation>vertical</orientation>
+                            <itemgap>5</itemgap><align>center</align>
+                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.popularRating)) + !Skin.HasSetting(Disable.IMDbPopularRating)</visible>
+                            <control type="image">
+                                <width>77</width><height>36</height><aspectratio>keep</aspectratio>
+                                <texture>$INFO[Window(Home).Property(fentastic.popularImage)]</texture>
+                            </control>
+                            <control type="label">
+                                <width max="77">auto</width><height>42</height>
+                                <align>center</align><textcolor>unfocused_text</textcolor>
+                                <label>$INFO[Window(Home).Property(fentastic.popularRating)]</label>
+                            </control>
+                        </control>
+                        <control type="grouplist">
+                            <width>65</width><orientation>vertical</orientation>
+                            <itemgap>5</itemgap><align>center</align>
+                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.tmdbRating)) + !Skin.HasSetting(Disable.TMDbRating)</visible>
+                            <control type="image">
+                                <width>65</width><height>33</height><aspectratio>keep</aspectratio>
+                                <texture>$INFO[Window(Home).Property(fentastic.tmdbImage)]</texture>
+                            </control>
+                            <control type="label">
+                                <width max="65">auto</width><height>42</height>
+                                <align>center</align><textcolor>unfocused_text</textcolor>
+                                <label>$INFO[Window(Home).Property(fentastic.tmdbRating)]</label>
+                            </control>
+                        </control>
+                    </control>
+                    <control type="textbox">
+                        <height max="460">auto</height><bottom>70</bottom>
+                        <label>$INFO[Container($PARAM[widget_id]).ListItem.Plot]</label>
+                        <textcolor>unfocused_text</textcolor>
+                        <autoscroll delay="7000" time="2000" repeat="7000">Skin.HasSetting(autoscroll)</autoscroll>
+                    </control>
+                </control>
+                <control type="label">
+                    <left>30</left><top>178</top><width>440</width><height>32</height>
+                    <font>font12</font><textcolor>FFFF4444</textcolor>
+                    <label>CHARCOAL SOURCE ERROR: widget $PARAM[widget_id] has no selected item.</label>
+                    <visible>String.IsEmpty(Container($PARAM[widget_id]).ListItem.Label)</visible>
+                </control>
+                <control type="label">
+                    <left>30</left><top>610</top><width>440</width><height>28</height>
+                    <font>font12</font><textcolor>FFFF4444</textcolor>
+                    <label>CHARCOAL PLOT ERROR: widget $PARAM[widget_id] has no plot.</label>
+                    <visible>!String.IsEmpty(Container($PARAM[widget_id]).ListItem.Label) + String.IsEmpty(Container($PARAM[widget_id]).ListItem.Plot)</visible>
+                </control>
+            </control>
+        </definition>
+    </include>
 </includes>
