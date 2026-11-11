@@ -1050,7 +1050,7 @@
 				<control type="group">
 					<animation effect="slide" time="300" start="-492,0" end="0,0" tween="sine" easing="inout" condition="!String.EndsWith(System.CurrentControlId,664)">VisibleChange</animation>
 					<width>550</width>
-					<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + !String.EndsWith(System.CurrentControlId,664) + ![ControlGroup(19001).HasFocus | ControlGroup(22001).HasFocus | ControlGroup(23001).HasFocus | ControlGroup(24001).HasFocus | ControlGroup(25001).HasFocus]</visible>
+					<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + !String.EndsWith(System.CurrentControlId,664)</visible>
 					<include>OpenClose_Left</include>
 					<control type="image">
 						<left>30</left>
