@@ -39,6 +39,8 @@
             <ondown>SetProperty(fentastic.charcoal.plot,$ESCINFO[ListItem.Plot],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[ListItem.PlotOutline],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.source,$PARAM[list_id],Home)</ondown>
+            <!-- FENTASTIC_SINGLE_PERSISTENT_HOME_PANEL_V1: keep the same panel visible during focus transfer. -->
+            <ondown>SetProperty(fentastic.charcoal.panel_transfer,yes,Home)</ondown>
             <ondown>SetFocus($PARAM[next_header_id])</ondown>
         </definition>
     </include>
@@ -2508,6 +2510,7 @@
 		<onback>SetFocus($PARAM[list_id],0,absolute)</onback>
 		<onback>9000</onback>
 		<onfocus>Control.Move($PARAM[list_id],-$INFO[Container($PARAM[list_id]).Position])</onfocus>
+        <onfocus>ClearProperty(fentastic.charcoal.panel_transfer,Home)</onfocus>
 		<onunfocus>SetProperty(listposition,$INFO[Container($PARAM[list_id]).Position],home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[list_id]).ListItem.Label],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(clearlogo)],Home)</onunfocus>
@@ -2560,6 +2563,7 @@
 		<onback>9000</onback>
     <onback>SetFocus($PARAM[list_id],0,absolute)</onback>
     <onfocus>RunScript(script.fentastic.helper,mode=widget_monitor&amp;list_id=$PARAM[list_id])</onfocus>
+        <onfocus>ClearProperty(fentastic.charcoal.panel_transfer,Home)</onfocus>
         <onunfocus>SetProperty(fentastic.charcoal.title,$ESCINFO[Container($PARAM[list_id]).ListItem.Label],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.clearlogo,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(clearlogo)],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.fanart,$ESCINFO[Container($PARAM[list_id]).ListItem.Art(fanart)],Home)</onunfocus>

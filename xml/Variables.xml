@@ -1004,4 +1004,85 @@
         <value condition="String.IsEqual(Window(Home).Property(fentastic.charcoal.info_source_title),Window(Home).Property(fentastic.charcoal.title)) + !String.IsEmpty(Window(Home).Property(fentastic.charcoal.info_episode))">$INFO[Window(Home).Property(fentastic.charcoal.info_episode)]</value>
         <value>$INFO[Window(Home).Property(fentastic.charcoal.plot)]</value>
     </variable>
+    <!-- FENTASTIC_SINGLE_PERSISTENT_HOME_PANEL_V1: retained live/snapshot label source for the one Home panel. -->
+    <variable name="FentasticUnifiedClearlogo">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$VAR[ClearlogoVar]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.clearlogo)]</value>
+    </variable>
+    <variable name="FentasticUnifiedTitle">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[ListItem.Label]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.title)]</value>
+    </variable>
+    <variable name="FentasticUnifiedPlain">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$VAR[InfoPanel]</value>
+        <value>$VAR[FentasticCharcoalPlainSource]</value>
+    </variable>
+    <variable name="FentasticUnifiedEpisode">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$VAR[InfoPanelEpisode]</value>
+        <value>$VAR[FentasticCharcoalEpisodeSource]</value>
+    </variable>
+    <variable name="FentasticUnifiedTop">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$VAR[InfoPanelTop]</value>
+        <value>$VAR[FentasticCharcoalTopSource]</value>
+    </variable>
+    <variable name="FentasticUnifiedBottom">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$VAR[InfoPanelBottom]</value>
+        <value>$VAR[FentasticCharcoalPlotSource]</value>
+    </variable>
+    <variable name="FentasticUnifiedSeason">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[ListItem.Season]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.season)]</value>
+    </variable>
+    <variable name="FentasticUnifiedEpisodeNumber">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[ListItem.Episode]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.episode)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingmetascore">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.metascore)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.metascore)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingmetascoreImage">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.metascoreImage)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.metascoreImage)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingtomatoMeter">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.tomatoMeter)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.tomatoMeter)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingtomatoImage">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.tomatoImage)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.tomatoImage)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingtomatoUserMeter">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.tomatoUserMeter)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.tomatoUserMeter)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingtomatoUserImage">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.tomatoUserImage)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.tomatoUserImage)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingimdbRating">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.imdbRating)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.imdbRating)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingimdbImage">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.imdbImage)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.imdbImage)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingpopularRating">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.popularRating)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.popularRating)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingpopularImage">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.popularImage)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.popularImage)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingtmdbRating">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.tmdbRating)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.tmdbRating)]</value>
+    </variable>
+    <variable name="FentasticUnifiedRatingtmdbImage">
+        <value condition="$EXP[FentasticUnifiedPanelLive]">$INFO[Window.Property(fentastic.tmdbImage)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.tmdbImage)]</value>
+    </variable>
 </includes>

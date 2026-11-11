@@ -837,6 +837,7 @@
 						<movement>7</movement>
 						<focusposition>0</focusposition>
 						<onfocus>ClearProperty(fentastic.charcoal.hold,Home)</onfocus>
+						<onfocus>ClearProperty(fentastic.charcoal.panel_transfer,Home)</onfocus>
 						<onfocus>ClearProperty(listposition,home)</onfocus>
 						<onright>SetFocus($INFO[Container(9000).ListItem.Property(menu_id)])</onright>
 						<onup>700</onup>
@@ -1046,59 +1047,15 @@
 					</control>
 				</control>
 
+				<!-- FENTASTIC_SINGLE_PERSISTENT_HOME_PANEL_V1: original 300ms animation, no poster/header visibility toggle. -->
 				<control type="group">
 					<animation effect="slide" time="300" start="-492,0" end="0,0" tween="sine" easing="inout" condition="!String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)">VisibleChange</animation>
 					<width>550</width>
-					<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + !String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
+					<visible>$EXP[FentasticUnifiedPanelAvailable]</visible>
 					<include>OpenClose_Left</include>
 					<include content="FentasticUnifiedHomeInfoPanel" />
-					<!-- <control type="textbox">
-						<left>30</left>
-						<top>467</top>
-						<width>530</width>
-						<height>413</height>
-						<align>center</align>
-						<aligny>center</aligny>
-						<font>font27</font>
-						<textcolor>80FFFFFF</textcolor>
-						<label>$LOCALIZE[19055]</label>
-						<visible>String.IsEmpty(Listitem.Plot) + String.IsEmpty(Listitem.Tagline) + !ListItem.IsCollection + !ListItem.IsParentFolder</visible>
-					</control> -->
 				</control>
 			</control>
-            <!-- FENTASTIC_HOME_UNIFIED_INFO_PANEL_V1: shared rendering with preserved charcoal metadata -->
-            <control type="group">
-                <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + !Skin.HasSetting(TrailerPlaying)</visible>
-                <width>550</width>
-                <include>OpenClose_Left</include>
-                <include content="FentasticUnifiedHomeInfoPanel">
-                    <param name="clearlogo_label" value="$INFO[Window(Home).Property(fentastic.charcoal.clearlogo)]"/>
-                    <param name="item_clearlogo" value="Window(Home).Property(fentastic.charcoal.clearlogo)"/>
-                    <param name="title_label" value="$INFO[Window(Home).Property(fentastic.charcoal.title)]"/>
-                    <param name="info_plain_label" value="$VAR[FentasticCharcoalPlainSource]"/>
-                    <param name="info_episode_label" value="$VAR[FentasticCharcoalEpisodeSource]"/>
-                    <param name="season" value="Window(Home).Property(fentastic.charcoal.season)"/>
-                    <param name="episode" value="Window(Home).Property(fentastic.charcoal.episode)"/>
-                    <param name="dbtype" value="Window(Home).Property(fentastic.charcoal.dbtype)"/>
-                    <param name="dbtype_episode" value="Window(Home).Property(fentastic.charcoal.dbtype)"/>
-                    <param name="info_top_label" value="$VAR[FentasticCharcoalTopSource]"/>
-                    <param name="info_bottom_label" value="$VAR[FentasticCharcoalPlotSource]"/>
-                    <param name="genre" value="Window(Home).Property(fentastic.charcoal.genre)"/>
-                    <param name="cache_item" value="Window(Home).Property(fentastic.charcoal.cache_item)"/>
-                    <param name="metascore" value="Window(Home).Property(fentastic.charcoal.metascore)"/>
-                    <param name="metascoreImage" value="Window(Home).Property(fentastic.charcoal.metascoreImage)"/>
-                    <param name="tomatoMeter" value="Window(Home).Property(fentastic.charcoal.tomatoMeter)"/>
-                    <param name="tomatoImage" value="Window(Home).Property(fentastic.charcoal.tomatoImage)"/>
-                    <param name="tomatoUserMeter" value="Window(Home).Property(fentastic.charcoal.tomatoUserMeter)"/>
-                    <param name="tomatoUserImage" value="Window(Home).Property(fentastic.charcoal.tomatoUserImage)"/>
-                    <param name="imdbRating" value="Window(Home).Property(fentastic.charcoal.imdbRating)"/>
-                    <param name="imdbImage" value="Window(Home).Property(fentastic.charcoal.imdbImage)"/>
-                    <param name="popularRating" value="Window(Home).Property(fentastic.charcoal.popularRating)"/>
-                    <param name="popularImage" value="Window(Home).Property(fentastic.charcoal.popularImage)"/>
-                    <param name="tmdbRating" value="Window(Home).Property(fentastic.charcoal.tmdbRating)"/>
-                    <param name="tmdbImage" value="Window(Home).Property(fentastic.charcoal.tmdbImage)"/>
-                </include>
-            </control>
 			<control type="group">
 				<depth>DepthBars</depth>
 				<bottom>0</bottom>
