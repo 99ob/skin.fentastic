@@ -16,7 +16,7 @@
         <param name="list_id">0</param>
         <param name="next_header_id">0</param>
         <definition>
-            <ondown>SetFocus($PARAM[next_header_id])</ondown>
+            <ondown>$PARAM[next_header_id]</ondown>
         </definition>
     </include>
     <include name="FentasticHeaderFocusBar">
@@ -70,7 +70,7 @@
                 <label>$PARAM[label]$INFO[Container($PARAM[previous_widget_id]).ListItem.Label,[B] | [/B]]</label>
                 <shadowcolor>text_shadow</shadowcolor>
                 <scroll>true</scroll>
-                <visible>Control.HasFocus($PARAM[list_id]664) + String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
+                <visible>Control.HasFocus($PARAM[list_id]664) + String.EndsWith(System.CurrentControlId,664)</visible>
             </control>
             <!-- LIVE MDbList fields are owned by Helper, not by the list item. -->
             <control type="label">
@@ -85,7 +85,7 @@
                 <orientation>horizontal</orientation>
                 <aligny>center</aligny>
                 <itemgap>25</itemgap>
-                <visible>!Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key)) + [!String.IsEmpty(Window(Home).Property(fentastic.metascore)) | !String.IsEmpty(Window(Home).Property(fentastic.tomatoMeter)) | !String.IsEmpty(Window(Home).Property(fentastic.tomatoUserMeter)) | !String.IsEmpty(Window(Home).Property(fentastic.imdbRating)) | !String.IsEmpty(Window(Home).Property(fentastic.popularRating)) | !String.IsEmpty(Window(Home).Property(fentastic.tmdbRating))] + Control.HasFocus($PARAM[list_id]664) + String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
+                <visible>!Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key)) + [!String.IsEmpty(Window(Home).Property(fentastic.metascore)) | !String.IsEmpty(Window(Home).Property(fentastic.tomatoMeter)) | !String.IsEmpty(Window(Home).Property(fentastic.tomatoUserMeter)) | !String.IsEmpty(Window(Home).Property(fentastic.imdbRating)) | !String.IsEmpty(Window(Home).Property(fentastic.popularRating)) | !String.IsEmpty(Window(Home).Property(fentastic.tmdbRating))] + Control.HasFocus($PARAM[list_id]664) + String.EndsWith(System.CurrentControlId,664)</visible>
                 <control type="grouplist">
                     <width>95</width>
                     <orientation>horizontal</orientation>
