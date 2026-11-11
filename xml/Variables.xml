@@ -441,8 +441,29 @@
 	<variable name="HomeFanartVar">
 		<value condition="Skin.HasSetting(no_fanart)"></value>
 		<value condition="Window.IsActive(musicinformation) | Window.IsActive(movieinformation) | Window.IsActive(addoninformation) | Window.IsActive(pvrguideinfo) | Window.IsActive(pvrrecordinginfo) | Window.IsActive(pictureinfo)">$INFO[Window(home).Property(infobackground)]</value>
+        <!-- FENTASTIC_CHARCOAL_TV_UNIVERSAL_V11_BEGIN -->
+        <value condition="String.IsEqual(System.CurrentControlId,22012664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),22012)">$INFO[Container(22012).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,22012664) + !String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),22012)">$INFO[Container(22011).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,22013664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),22013)">$INFO[Container(22013).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,22013664) + !String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),22013)">$INFO[Container(22012).ListItem.Art(fanart)]</value>
+        <!-- FENTASTIC_CHARCOAL_TV_UNIVERSAL_V11_END -->
+        <!-- FENTASTIC_CHARCOAL_FANART_V10_BEGIN -->
+        <!-- Explicit direction-aware rules: inserted before older header rules. -->
+        <value condition="String.IsEqual(System.CurrentControlId,19012664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19012)">$INFO[Container(19012).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,19012664) + !String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19012)">$INFO[Container(19011).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,19013664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19013)">$INFO[Container(19013).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,19013664) + !String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19013)">$INFO[Container(19012).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,19014664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19014)">$INFO[Container(19014).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,19014664) + !String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19014)">$INFO[Container(19013).ListItem.Art(fanart)]</value>
+        <!-- FENTASTIC_CHARCOAL_FANART_V10_END -->
+		<!-- FENTASTIC_19011_FANART_DIRECT_TEST_20261111 -->
+		<!-- FENTASTIC_CHARCOAL_UNIVERSAL_V9: direct rules moved below -->
         <!-- On charcoal focus, use ONLY its generated direct-widget fanart. -->
-        <value condition="Window.IsActive(Home) + String.EndsWith(System.CurrentControlId,664)">$VAR[FentasticCharcoalFanartMovieWidgets]$VAR[FentasticCharcoalFanartTVShowWidgets]$VAR[FentasticCharcoalFanartCustom1Widgets]$VAR[FentasticCharcoalFanartCustom2Widgets]$VAR[FentasticCharcoalFanartCustom3Widgets]</value>
+        <!-- CHARCOAL_LIVE_FANART_MAP_BEGIN -->
+        <value condition="String.IsEqual(System.CurrentControlId,19013664)">$INFO[Container(19012).ListItem.Art(fanart)]</value>
+        <value condition="String.IsEqual(System.CurrentControlId,19014664)">$INFO[Container(19013).ListItem.Art(fanart)]</value>
+        <!-- CHARCOAL_LIVE_FANART_MAP_END -->
+                <value condition="Window.IsActive(Home) + String.EndsWith(System.CurrentControlId,664)">$VAR[FentasticCharcoalFanartMovieWidgets]$VAR[FentasticCharcoalFanartTVShowWidgets]$VAR[FentasticCharcoalFanartCustom1Widgets]$VAR[FentasticCharcoalFanartCustom2Widgets]$VAR[FentasticCharcoalFanartCustom3Widgets]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Art(fanart))">$INFO[Container.ListItem.Art(fanart)]</value>
 		<value condition="!String.IsEmpty(Container.ListItem.Property(FanartCode))">$INFO[Skin.String(WeatherFanart.path)]$INFO[Container.ListItem.Property(FanartCode)]$INFO[Skin.String(WeatherFanart.ext)]</value>
 		<value condition="!String.IsEmpty(Skin.String(HomeFanart.path)) + Control.HasFocus(804)">$INFO[Skin.String(HomeFanart.path)]power$INFO[Skin.String(HomeFanart.ext)]</value>
