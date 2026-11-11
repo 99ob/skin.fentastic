@@ -2524,11 +2524,12 @@
         <onunfocus>SetProperty(fentastic.charcoal.rating,$ESCINFO[Container($PARAM[list_id]).ListItem.Rating],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.plot,$ESCINFO[Container($PARAM[list_id]).ListItem.Plot],Home)</onunfocus>
         <!-- FENTASTIC_UNIFIED_CHARCOAL_INFO_HANDOFF_V2: preserve original panel formatting on focus loss. -->
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_source_title,$ESCINFO[ListItem.Label],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_top,$ESCVAR[InfoPanelTop],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_bottom,$ESCVAR[InfoPanelBottom],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_plain,$ESCVAR[InfoPanel],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_episode,$ESCVAR[InfoPanelEpisode],Home)</onunfocus>
+        <!-- FENTASTIC_CHARCOAL_PERSISTENT_HANDOFF_GUARD_V1: the preceding Down snapshot wins during header focus transfer. -->
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_source_title,$ESCINFO[ListItem.Label],Home)</onunfocus>
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_top,$ESCVAR[InfoPanelTop],Home)</onunfocus>
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_bottom,$ESCVAR[InfoPanelBottom],Home)</onunfocus>
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_plain,$ESCVAR[InfoPanel],Home)</onunfocus>
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_episode,$ESCVAR[InfoPanelEpisode],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.dbtype,$ESCINFO[Container($PARAM[list_id]).ListItem.DBtype],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.season,$ESCINFO[Container($PARAM[list_id]).ListItem.Season],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.episode,$ESCINFO[Container($PARAM[list_id]).ListItem.Episode],Home)</onunfocus>
@@ -2576,11 +2577,12 @@
         <onunfocus>SetProperty(fentastic.charcoal.rating,$ESCINFO[Container($PARAM[list_id]).ListItem.Rating],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.plot,$ESCINFO[Container($PARAM[list_id]).ListItem.Plot],Home)</onunfocus>
         <!-- FENTASTIC_UNIFIED_CHARCOAL_INFO_HANDOFF_V2: preserve original panel formatting on focus loss. -->
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_source_title,$ESCINFO[ListItem.Label],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_top,$ESCVAR[InfoPanelTop],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_bottom,$ESCVAR[InfoPanelBottom],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_plain,$ESCVAR[InfoPanel],Home)</onunfocus>
-        <onunfocus condition="!String.IsEmpty(ListItem.DBtype)">SetProperty(fentastic.charcoal.info_episode,$ESCVAR[InfoPanelEpisode],Home)</onunfocus>
+        <!-- FENTASTIC_CHARCOAL_PERSISTENT_HANDOFF_GUARD_V1: the preceding Down snapshot wins during header focus transfer. -->
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_source_title,$ESCINFO[ListItem.Label],Home)</onunfocus>
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_top,$ESCVAR[InfoPanelTop],Home)</onunfocus>
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_bottom,$ESCVAR[InfoPanelBottom],Home)</onunfocus>
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_plain,$ESCVAR[InfoPanel],Home)</onunfocus>
+        <onunfocus condition="!String.IsEmpty(ListItem.DBtype) + !String.IsEqual(Window(Home).Property(fentastic.charcoal.panel_transfer),yes)">SetProperty(fentastic.charcoal.info_episode,$ESCVAR[InfoPanelEpisode],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.dbtype,$ESCINFO[Container($PARAM[list_id]).ListItem.DBtype],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.season,$ESCINFO[Container($PARAM[list_id]).ListItem.Season],Home)</onunfocus>
         <onunfocus>SetProperty(fentastic.charcoal.episode,$ESCINFO[Container($PARAM[list_id]).ListItem.Episode],Home)</onunfocus>
