@@ -76,7 +76,7 @@
                 <scroll>true</scroll>
                 <visible>Control.HasFocus($PARAM[list_id]664) + String.EndsWith(System.CurrentControlId,664) + ![[String.IsEqual(System.CurrentControlId,19012664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19012)] | [String.IsEqual(System.CurrentControlId,19013664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19013)] | [String.IsEqual(System.CurrentControlId,19014664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19014)] | [String.IsEqual(System.CurrentControlId,22012664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),22012)] | [String.IsEqual(System.CurrentControlId,22013664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),22013)]]</visible>
             </control>
-            <!-- FENTASTIC_CHARCOAL_UNIVERSAL_V9 title for 19012664 -->
+            <!-- FENTASTIC_CHARCOAL_UNIVERSAL_V9: directional movie title for 19012664 -->
             <control type="label">
                 <width max="695">auto</width>
                 <label>$PARAM[label]$INFO[Container(19012).ListItem.Label,[B] | [/B]]</label>
@@ -84,7 +84,7 @@
                 <scroll>true</scroll>
                 <visible>Control.HasFocus($PARAM[list_id]664) + String.EndsWith(System.CurrentControlId,664) + [String.IsEqual(System.CurrentControlId,19012664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19012)]</visible>
             </control>
-            <!-- FENTASTIC_CHARCOAL_UNIVERSAL_V9 title for 19013664 -->
+            <!-- FENTASTIC_CHARCOAL_UNIVERSAL_V9: directional movie title for 19013664 -->
             <control type="label">
                 <width max="695">auto</width>
                 <label>$PARAM[label]$INFO[Container(19013).ListItem.Label,[B] | [/B]]</label>
@@ -92,7 +92,7 @@
                 <scroll>true</scroll>
                 <visible>Control.HasFocus($PARAM[list_id]664) + String.EndsWith(System.CurrentControlId,664) + [String.IsEqual(System.CurrentControlId,19013664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19013)]</visible>
             </control>
-            <!-- FENTASTIC_CHARCOAL_UNIVERSAL_V9 title for 19014664 -->
+            <!-- FENTASTIC_CHARCOAL_UNIVERSAL_V9: directional movie title for 19014664 -->
             <control type="label">
                 <width max="695">auto</width>
                 <label>$PARAM[label]$INFO[Container(19014).ListItem.Label,[B] | [/B]]</label>
@@ -100,7 +100,7 @@
                 <scroll>true</scroll>
                 <visible>Control.HasFocus($PARAM[list_id]664) + String.EndsWith(System.CurrentControlId,664) + [String.IsEqual(System.CurrentControlId,19014664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),19014)]</visible>
             </control>
-            <!-- FENTASTIC_CHARCOAL_TV_UNIVERSAL_V11: title for 22012664 -->
+            <!-- FENTASTIC_CHARCOAL_TV_UNIVERSAL_V11: directional TV title for 22012664 -->
             <control type="label">
                 <width max="695">auto</width>
                 <label>$PARAM[label]$INFO[Container(22012).ListItem.Label,[B] | [/B]]</label>
@@ -108,7 +108,7 @@
                 <scroll>true</scroll>
                 <visible>Control.HasFocus($PARAM[list_id]664) + String.EndsWith(System.CurrentControlId,664) + [String.IsEqual(System.CurrentControlId,22012664) + String.IsEqual(Window(Home).Property(fentastic.diag.v7.last_list),22012)]</visible>
             </control>
-            <!-- FENTASTIC_CHARCOAL_TV_UNIVERSAL_V11: title for 22013664 -->
+            <!-- FENTASTIC_CHARCOAL_TV_UNIVERSAL_V11: directional TV title for 22013664 -->
             <control type="label">
                 <width max="695">auto</width>
                 <label>$PARAM[label]$INFO[Container(22013).ListItem.Label,[B] | [/B]]</label>
@@ -771,7 +771,7 @@
 				<param name="posy" value="240"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -840,7 +840,7 @@
 				<param name="posy" value="290"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<visible>$PARAM[visible]</visible>
@@ -905,7 +905,7 @@
 				<param name="list_id" value="$PARAM[list_id]" />
 			</include>
       <control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
         <left>0</left>
@@ -970,7 +970,7 @@
 				<param name="list_id" value="$PARAM[list_id]" />
 			</include>
       <control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<visible>$PARAM[visible]</visible>
@@ -1035,7 +1035,7 @@
 				<param name="posy" value="185"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -1101,7 +1101,7 @@
 				<param name="posy" value="185"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -1166,7 +1166,7 @@
 				<param name="list_id" value="$PARAM[list_id]" />
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -1230,7 +1230,7 @@
 				<param name="list_id" value="$PARAM[list_id]" />
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -1303,7 +1303,7 @@
 			</include>
 			<!-- Widget Height Spacing -->
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
@@ -1386,7 +1386,7 @@
 			</include>
 			<!-- Widget Height Spacing -->
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
@@ -1468,7 +1468,7 @@
 			</include>
 			<!-- Widget Height Spacing -->
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -1548,7 +1548,7 @@
 			</include>
 			<!-- Widget Height Spacing -->
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -1628,7 +1628,7 @@
 				<param name="posy" value="140"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -1781,7 +1781,7 @@
 				<param name="list_id" value="$PARAM[list_id]" />
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -1978,7 +1978,7 @@
 				<param name="visible" value="$PARAM[visible]"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -2044,7 +2044,7 @@
 				<param name="posy" value="200"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
@@ -2227,7 +2227,7 @@
 				<param name="visible" value="$PARAM[visible]"/>
 			</include>
 			<control type="fixedlist" id="$PARAM[list_id]">
-        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: diagnostic-only, unconditional actual-control callback. -->
+        <!-- FENTASTIC_FOCUS_EVENT_V7_ACTUAL_LIST: production last-focused-row tracking for directional headers. -->
         <onfocus>SetProperty(fentastic.diag.v7.list_event,$PARAM[list_id],Home)</onfocus>
         <onfocus>SetProperty(fentastic.diag.v7.last_list,$PARAM[list_id],Home)</onfocus>
 				<left>0</left>
