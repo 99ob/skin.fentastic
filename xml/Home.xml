@@ -1051,65 +1051,7 @@
 					<width>550</width>
 					<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + !String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes)</visible>
 					<include>OpenClose_Left</include>
-					<control type="image">
-						<left>30</left>
-						<top>50</top>
-						<width>395</width>
-						<height>153</height>
-						<texture background="true">$VAR[ClearlogoVar]</texture>
-						<aspectratio align="center">keep</aspectratio>
-					</control>
-					<control type="textbox">
-						<top>75</top>
-						<left>30</left>
-						<width>430</width>
-						<aligny>center</aligny>
-						<height>98</height>
-						<font>font36_title</font>
-						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
-					</control>
-					<control type="group">
-						<visible>Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))</visible>
-						<control type="textbox">
-							<left>30</left>
-							<top>239</top>
-							<width>410</width>
-							<bottom>60</bottom>
-							<label>$VAR[InfoPanel]</label>
-							<textcolor>unfocused_text</textcolor>
-							<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-						</control>
-						<control type="textbox">
-							<left>30</left>
-							<top>323</top>
-							<width>410</width>
-							<bottom>60</bottom>
-							<label>$VAR[InfoPanelEpisode]</label>
-							<textcolor>unfocused_text</textcolor>
-							<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-						</control>
-						<control type="textbox">
-							<left>30</left>
-							<top>213</top>
-							<width>410</width>
-							<aligny>center</aligny>
-							<height>110</height>
-							<bottom>60</bottom>
-							<font>font36_title</font>
-							<label>Season $INFO[ListItem.Season], Episode $INFO[ListItem.Episode]</label>
-							<visible>String.IsEqual(ListItem.DbType,episode)</visible>
-						</control>
-					</control>
-					<include condition="![Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))]" content="RatingsInfoPanel">
-						<param name="left" value="30" />
-						<param name="width" value="410" />
-						<param name="top" value="239" />
-						<param name="ratings_spacing" value="7" />
-						<param name="height_noalt" value="460" />
-						<param name="height_alt_movie" value="330" />
-						<param name="height_alt_tvshow" value="290" />
-					</include>
+					<include content="FentasticUnifiedHomeInfoPanel" />
 					<!-- <control type="textbox">
 						<left>30</left>
 						<top>467</top>
@@ -1124,233 +1066,38 @@
 					</control> -->
 				</control>
 			</control>
-            <!-- FENTASTIC_CHARCOAL_RATINGS_LAYOUT_V5: auto-height info + snapshot ratings; normal focus untouched -->
+            <!-- FENTASTIC_HOME_UNIFIED_INFO_PANEL_V1: shared rendering with preserved charcoal metadata -->
             <control type="group">
                 <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + !Skin.HasSetting(TrailerPlaying)</visible>
                 <width>550</width>
                 <include>OpenClose_Left</include>
-                <control type="image">
-                    <left>30</left>
-                    <top>50</top>
-                    <width>395</width>
-                    <height>153</height>
-                    <texture background="true">$INFO[Window(Home).Property(fentastic.charcoal.clearlogo)]</texture>
-                    <aspectratio align="center">keep</aspectratio>
-                    <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.clearlogo))</visible>
-                </control>
-                <control type="textbox">
-                    <left>30</left>
-                    <top>75</top>
-                    <width>430</width>
-                    <height>98</height>
-                    <font>font36_title</font>
-                    <aligny>center</aligny>
-                    <label>$INFO[Window(Home).Property(fentastic.charcoal.title)]</label>
-                    <visible>String.IsEmpty(Window(Home).Property(fentastic.charcoal.clearlogo))</visible>
-                </control>
-                <!-- FENTASTIC_CHARCOAL_EXACT_INFO_SNAPSHOT_TEST_V1: mirror normal no-ratings textbox. -->
-                <control type="textbox">
-                    <left>30</left>
-                    <top>239</top>
-                    <width>410</width>
-                    <bottom>60</bottom>
-                    <label>$INFO[Window(Home).Property(fentastic.charcoal.info_plain)]</label>
-                    <textcolor>unfocused_text</textcolor>
-                    <autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-                    <visible>[Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))] + !String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)</visible>
-                </control>
-                <control type="textbox">
-                    <left>30</left>
-                    <top>323</top>
-                    <width>410</width>
-                    <bottom>60</bottom>
-                    <label>$INFO[Window(Home).Property(fentastic.charcoal.info_episode)]</label>
-                    <textcolor>unfocused_text</textcolor>
-                    <autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-                    <visible>[Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))] + String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)</visible>
-                </control>
-                <control type="textbox">
-                    <left>30</left>
-                    <top>213</top>
-                    <width>410</width>
-                    <height>110</height>
-                    <font>font36_title</font>
-                    <aligny>center</aligny>
-                    <bottom>60</bottom>
-                    <label>Season $INFO[Window(Home).Property(fentastic.charcoal.season)], Episode $INFO[Window(Home).Property(fentastic.charcoal.episode)]</label>
-                    <visible>[Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))] + String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)</visible>
-                </control>
-                <control type="grouplist">
-                    <left>30</left>
-                    <top>239</top>
-                    <width>410</width>
-                    <visible>!Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key))</visible>
-                    <orientation>vertical</orientation>
-                    <itemgap>13</itemgap>
-                    <control type="textbox">
-                        <height>auto</height>
-                        <font>font36_title</font>
-                        <label>Season $INFO[Window(Home).Property(fentastic.charcoal.season)], Episode $INFO[Window(Home).Property(fentastic.charcoal.episode)]</label>
-                        <textcolor>unfocused_text</textcolor>
-                        <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)</visible>
-                    </control>
-                    <control type="textbox">
-                        <height>auto</height>
-                        <label>$INFO[Window(Home).Property(fentastic.charcoal.info_top)]</label>
-                        <textcolor>unfocused_text</textcolor>
-                    </control>
-                    <control type="grouplist">
-                        <orientation>horizontal</orientation>
-                        <aligny>center</aligny>
-                        <itemgap>7</itemgap>
-                        <height>90</height>
-                        <visible>[String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),movie) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),tvshow) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),season) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)] + [!String.IsEmpty(Window(Home).Property(fentastic.charcoal.genre)) | String.IsEqual(Window(Home).Property(fentastic.charcoal.cache_item),true)]</visible>
-                        <control type="grouplist">
-                            <width>60</width>
-                            <orientation>vertical</orientation>
-                            <itemgap>5</itemgap>
-                            <align>center</align>
-                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.metascore)) + !Skin.HasSetting(Disable.MetacriticRating)</visible>
-                            <control type="image">
-                                <width>60</width>
-                                <height>36</height>
-                                <aspectratio>keep</aspectratio>
-                                <texture>$INFO[Window(Home).Property(fentastic.charcoal.metascoreImage)]</texture>
-                            </control>
-                            <control type="label">
-                                <width max="60">auto</width>
-                                <height>42</height>
-                                <align>center</align>
-                                <label>$INFO[Window(Home).Property(fentastic.charcoal.metascore)]</label>
-                                <textcolor>unfocused_text</textcolor>
-                            </control>
-                        </control>
-                        <control type="grouplist">
-                            <width>60</width>
-                            <orientation>vertical</orientation>
-                            <itemgap>5</itemgap>
-                            <align>center</align>
-                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.tomatoMeter)) + !Skin.HasSetting(Disable.RTCRating)</visible>
-                            <control type="image">
-                                <width>60</width>
-                                <height>36</height>
-                                <aspectratio>keep</aspectratio>
-                                <texture>$INFO[Window(Home).Property(fentastic.charcoal.tomatoImage)]</texture>
-                            </control>
-                            <control type="label">
-                                <width max="60">auto</width>
-                                <height>42</height>
-                                <align>center</align>
-                                <label>$INFO[Window(Home).Property(fentastic.charcoal.tomatoMeter)]</label>
-                                <textcolor>unfocused_text</textcolor>
-                            </control>
-                        </control>
-                        <control type="grouplist">
-                            <width>60</width>
-                            <orientation>vertical</orientation>
-                            <itemgap>5</itemgap>
-                            <align>center</align>
-                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.tomatoUserMeter)) + !Skin.HasSetting(Disable.RTARating)</visible>
-                            <control type="image">
-                                <width>60</width>
-                                <height>36</height>
-                                <aspectratio>keep</aspectratio>
-                                <texture>$INFO[Window(Home).Property(fentastic.charcoal.tomatoUserImage)]</texture>
-                            </control>
-                            <control type="label">
-                                <width max="60">auto</width>
-                                <height>42</height>
-                                <align>center</align>
-                                <label>$INFO[Window(Home).Property(fentastic.charcoal.tomatoUserMeter)]</label>
-                                <textcolor>unfocused_text</textcolor>
-                            </control>
-                        </control>
-                        <control type="grouplist">
-                            <width>60</width>
-                            <orientation>vertical</orientation>
-                            <itemgap>5</itemgap>
-                            <align>center</align>
-                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.imdbRating)) + !Skin.HasSetting(Disable.IMDbRating)</visible>
-                            <control type="image">
-                                <width>60</width>
-                                <height>36</height>
-                                <aspectratio>keep</aspectratio>
-                                <texture>$INFO[Window(Home).Property(fentastic.charcoal.imdbImage)]</texture>
-                            </control>
-                            <control type="label">
-                                <width max="60">auto</width>
-                                <height>42</height>
-                                <align>center</align>
-                                <label>$INFO[Window(Home).Property(fentastic.charcoal.imdbRating)]</label>
-                                <textcolor>unfocused_text</textcolor>
-                            </control>
-                        </control>
-                        <control type="grouplist">
-                            <width>77</width>
-                            <orientation>vertical</orientation>
-                            <itemgap>5</itemgap>
-                            <align>center</align>
-                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.popularRating)) + !Skin.HasSetting(Disable.IMDbPopularRating)</visible>
-                            <control type="image">
-                                <width>87</width>
-                                <height>36</height>
-                                <aspectratio>keep</aspectratio>
-                                <texture>$INFO[Window(Home).Property(fentastic.charcoal.popularImage)]</texture>
-                            </control>
-                            <control type="label">
-                                <width max="87">auto</width>
-                                <height>42</height>
-                                <align>center</align>
-                                <label>$INFO[Window(Home).Property(fentastic.charcoal.popularRating)]</label>
-                                <textcolor>unfocused_text</textcolor>
-                            </control>
-                        </control>
-                        <control type="grouplist">
-                            <width>65</width>
-                            <orientation>vertical</orientation>
-                            <itemgap>5</itemgap>
-                            <align>center</align>
-                            <visible>!String.IsEmpty(Window(Home).Property(fentastic.charcoal.tmdbRating)) + !Skin.HasSetting(Disable.TMDbRating)</visible>
-                            <control type="image">
-                                <width>65</width>
-                                <height>33</height>
-                                <aspectratio>keep</aspectratio>
-                                <texture>$INFO[Window(Home).Property(fentastic.charcoal.tmdbImage)]</texture>
-                            </control>
-                            <control type="label">
-                                <width max="65">auto</width>
-                                <height>42</height>
-                                <align>center</align>
-                                <label>$INFO[Window(Home).Property(fentastic.charcoal.tmdbRating)]</label>
-                                <textcolor>unfocused_text</textcolor>
-                            </control>
-                        </control>
-                    </control>
-                    <control type="textbox">
-                        <height max="460">auto</height>
-                        <bottom>70</bottom>
-                        <label>$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]</label>
-                        <textcolor>unfocused_text</textcolor>
-                        <autoscroll delay="7000" time="2000" repeat="7000">Skin.HasSetting(autoscroll)</autoscroll>
-                        <visible>!Skin.HasSetting(Enable.AlternateInfo)</visible>
-                    </control>
-                    <control type="textbox">
-                        <height max="330">auto</height>
-                        <bottom>70</bottom>
-                        <label>$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]</label>
-                        <textcolor>unfocused_text</textcolor>
-                        <autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
-                        <visible>Skin.HasSetting(Enable.AlternateInfo) + [String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),movie) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),season)]</visible>
-                    </control>
-                    <control type="textbox">
-                        <height max="290">auto</height>
-                        <bottom>70</bottom>
-                        <label>$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]</label>
-                        <textcolor>unfocused_text</textcolor>
-                        <autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
-                        <visible>Skin.HasSetting(Enable.AlternateInfo) + String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),tvshow)</visible>
-                    </control>
-                </control>
+                <include content="FentasticUnifiedHomeInfoPanel">
+                    <param name="clearlogo_label" value="$INFO[Window(Home).Property(fentastic.charcoal.clearlogo)]"/>
+                    <param name="item_clearlogo" value="Window(Home).Property(fentastic.charcoal.clearlogo)"/>
+                    <param name="title_label" value="$INFO[Window(Home).Property(fentastic.charcoal.title)]"/>
+                    <param name="info_plain_label" value="$INFO[Window(Home).Property(fentastic.charcoal.info_plain)]"/>
+                    <param name="info_episode_label" value="$INFO[Window(Home).Property(fentastic.charcoal.info_episode)]"/>
+                    <param name="season" value="Window(Home).Property(fentastic.charcoal.season)"/>
+                    <param name="episode" value="Window(Home).Property(fentastic.charcoal.episode)"/>
+                    <param name="dbtype" value="Window(Home).Property(fentastic.charcoal.dbtype)"/>
+                    <param name="dbtype_episode" value="Window(Home).Property(fentastic.charcoal.dbtype)"/>
+                    <param name="info_top_label" value="$INFO[Window(Home).Property(fentastic.charcoal.info_top)]"/>
+                    <param name="info_bottom_label" value="$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]"/>
+                    <param name="genre" value="Window(Home).Property(fentastic.charcoal.genre)"/>
+                    <param name="cache_item" value="Window(Home).Property(fentastic.charcoal.cache_item)"/>
+                    <param name="metascore" value="Window(Home).Property(fentastic.charcoal.metascore)"/>
+                    <param name="metascoreImage" value="Window(Home).Property(fentastic.charcoal.metascoreImage)"/>
+                    <param name="tomatoMeter" value="Window(Home).Property(fentastic.charcoal.tomatoMeter)"/>
+                    <param name="tomatoImage" value="Window(Home).Property(fentastic.charcoal.tomatoImage)"/>
+                    <param name="tomatoUserMeter" value="Window(Home).Property(fentastic.charcoal.tomatoUserMeter)"/>
+                    <param name="tomatoUserImage" value="Window(Home).Property(fentastic.charcoal.tomatoUserImage)"/>
+                    <param name="imdbRating" value="Window(Home).Property(fentastic.charcoal.imdbRating)"/>
+                    <param name="imdbImage" value="Window(Home).Property(fentastic.charcoal.imdbImage)"/>
+                    <param name="popularRating" value="Window(Home).Property(fentastic.charcoal.popularRating)"/>
+                    <param name="popularImage" value="Window(Home).Property(fentastic.charcoal.popularImage)"/>
+                    <param name="tmdbRating" value="Window(Home).Property(fentastic.charcoal.tmdbRating)"/>
+                    <param name="tmdbImage" value="Window(Home).Property(fentastic.charcoal.tmdbImage)"/>
+                </include>
             </control>
 			<control type="group">
 				<depth>DepthBars</depth>

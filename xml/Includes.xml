@@ -1753,6 +1753,27 @@
 	</include>
 
 	<include name="RatingsInfoPanel">
+		<param name="dbtype" default="ListItem.DBtype"/>
+		<param name="dbtype_episode" default="ListItem.DbType"/>
+		<param name="season" default="ListItem.Season"/>
+		<param name="episode" default="ListItem.Episode"/>
+		<param name="info_top_label" default="$VAR[InfoPanelTop]"/>
+		<param name="info_bottom_label" default="$VAR[InfoPanelBottom]"/>
+		<param name="genre" default="ListItem.Genre"/>
+		<param name="cache_item" default="ListItem.Property(fentastic.cache_item)"/>
+		<param name="metascore" default="Window.Property(fentastic.metascore)"/>
+		<param name="metascoreImage" default="Window.Property(fentastic.metascoreImage)"/>
+		<param name="tomatoMeter" default="Window.Property(fentastic.tomatoMeter)"/>
+		<param name="tomatoImage" default="Window.Property(fentastic.tomatoImage)"/>
+		<param name="tomatoUserMeter" default="Window.Property(fentastic.tomatoUserMeter)"/>
+		<param name="tomatoUserImage" default="Window.Property(fentastic.tomatoUserImage)"/>
+		<param name="imdbRating" default="Window.Property(fentastic.imdbRating)"/>
+		<param name="imdbImage" default="Window.Property(fentastic.imdbImage)"/>
+		<param name="popularRating" default="Window.Property(fentastic.popularRating)"/>
+		<param name="popularImage" default="Window.Property(fentastic.popularImage)"/>
+		<param name="tmdbRating" default="Window.Property(fentastic.tmdbRating)"/>
+		<param name="tmdbImage" default="Window.Property(fentastic.tmdbImage)"/>
+		<definition>
 		<control type="grouplist">
 			<left>$PARAM[left]</left>
 			<width>$PARAM[width]</width>
@@ -1762,13 +1783,13 @@
 			<control type="textbox">
 				<height>auto</height>
 				<font>font36_title</font>
-				<label>Season $INFO[ListItem.Season], Episode $INFO[ListItem.Episode]</label>
+				<label>Season $INFO[$PARAM[season]], Episode $INFO[$PARAM[episode]]</label>
 				<textcolor>unfocused_text</textcolor>
-				<visible>String.IsEqual(ListItem.DbType,episode)</visible>
+				<visible>String.IsEqual($PARAM[dbtype_episode],episode)</visible>
 			</control>
 			<control type="textbox">
 				<height>auto</height>
-				<label>$VAR[InfoPanelTop]</label>
+				<label>$PARAM[info_top_label]</label>
 				<textcolor>unfocused_text</textcolor>
 			</control>
 			<control type="grouplist">
@@ -1776,27 +1797,27 @@
 				<orientation>horizontal</orientation>
 				<itemgap>$PARAM[ratings_spacing]</itemgap>
 				<aligny>center</aligny>
-				<visible>[String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,tvshow) | String.IsEqual(ListItem.DBtype,season) | String.IsEqual(ListItem.DBtype,episode)] + [!String.IsEmpty(ListItem.Genre) | String.IsEqual(ListItem.Property(fentastic.cache_item),true)]</visible>
+				<visible>[String.IsEqual($PARAM[dbtype],movie) | String.IsEqual($PARAM[dbtype],tvshow) | String.IsEqual($PARAM[dbtype],season) | String.IsEqual($PARAM[dbtype],episode)] + [!String.IsEmpty($PARAM[genre]) | String.IsEqual($PARAM[cache_item],true)]</visible>
 				<control type="grouplist">
 					<width>60</width>
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>![String.IsEmpty(Window.Property(fentastic.metascore)) | Skin.HasSetting(Disable.MetacriticRating)]</visible>
+					<visible>![String.IsEmpty($PARAM[metascore]) | Skin.HasSetting(Disable.MetacriticRating)]</visible>
 					<control type="image">
 						<width>60</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$INFO[Window.Property(fentastic.metascoreImage)]</texture>
+						<texture>$INFO[$PARAM[metascoreImage]]</texture>
 					</control>
 					<control type="label">
 						<width max="60">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$INFO[Window.Property(fentastic.metascore)]</label>
+						<label>$INFO[$PARAM[metascore]]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1805,21 +1826,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>![String.IsEmpty(Window.Property(fentastic.tomatoMeter)) | Skin.HasSetting(Disable.RTCRating)]</visible>
+					<visible>![String.IsEmpty($PARAM[tomatoMeter]) | Skin.HasSetting(Disable.RTCRating)]</visible>
 					<control type="image">
 						<width>60</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$INFO[Window.Property(fentastic.tomatoImage)]</texture>
+						<texture>$INFO[$PARAM[tomatoImage]]</texture>
 					</control>
 					<control type="label">
 						<width max="60">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$INFO[Window.Property(fentastic.tomatoMeter)]</label>
+						<label>$INFO[$PARAM[tomatoMeter]]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1828,21 +1849,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>![String.IsEmpty(Window.Property(fentastic.tomatoUserMeter)) | Skin.HasSetting(Disable.RTARating)]</visible>
+					<visible>![String.IsEmpty($PARAM[tomatoUserMeter]) | Skin.HasSetting(Disable.RTARating)]</visible>
 					<control type="image">
 						<width>60</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$INFO[Window.Property(fentastic.tomatoUserImage)]</texture>
+						<texture>$INFO[$PARAM[tomatoUserImage]]</texture>
 					</control>
 					<control type="label">
 						<width max="60">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$INFO[Window.Property(fentastic.tomatoUserMeter)]</label>
+						<label>$INFO[$PARAM[tomatoUserMeter]]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1851,21 +1872,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>![String.IsEmpty(Window.Property(fentastic.imdbRating)) | Skin.HasSetting(Disable.IMDbRating)]</visible>
+					<visible>![String.IsEmpty($PARAM[imdbRating]) | Skin.HasSetting(Disable.IMDbRating)]</visible>
 					<control type="image">
 						<width>60</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$INFO[Window.Property(fentastic.imdbImage)]</texture>
+						<texture>$INFO[$PARAM[imdbImage]]</texture>
 					</control>
 					<control type="label">
 						<width max="60">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$INFO[Window.Property(fentastic.imdbRating)]</label>
+						<label>$INFO[$PARAM[imdbRating]]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1874,21 +1895,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>5</itemgap>
 					<align>center</align>
-					<visible>![String.IsEmpty(Window.Property(fentastic.popularRating)) | Skin.HasSetting(Disable.IMDbPopularRating)]</visible>
+					<visible>![String.IsEmpty($PARAM[popularRating]) | Skin.HasSetting(Disable.IMDbPopularRating)]</visible>
 					<control type="image">
 						<width>87</width>
 						<height>36</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$INFO[Window.Property(fentastic.popularImage)]</texture>
+						<texture>$INFO[$PARAM[popularImage]]</texture>
 					</control>
 					<control type="label">
 						<width max="87">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$INFO[Window.Property(fentastic.popularRating)]</label>
+						<label>$INFO[$PARAM[popularRating]]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1897,21 +1918,21 @@
 					<orientation>vertical</orientation>
 					<itemgap>8</itemgap>
 					<align>center</align>
-					<visible>![String.IsEmpty(Window.Property(fentastic.tmdbRating)) | Skin.HasSetting(Disable.TMDbRating)]</visible>
+					<visible>![String.IsEmpty($PARAM[tmdbRating]) | Skin.HasSetting(Disable.TMDbRating)]</visible>
 					<control type="image">
 						<width>65</width>
 						<height>33</height>
 						<aspectratio>keep</aspectratio>
 						<align>center</align>
 						<aligny>center</aligny>
-						<texture>$INFO[Window.Property(fentastic.tmdbImage)]</texture>
+						<texture>$INFO[$PARAM[tmdbImage]]</texture>
 					</control>
 					<control type="label">
 						<width max="65">auto</width>
 						<height>42</height>
 						<align>center</align>
 						<aligny>center</aligny>
-						<label>$INFO[Window.Property(fentastic.tmdbRating)]</label>
+						<label>$INFO[$PARAM[tmdbRating]]</label>
 						<textcolor>unfocused_text</textcolor>
 					</control>
 				</control>
@@ -1919,7 +1940,7 @@
 			<control type="textbox">
 				<height max="$PARAM[height_noalt]">auto</height>
 				<bottom>70</bottom>
-				<label>$VAR[InfoPanelBottom]</label>
+				<label>$PARAM[info_bottom_label]</label>
 				<textcolor>unfocused_text</textcolor>
 				<autoscroll delay="7000" time="2000" repeat="7000">Skin.HasSetting(autoscroll)</autoscroll>
 				<visible>!Skin.HasSetting(Enable.AlternateInfo)</visible>
@@ -1927,20 +1948,131 @@
 			<control type="textbox">
 				<height max="$PARAM[height_alt_movie]">auto</height>
 				<bottom>70</bottom>
-				<label>$VAR[InfoPanelBottom]</label>
+				<label>$PARAM[info_bottom_label]</label>
 				<textcolor>unfocused_text</textcolor>
 				<autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
-				<visible>Skin.HasSetting(Enable.AlternateInfo) + [String.IsEqual(ListItem.DBtype,movie) | String.IsEqual(ListItem.DBtype,episode) | String.IsEqual(ListItem.DBtype,season)]</visible>
+				<visible>Skin.HasSetting(Enable.AlternateInfo) + [String.IsEqual($PARAM[dbtype],movie) | String.IsEqual($PARAM[dbtype],episode) | String.IsEqual($PARAM[dbtype],season)]</visible>
 			</control>
 			<control type="textbox">
 				<height max="$PARAM[height_alt_tvshow]">auto</height>
 				<bottom>70</bottom>
-				<label>$VAR[InfoPanelBottom]</label>
+				<label>$PARAM[info_bottom_label]</label>
 				<textcolor>unfocused_text</textcolor>
 				<autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
-				<visible>Skin.HasSetting(Enable.AlternateInfo) + String.IsEqual(ListItem.DBtype,tvshow)</visible>
+				<visible>Skin.HasSetting(Enable.AlternateInfo) + String.IsEqual($PARAM[dbtype],tvshow)</visible>
 			</control>
 		</control>
+		</definition>
 	</include>
 	
+	<!-- FENTASTIC_HOME_UNIFIED_INFO_PANEL_V1: one Home information-panel layout, with live/snapshot inputs. -->
+	<include name="FentasticUnifiedHomeInfoPanel">
+		<param name="clearlogo_label" default="$VAR[ClearlogoVar]"/>
+		<param name="item_clearlogo" default="ListItem.Art(clearlogo)"/>
+		<param name="title_label" default="$INFO[ListItem.Label]"/>
+		<param name="info_plain_label" default="$VAR[InfoPanel]"/>
+		<param name="info_episode_label" default="$VAR[InfoPanelEpisode]"/>
+		<param name="season" default="ListItem.Season"/>
+		<param name="episode" default="ListItem.Episode"/>
+		<param name="dbtype" default="ListItem.DBtype"/>
+		<param name="dbtype_episode" default="ListItem.DbType"/>
+		<param name="info_top_label" default="$VAR[InfoPanelTop]"/>
+		<param name="info_bottom_label" default="$VAR[InfoPanelBottom]"/>
+		<param name="genre" default="ListItem.Genre"/>
+		<param name="cache_item" default="ListItem.Property(fentastic.cache_item)"/>
+		<param name="metascore" default="Window.Property(fentastic.metascore)"/>
+		<param name="metascoreImage" default="Window.Property(fentastic.metascoreImage)"/>
+		<param name="tomatoMeter" default="Window.Property(fentastic.tomatoMeter)"/>
+		<param name="tomatoImage" default="Window.Property(fentastic.tomatoImage)"/>
+		<param name="tomatoUserMeter" default="Window.Property(fentastic.tomatoUserMeter)"/>
+		<param name="tomatoUserImage" default="Window.Property(fentastic.tomatoUserImage)"/>
+		<param name="imdbRating" default="Window.Property(fentastic.imdbRating)"/>
+		<param name="imdbImage" default="Window.Property(fentastic.imdbImage)"/>
+		<param name="popularRating" default="Window.Property(fentastic.popularRating)"/>
+		<param name="popularImage" default="Window.Property(fentastic.popularImage)"/>
+		<param name="tmdbRating" default="Window.Property(fentastic.tmdbRating)"/>
+		<param name="tmdbImage" default="Window.Property(fentastic.tmdbImage)"/>
+		<definition>
+					<control type="image">
+						<left>30</left>
+						<top>50</top>
+						<width>395</width>
+						<height>153</height>
+						<texture background="true">$PARAM[clearlogo_label]</texture>
+						<aspectratio align="center">keep</aspectratio>
+					</control>
+					<control type="textbox">
+						<top>75</top>
+						<left>30</left>
+						<width>430</width>
+						<aligny>center</aligny>
+						<height>98</height>
+						<font>font36_title</font>
+						<label>$PARAM[title_label]</label>
+						<visible>String.IsEmpty($PARAM[item_clearlogo])</visible>
+					</control>
+					<control type="group">
+						<visible>Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))</visible>
+						<control type="textbox">
+							<left>30</left>
+							<top>239</top>
+							<width>410</width>
+							<bottom>60</bottom>
+							<label>$PARAM[info_plain_label]</label>
+							<textcolor>unfocused_text</textcolor>
+							<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
+						</control>
+						<control type="textbox">
+							<left>30</left>
+							<top>323</top>
+							<width>410</width>
+							<bottom>60</bottom>
+							<label>$PARAM[info_episode_label]</label>
+							<textcolor>unfocused_text</textcolor>
+							<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
+						</control>
+						<control type="textbox">
+							<left>30</left>
+							<top>213</top>
+							<width>410</width>
+							<aligny>center</aligny>
+							<height>110</height>
+							<bottom>60</bottom>
+							<font>font36_title</font>
+							<label>Season $INFO[$PARAM[season]], Episode $INFO[$PARAM[episode]]</label>
+							<visible>String.IsEqual($PARAM[dbtype_episode],episode)</visible>
+						</control>
+					</control>
+					<include condition="![Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))]" content="RatingsInfoPanel">
+						<param name="left" value="30" />
+						<param name="width" value="410" />
+						<param name="top" value="239" />
+						<param name="ratings_spacing" value="7" />
+						<param name="height_noalt" value="460" />
+						<param name="height_alt_movie" value="330" />
+						<param name="height_alt_tvshow" value="290" />
+						<param name="dbtype" value="$PARAM[dbtype]" />
+						<param name="dbtype_episode" value="$PARAM[dbtype_episode]" />
+						<param name="season" value="$PARAM[season]" />
+						<param name="episode" value="$PARAM[episode]" />
+						<param name="info_top_label" value="$PARAM[info_top_label]" />
+						<param name="info_bottom_label" value="$PARAM[info_bottom_label]" />
+						<param name="genre" value="$PARAM[genre]" />
+						<param name="cache_item" value="$PARAM[cache_item]" />
+						<param name="metascore" value="$PARAM[metascore]" />
+						<param name="metascoreImage" value="$PARAM[metascoreImage]" />
+						<param name="tomatoMeter" value="$PARAM[tomatoMeter]" />
+						<param name="tomatoImage" value="$PARAM[tomatoImage]" />
+						<param name="tomatoUserMeter" value="$PARAM[tomatoUserMeter]" />
+						<param name="tomatoUserImage" value="$PARAM[tomatoUserImage]" />
+						<param name="imdbRating" value="$PARAM[imdbRating]" />
+						<param name="imdbImage" value="$PARAM[imdbImage]" />
+						<param name="popularRating" value="$PARAM[popularRating]" />
+						<param name="popularImage" value="$PARAM[popularImage]" />
+						<param name="tmdbRating" value="$PARAM[tmdbRating]" />
+						<param name="tmdbImage" value="$PARAM[tmdbImage]" />
+					</include>
+		</definition>
+	</include>
+
 </includes>
