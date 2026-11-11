@@ -25,6 +25,15 @@
             <ondown>SetProperty(fentastic.charcoal.genre,$ESCINFO[ListItem.Genre],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.director,$ESCINFO[ListItem.Director],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.runtime,$ESCINFO[ListItem.Duration],Home)</ondown>
+            <!-- FENTASTIC_CHARCOAL_EXACT_INFO_SNAPSHOT_TEST_V1: capture original formatted variables BEFORE losing list focus. -->
+            <ondown>SetProperty(fentastic.charcoal.info_top,$ESCVAR[InfoPanelTop],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.info_bottom,$ESCVAR[InfoPanelBottom],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.info_plain,$ESCVAR[InfoPanel],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.info_episode,$ESCVAR[InfoPanelEpisode],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.dbtype,$ESCINFO[ListItem.DBtype],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.season,$ESCINFO[ListItem.Season],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.episode,$ESCINFO[ListItem.Episode],Home)</ondown>
+            <ondown>SetProperty(fentastic.charcoal.cache_item,$ESCINFO[ListItem.Property(fentastic.cache_item)],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.rating,$ESCINFO[ListItem.Rating],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.plot,$ESCINFO[ListItem.Plot],Home)</ondown>
             <ondown>SetProperty(fentastic.charcoal.plotoutline,$ESCINFO[ListItem.PlotOutline],Home)</ondown>

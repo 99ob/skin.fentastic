@@ -1148,15 +1148,55 @@
                     <label>$INFO[Window(Home).Property(fentastic.charcoal.title)]</label>
                     <visible>String.IsEmpty(Window(Home).Property(fentastic.charcoal.clearlogo))</visible>
                 </control>
+                <!-- FENTASTIC_CHARCOAL_EXACT_INFO_SNAPSHOT_TEST_V1: mirror normal no-ratings textbox. -->
+                <control type="textbox">
+                    <left>30</left>
+                    <top>239</top>
+                    <width>410</width>
+                    <bottom>60</bottom>
+                    <label>$INFO[Window(Home).Property(fentastic.charcoal.info_plain)]</label>
+                    <textcolor>unfocused_text</textcolor>
+                    <autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
+                    <visible>[Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))] + !String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)</visible>
+                </control>
+                <control type="textbox">
+                    <left>30</left>
+                    <top>323</top>
+                    <width>410</width>
+                    <bottom>60</bottom>
+                    <label>$INFO[Window(Home).Property(fentastic.charcoal.info_episode)]</label>
+                    <textcolor>unfocused_text</textcolor>
+                    <autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
+                    <visible>[Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))] + String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)</visible>
+                </control>
+                <control type="textbox">
+                    <left>30</left>
+                    <top>213</top>
+                    <width>410</width>
+                    <height>110</height>
+                    <font>font36_title</font>
+                    <aligny>center</aligny>
+                    <bottom>60</bottom>
+                    <label>Season $INFO[Window(Home).Property(fentastic.charcoal.season)], Episode $INFO[Window(Home).Property(fentastic.charcoal.episode)]</label>
+                    <visible>[Skin.HasSetting(Disable.RatingsINF) | String.IsEmpty(Skin.String(mdblist_api_key))] + String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)</visible>
+                </control>
                 <control type="grouplist">
                     <left>30</left>
                     <top>239</top>
                     <width>410</width>
+                    <visible>!Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key))</visible>
                     <orientation>vertical</orientation>
                     <itemgap>13</itemgap>
                     <control type="textbox">
                         <height>auto</height>
-                        <label>$INFO[Window(Home).Property(fentastic.charcoal.year)]$INFO[Window(Home).Property(fentastic.charcoal.mpaa), • ]$INFO[Window(Home).Property(fentastic.charcoal.genre), • ]$INFO[Window(Home).Property(fentastic.charcoal.director), • ]$INFO[Window(Home).Property(fentastic.charcoal.runtime), • ]$INFO[Window(Home).Property(fentastic.charcoal.endtime), • Ends at: ]</label>
+                        <font>font36_title</font>
+                        <label>Season $INFO[Window(Home).Property(fentastic.charcoal.season)], Episode $INFO[Window(Home).Property(fentastic.charcoal.episode)]</label>
+                        <textcolor>unfocused_text</textcolor>
+                        <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)</visible>
+                    </control>
+                    <control type="textbox">
+                        <height>auto</height>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.info_top)]</label>
                         <textcolor>unfocused_text</textcolor>
                     </control>
                     <control type="grouplist">
@@ -1164,7 +1204,7 @@
                         <aligny>center</aligny>
                         <itemgap>7</itemgap>
                         <height>90</height>
-                        <visible>!Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key)) + [!String.IsEmpty(Window(Home).Property(fentastic.charcoal.metascore)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.tomatoMeter)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.tomatoUserMeter)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.imdbRating)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.popularRating)) | !String.IsEmpty(Window(Home).Property(fentastic.charcoal.tmdbRating))]</visible>
+                        <visible>[String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),movie) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),tvshow) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),season) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode)] + [!String.IsEmpty(Window(Home).Property(fentastic.charcoal.genre)) | String.IsEqual(Window(Home).Property(fentastic.charcoal.cache_item),true)]</visible>
                         <control type="grouplist">
                             <width>60</width>
                             <orientation>vertical</orientation>
@@ -1289,9 +1329,26 @@
                     <control type="textbox">
                         <height max="460">auto</height>
                         <bottom>70</bottom>
-                        <label>$INFO[Window(Home).Property(fentastic.charcoal.plot)]</label>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]</label>
                         <textcolor>unfocused_text</textcolor>
                         <autoscroll delay="7000" time="2000" repeat="7000">Skin.HasSetting(autoscroll)</autoscroll>
+                        <visible>!Skin.HasSetting(Enable.AlternateInfo)</visible>
+                    </control>
+                    <control type="textbox">
+                        <height max="330">auto</height>
+                        <bottom>70</bottom>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]</label>
+                        <textcolor>unfocused_text</textcolor>
+                        <autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
+                        <visible>Skin.HasSetting(Enable.AlternateInfo) + [String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),movie) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),episode) | String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),season)]</visible>
+                    </control>
+                    <control type="textbox">
+                        <height max="290">auto</height>
+                        <bottom>70</bottom>
+                        <label>$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]</label>
+                        <textcolor>unfocused_text</textcolor>
+                        <autoscroll delay="5000" time="2000" repeat="5000">Skin.HasSetting(autoscroll)</autoscroll>
+                        <visible>Skin.HasSetting(Enable.AlternateInfo) + String.IsEqual(Window(Home).Property(fentastic.charcoal.dbtype),tvshow)</visible>
                     </control>
                 </control>
             </control>
