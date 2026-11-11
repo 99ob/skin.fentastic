@@ -1053,18 +1053,18 @@
 					<visible>$EXP[FentasticUnifiedPanelAvailable]</visible>
 					<include>OpenClose_Left</include>
 					<include content="FentasticUnifiedHomeInfoPanel" />
-                    <!-- FENTASTIC_DIRECT_WIDGET_IDENTITY_V2: no scores/artwork supplied = explicit error, never a fallback. -->
+                    <!-- FENTASTIC_FOCUS_RETURN_V1: simple Kodi-compatible error conditions, no source substitution. -->
                     <control type="label">
                         <left>30</left><top>209</top><width>455</width><height>28</height>
                         <font>font12</font><textcolor>FFFF4444</textcolor>
                         <label>UNIFIED RATINGS ERROR: selected movie ratings unavailable.</label>
-                        <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + $EXP[FentasticUnifiedSourceValid] + !Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key)) + $EXP[FentasticUnifiedRatingsMissing]</visible>
+                        <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + !Skin.HasSetting(Disable.RatingsINF) + !String.IsEmpty(Skin.String(mdblist_api_key)) + $EXP[FentasticUnifiedRatingsMissing]</visible>
                     </control>
                     <control type="label">
                         <left>30</left><top>174</top><width>440</width><height>34</height>
                         <font>font12</font><textcolor>FFFF4444</textcolor>
                         <label>UNIFIED FANART ERROR: widget artwork unavailable; no charcoal cache.</label>
-                        <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + $EXP[FentasticUnifiedSourceValid] + String.IsEmpty($VAR[FentasticUnifiedFanart])</visible>
+                        <visible>String.IsEqual(Window(Home).Property(fentastic.charcoal.active),yes) + String.IsEmpty($VAR[FentasticUnifiedFanart])</visible>
                     </control>
                                         <!-- FENTASTIC_DIRECT_WIDGET_PANEL_V1: show failures instead of falling back to charcoal text. -->
                     <control type="textbox">
@@ -1077,7 +1077,7 @@
                         <left>30</left><top>397</top><width>440</width><height>125</height>
                         <font>font22</font><textcolor>FFFF4444</textcolor>
                         <label>UNIFIED PLOT ERROR: The original selected widget has no readable plot. No fallback is used.</label>
-                        <visible>$EXP[FentasticUnifiedSourceValid] + $EXP[FentasticUnifiedPlotMissing]</visible>
+                        <visible>$EXP[FentasticUnifiedPlotMissing]</visible>
                     </control>
 				</control>
 			</control>
