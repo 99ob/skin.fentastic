@@ -2916,21 +2916,21 @@
                 <include>OpenClose_Left</include>
                 <control type="image">
                     <left>30</left><top>50</top><width>395</width><height>153</height>
-                    <texture background="true">$INFO[Container($PARAM[widget_id]).ListItem.Art(clearlogo)]</texture>
+                    <texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
                     <aspectratio align="center">keep</aspectratio>
                 </control>
                 <control type="textbox">
                     <left>30</left><top>75</top><width>430</width><height>98</height>
                     <font>font36_title</font><aligny>center</aligny>
-                    <label>$INFO[Container($PARAM[widget_id]).ListItem.Label]</label>
-                    <visible>String.IsEmpty(Container($PARAM[widget_id]).ListItem.Art(clearlogo))</visible>
+                    <label>$INFO[ListItem.Label]</label>
+                    <visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
                 </control>
                 <control type="grouplist">
                     <left>30</left><top>239</top><width>410</width>
                     <orientation>vertical</orientation><itemgap>13</itemgap>
                     <control type="textbox">
                         <height>auto</height>
-                        <label>$INFO[Container($PARAM[widget_id]).ListItem.Year]$INFO[Container($PARAM[widget_id]).ListItem.Mpaa, • ]$INFO[Container($PARAM[widget_id]).ListItem.Genre, • ]$INFO[Container($PARAM[widget_id]).ListItem.Director, • ]$INFO[Container($PARAM[widget_id]).ListItem.Duration, • ]$INFO[Container($PARAM[widget_id]).ListItem.EndTime, • Ends at: ]</label>
+                        <label>$INFO[ListItem.Year]$INFO[ListItem.Mpaa, • ]$INFO[ListItem.Genre, • ]$INFO[ListItem.Director, • ]$INFO[ListItem.Duration, • ]$INFO[ListItem.EndTime, • Ends at: ]</label>
                         <textcolor>unfocused_text</textcolor>
                     </control>
                     <control type="grouplist">
@@ -3024,7 +3024,7 @@
                     </control>
                     <control type="textbox">
                         <height max="460">auto</height><bottom>70</bottom>
-                        <label>$INFO[Container($PARAM[widget_id]).ListItem.Plot]</label>
+                        <label>$INFO[ListItem.Plot]</label>
                         <textcolor>unfocused_text</textcolor>
                         <autoscroll delay="7000" time="2000" repeat="7000">Skin.HasSetting(autoscroll)</autoscroll>
                     </control>
@@ -3033,13 +3033,13 @@
                     <left>30</left><top>178</top><width>440</width><height>32</height>
                     <font>font12</font><textcolor>FFFF4444</textcolor>
                     <label>CHARCOAL SOURCE ERROR: widget $PARAM[widget_id] has no selected item.</label>
-                    <visible>String.IsEmpty(Container($PARAM[widget_id]).ListItem.Label)</visible>
+                    <visible>String.IsEmpty(ListItem.Label)</visible>
                 </control>
                 <control type="label">
                     <left>30</left><top>610</top><width>440</width><height>28</height>
                     <font>font12</font><textcolor>FFFF4444</textcolor>
                     <label>CHARCOAL PLOT ERROR: widget $PARAM[widget_id] has no plot.</label>
-                    <visible>!String.IsEmpty(Container($PARAM[widget_id]).ListItem.Label) + String.IsEmpty(Container($PARAM[widget_id]).ListItem.Plot)</visible>
+                    <visible>!String.IsEmpty(ListItem.Label) + String.IsEmpty(ListItem.Plot)</visible>
                 </control>
             </control>
         </definition>
