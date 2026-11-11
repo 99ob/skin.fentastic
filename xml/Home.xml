@@ -1075,14 +1075,14 @@
                     <param name="clearlogo_label" value="$INFO[Window(Home).Property(fentastic.charcoal.clearlogo)]"/>
                     <param name="item_clearlogo" value="Window(Home).Property(fentastic.charcoal.clearlogo)"/>
                     <param name="title_label" value="$INFO[Window(Home).Property(fentastic.charcoal.title)]"/>
-                    <param name="info_plain_label" value="$INFO[Window(Home).Property(fentastic.charcoal.info_plain)]"/>
-                    <param name="info_episode_label" value="$INFO[Window(Home).Property(fentastic.charcoal.info_episode)]"/>
+                    <param name="info_plain_label" value="$VAR[FentasticCharcoalPlainSource]"/>
+                    <param name="info_episode_label" value="$VAR[FentasticCharcoalEpisodeSource]"/>
                     <param name="season" value="Window(Home).Property(fentastic.charcoal.season)"/>
                     <param name="episode" value="Window(Home).Property(fentastic.charcoal.episode)"/>
                     <param name="dbtype" value="Window(Home).Property(fentastic.charcoal.dbtype)"/>
                     <param name="dbtype_episode" value="Window(Home).Property(fentastic.charcoal.dbtype)"/>
-                    <param name="info_top_label" value="$INFO[Window(Home).Property(fentastic.charcoal.info_top)]"/>
-                    <param name="info_bottom_label" value="$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]"/>
+                    <param name="info_top_label" value="$VAR[FentasticCharcoalTopSource]"/>
+                    <param name="info_bottom_label" value="$VAR[FentasticCharcoalPlotSource]"/>
                     <param name="genre" value="Window(Home).Property(fentastic.charcoal.genre)"/>
                     <param name="cache_item" value="Window(Home).Property(fentastic.charcoal.cache_item)"/>
                     <param name="metascore" value="Window(Home).Property(fentastic.charcoal.metascore)"/>

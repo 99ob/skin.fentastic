@@ -987,4 +987,21 @@
 	</variable>
 
     <!-- FENTASTIC_QUERY_READY_GUARD_V3 -->
+    <!-- FENTASTIC_UNIFIED_CHARCOAL_INFO_HANDOFF_V2: prefer the same-item formatted snapshot, with raw plot fallback. -->
+    <variable name="FentasticCharcoalTopSource">
+        <value condition="String.IsEqual(Window(Home).Property(fentastic.charcoal.info_source_title),Window(Home).Property(fentastic.charcoal.title)) + !String.IsEmpty(Window(Home).Property(fentastic.charcoal.info_top))">$INFO[Window(Home).Property(fentastic.charcoal.info_top)]</value>
+        <value></value>
+    </variable>
+    <variable name="FentasticCharcoalPlotSource">
+        <value condition="String.IsEqual(Window(Home).Property(fentastic.charcoal.info_source_title),Window(Home).Property(fentastic.charcoal.title)) + !String.IsEmpty(Window(Home).Property(fentastic.charcoal.info_bottom))">$INFO[Window(Home).Property(fentastic.charcoal.info_bottom)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.plot)]</value>
+    </variable>
+    <variable name="FentasticCharcoalPlainSource">
+        <value condition="String.IsEqual(Window(Home).Property(fentastic.charcoal.info_source_title),Window(Home).Property(fentastic.charcoal.title)) + !String.IsEmpty(Window(Home).Property(fentastic.charcoal.info_plain))">$INFO[Window(Home).Property(fentastic.charcoal.info_plain)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.plot)]</value>
+    </variable>
+    <variable name="FentasticCharcoalEpisodeSource">
+        <value condition="String.IsEqual(Window(Home).Property(fentastic.charcoal.info_source_title),Window(Home).Property(fentastic.charcoal.title)) + !String.IsEmpty(Window(Home).Property(fentastic.charcoal.info_episode))">$INFO[Window(Home).Property(fentastic.charcoal.info_episode)]</value>
+        <value>$INFO[Window(Home).Property(fentastic.charcoal.plot)]</value>
+    </variable>
 </includes>
