@@ -63,6 +63,7 @@
 				<width>1510</width>
 				<height>100</height>
 				<font>font45</font>
+				<focusedcolor>accent_color</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
 				<texturefocus />
