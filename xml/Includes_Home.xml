@@ -945,7 +945,7 @@
 				<top>115</top>
 				<onright>$PARAM[list_id]</onright>
 				<orientation>horizontal</orientation>
-				<movement>4</movement>
+				<movement>3</movement>
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>535</height>
@@ -1077,7 +1077,7 @@
         <height>535</height>
 				<onright>$PARAM[list_id]</onright>
 				<orientation>horizontal</orientation>
-				<movement>4</movement>
+				<movement>3</movement>
         <include content="WidgetListCommonStacked">
           <param name="list_id" value="$PARAM[list_id]"/>
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
