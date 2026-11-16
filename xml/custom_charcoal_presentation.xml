@@ -46,6 +46,13 @@
                     <itemgap>13</itemgap>
                     <control type="textbox">
                         <height>auto</height>
+                        <visible>String.IsEqual(Window(Home).Property(fentastic.presentation.dbtype),tvshow)</visible>
+                        <label>$INFO[Window(Home).Property(fentastic.presentation.year)]$INFO[Window(Home).Property(fentastic.presentation.mpaa), • ]$INFO[Window(Home).Property(fentastic.presentation.studio), • ]$INFO[Window(Home).Property(fentastic.presentation.genre), • ]$INFO[Window(Home).Property(fentastic.presentation.seasons), • , seasons]$INFO[Window(Home).Property(fentastic.presentation.status), • ]</label>
+                        <textcolor>unfocused_text</textcolor>
+                    </control>
+                    <control type="textbox">
+                        <height>auto</height>
+                        <visible>!String.IsEqual(Window(Home).Property(fentastic.presentation.dbtype),tvshow)</visible>
                         <label>$INFO[Window(Home).Property(fentastic.presentation.year)]$INFO[Window(Home).Property(fentastic.presentation.mpaa), • ]$INFO[Window(Home).Property(fentastic.presentation.genre), • ]$INFO[Window(Home).Property(fentastic.presentation.director), • ]$INFO[Window(Home).Property(fentastic.presentation.duration), • ]$INFO[Window(Home).Property(fentastic.presentation.endtime), • Ends at: ]</label>
                         <textcolor>unfocused_text</textcolor>
                     </control>
