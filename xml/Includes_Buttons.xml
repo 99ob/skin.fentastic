@@ -100,8 +100,8 @@
 			<aligny>center</aligny>
 			<invalidcolor>invalid</invalidcolor>
 			<selectedcolor>selected</selectedcolor>
-			<texturefocus colordiffuse="button_focus">lists/focus.png</texturefocus>
-			<texturenofocus colordiffuse="dialog_tint">colors/white.png</texturenofocus>
+			<texturefocus colordiffuse="FF12A0C7">lists/focus.png</texturefocus>
+			<texturenofocus colordiffuse="FF1A2123">colors/white.png</texturenofocus>
 		</definition>
 	</include>
 	<include name="DefaultSettingLabel">
@@ -343,7 +343,7 @@
 				<top>0</top>
 				<width>600</width>
 				<height>70</height>
-				<texture colordiffuse="dialog_tint">colors/white.png</texture>
+				<texture colordiffuse="FF1A2123">colors/white.png</texture>
 			</control>
 			<control type="label">
 				<left>0</left>
@@ -363,14 +363,14 @@
 				<top>0</top>
 				<width>600</width>
 				<height>70</height>
-				<texture colordiffuse="dialog_tint">colors/white.png</texture>
+				<texture colordiffuse="FF1A2123">colors/white.png</texture>
 			</control>
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
 				<width>600</width>
 				<height>70</height>
-				<texture colordiffuse="button_focus">lists/focus.png</texture>
+				<texture colordiffuse="FF12A0C7">lists/focus.png</texture>
 			</control>
 			<control type="label">
 				<left>0</left>

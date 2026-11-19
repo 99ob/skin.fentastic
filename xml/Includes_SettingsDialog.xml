@@ -16,7 +16,7 @@
 				<animation effect="fade" time="200">VisibleChange</animation>
 				<include content="DialogBackgroundCommons">
 					<param name="width" value="$PARAM[width]" />
-					<param name="height" value="80" />
+					<param name="height" value="$PARAM[height]" />
 					<param name="header_label" value="$INFO[Window(home).Property(settingsdialog_header)]" />
 					<param name="header_id" value="1" />
 				</include>
@@ -25,7 +25,7 @@
 					<top>80</top>
 					<control type="grouplist" id="11100">
 						<width>$PARAM[width]</width>
-						<height>$PARAM[height]</height>
+						<height>620</height>
 						<itemgap>0</itemgap>
 						<onup>11100</onup>
 						<ondown>11100</ondown>

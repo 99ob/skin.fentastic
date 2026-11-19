@@ -817,38 +817,53 @@
 			<texturenofocus />
 			<onclick>Action(close)</onclick>
 		</control>
+		<include content="DialogBackground">
+			<param name="width" value="$PARAM[width]" />
+			<param name="height" value="$PARAM[height]" />
+			<param name="header_label" value="$PARAM[header_label]" />
+			<param name="header_id" value="$PARAM[header_id]" />
+		</include>
+	</include>	<include name="DialogBackground">
 		<control type="group">
 			<width>$PARAM[width]</width>
 			<height>$PARAM[height]</height>
 			<control type="image">
-				<left>-2</left>
-				<top>-2</top>
-				<right>-2</right>
-        <bottom>-2</bottom>
-				<texture colordiffuse="unfocused_text">$PARAM[diffusetexture]</texture>
+				<left>0</left>
+				<top>0</top>
+				<right>0</right>
+				<height>70</height>
+				<texture colordiffuse="dialog_header_tint">colors/white.png</texture>
 			</control>
 			<control type="image">
+				<left>0</left>
+				<top>70</top>
+				<right>0</right>
+				<bottom>0</bottom>
+				<texture colordiffuse="dialog_tint">colors/white.png</texture>
+			</control>
+			<control type="label" id="$PARAM[header_id]">
+				<left>40</left>
+				<top>0</top>
+				<right>100</right>
+				<height>70</height>
+				<font>font32_title</font>
+				<label>$PARAM[header_label]</label>
+				<aligny>center</aligny>
+				<shadowcolor>black</shadowcolor>
+			</control>
+			<control type="button" id="22002">
+				<description>button overlay to avoid closing in dialog area</description>
 				<left>0</left>
 				<top>0</top>
 				<right>0</right>
 				<bottom>0</bottom>
-				<texture colordiffuse="dialog_bg">$PARAM[diffusetexture]</texture>
-			</control>
-			<control type="label" id="$PARAM[header_id]">
-				<posx>0</posx>
-				<top>20</top>
-				<width>$PARAM[width]</width>
-				<height>70</height>
-				<font>font32_title</font>
-				<label>$PARAM[header_label]</label>
-				<align>center</align>
-				<aligny>center</aligny>
-				<textcolor>unfocused_text</textcolor>
-				<shadowcolor>black</shadowcolor>
+				<texturefocus />
+				<texturenofocus />
+				<onclick>noop</onclick>
 			</control>
 			<control type="radiobutton">
-				<right>30</right>
-				<top>25</top>
+				<right>10</right>
+				<top>11</top>
 				<width>48</width>
 				<height>48</height>
 				<radiowidth>48</radiowidth>
@@ -857,9 +872,9 @@
 				<texturenofocus />
 				<label></label>
 				<textureradioofffocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioofffocus>
-				<textureradiooffnofocus colordiffuse="accent_color">special://xbmc/media/vendor_icon.png</textureradiooffnofocus>
+				<textureradiooffnofocus colordiffuse="EEFFFFFF">special://xbmc/media/vendor_icon.png</textureradiooffnofocus>
 				<textureradioonfocus colordiffuse="EEFFFFFF">dialogs/close.png</textureradioonfocus>
-				<textureradioonnofocus colordiffuse="accent_color">special://xbmc/media/vendor_icon.png</textureradioonnofocus>
+				<textureradioonnofocus colordiffuse="EEFFFFFF">special://xbmc/media/vendor_icon.png</textureradioonnofocus>
 				<onclick>Action(close)</onclick>
 				<visible>!Skin.HasSetting(touchmode)</visible>
 			</control>
