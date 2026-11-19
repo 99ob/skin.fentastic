@@ -891,6 +891,7 @@
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>465</height>
+				<onclick condition="$PARAM[onclick_condition] + ![String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)]">$PARAM[onclick_action]</onclick>
 				<onclick condition="String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)">RunPlugin($INFO[ListItem.FilenameAndPath])</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
@@ -961,6 +962,7 @@
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>535</height>
+				<onclick condition="$PARAM[onclick_condition] + ![String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)]">$PARAM[onclick_action]</onclick>
 				<onclick condition="String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)">RunPlugin($INFO[ListItem.FilenameAndPath])</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
@@ -1155,6 +1157,7 @@
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>307</height>
+				<onclick condition="$PARAM[onclick_condition] + ![String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)]">$PARAM[onclick_action]</onclick>
 				<onclick condition="String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)">RunPlugin($INFO[ListItem.FilenameAndPath])</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
@@ -1221,6 +1224,7 @@
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>366</height>
+				<onclick condition="$PARAM[onclick_condition] + ![String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)]">$PARAM[onclick_action]</onclick>
 				<onclick condition="String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)">RunPlugin($INFO[ListItem.FilenameAndPath])</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
@@ -1290,6 +1294,7 @@
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
                     <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
+				<onclick condition="$PARAM[onclick_condition] + ![String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)]">$PARAM[onclick_action]</onclick>
 				<onclick condition="String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)">RunPlugin($INFO[ListItem.FilenameAndPath])</onclick>
 				<itemlayout width="337" height="347">
 					<control type="group">
@@ -1354,6 +1359,7 @@
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
                     <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
+				<onclick condition="$PARAM[onclick_condition] + ![String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)]">$PARAM[onclick_action]</onclick>
 				<onclick condition="String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)">RunPlugin($INFO[ListItem.FilenameAndPath])</onclick>
 				<itemlayout width="448" height="347">
 					<control type="group">
@@ -2096,6 +2102,7 @@
 				<height>415</height>
 				<movement>4</movement>
 				<onright>$PARAM[list_id]</onright>
+				<onclick condition="$PARAM[onclick_condition] + ![String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)]">$PARAM[onclick_action]</onclick>
 				<onclick condition="String.StartsWith(ListItem.FilenameAndPath,plugin://plugin.video.pov/) + String.Contains(ListItem.FilenameAndPath,mode=play_media) + String.Contains(ListItem.FilenameAndPath,mediatype=movie)">RunPlugin($INFO[ListItem.FilenameAndPath])</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
