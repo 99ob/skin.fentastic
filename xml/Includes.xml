@@ -283,7 +283,7 @@
 						<font>$PARAM[font]</font>
 						<aligny>center</aligny>
 						<textcolor>unfocused_text</textcolor>
-						<label>$INFO[ListItem.Label]</label>
+						<label>$VAR[FentasticSelectStreamLabel]</label>
 					</control>
 				</control>
 			</itemlayout>
@@ -336,7 +336,7 @@
 						<align>$PARAM[align]</align>
 						<font>$PARAM[font]</font>
 						<aligny>center</aligny>
-						<label>[B]$INFO[ListItem.Label][/B]</label>
+						<label>[B]$VAR[FentasticSelectStreamLabel][/B]</label>
 						<textcolor>focused_text</textcolor>
 						<scroll>true</scroll>
 					</control>

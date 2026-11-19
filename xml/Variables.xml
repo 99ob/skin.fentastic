@@ -1093,4 +1093,9 @@
 	</variable>
 
     <!-- FENTASTIC_QUERY_READY_GUARD_V3 -->
+	<!-- Audio-stream picker uses the existing dialog, enriched with Kodi stream metadata. -->
+	<variable name="FentasticSelectStreamLabel">
+		<value condition="Window.IsActive(dialogselectaudio)">$INFO[ListItem.Label]$INFO[ListItem.Property(stream.description), - ]$INFO[ListItem.Property(stream.codecdesc), (,) ]$INFO[ListItem.Property(stream.channels), | ]</value>
+		<value>$INFO[ListItem.Label]</value>
+	</variable>
 </includes>
