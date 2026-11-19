@@ -213,7 +213,7 @@
 							<param name="texture" value="osd/fullscreen/buttons/audio-stream.png"/>
 						</include>
 						<onclick>DialogSelectAudio</onclick>
-						<visible>Player.HasAudio</visible>
+						<visible>true</visible>
 					</control>
 					<control type="radiobutton" id="70046">
 						<include content="OSDButton">
