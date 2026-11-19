@@ -20,7 +20,7 @@
 			<include>Animation_BottomSlide</include>
 			<bottom>0</bottom>
 			<height>180</height>
-			<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(1110) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(osdvideosettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(playerprocessinfo) | Window.IsVisible(osdcmssettings) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(pvrchannelguide)]</visible>
+			<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(1110) | Window.IsVisible(osdaudiosettings) | Window.IsVisible(dialogselectaudio) | Window.IsVisible(osdvideosettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(playerprocessinfo) | Window.IsVisible(osdcmssettings) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(pvrchannelguide)]</visible>
 			<animation effect="fade" time="200">VisibleChange</animation>
 			<control type="label">
 				<animation effect="slide" end="0,-20" time="150" condition="VideoPlayer.Content(LiveTV)">conditional</animation>
@@ -205,6 +205,15 @@
 						<onclick>Dialog.Close(VideoOSD)</onclick>
 						<onclick>ActivateWindow(Teletext)</onclick>
 						<visible>VideoPlayer.HasTeletext</visible>
+					</control>
+					<!-- Kodi 22+: direct audio stream selection -->
+					<control type="radiobutton" id="70049">
+						<description>Audio stream picker</description>
+						<include content="OSDButton">
+							<param name="texture" value="osd/fullscreen/buttons/audio-stream.png"/>
+						</include>
+						<onclick>DialogSelectAudio</onclick>
+						<visible>Player.HasAudio</visible>
 					</control>
 					<control type="radiobutton" id="70046">
 						<include content="OSDButton">
