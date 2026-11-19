@@ -891,7 +891,6 @@
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>465</height>
-				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
@@ -961,7 +960,6 @@
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>535</height>
-				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
@@ -1155,7 +1153,6 @@
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>307</height>
-				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
@@ -1221,7 +1218,6 @@
 				<visible>Integer.IsGreater(Container($PARAM[list_id]).NumItems,0) | Container($PARAM[list_id]).IsUpdating</visible>
 				<right>0</right>
 				<height>366</height>
-				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
@@ -1290,7 +1286,6 @@
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
                     <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
-				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<itemlayout width="337" height="347">
 					<control type="group">
 						<left>68</left>
@@ -1354,7 +1349,6 @@
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
                     <param name="next_header_id" value="$PARAM[next_header_id]"/>
 				</include>
-				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<itemlayout width="448" height="347">
 					<control type="group">
 						<left>68</left>
@@ -2096,7 +2090,6 @@
 				<height>415</height>
 				<movement>4</movement>
 				<onright>$PARAM[list_id]</onright>
-				<onclick condition="$PARAM[onclick_condition]">$PARAM[onclick_action]</onclick>
 				<include content="WidgetListCommon">
 					<param name="list_id" value="$PARAM[list_id]"/>
                     <param name="has_next_header" value="$PARAM[has_next_header]"/>
