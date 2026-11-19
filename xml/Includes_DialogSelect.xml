@@ -192,6 +192,119 @@
 			</control>
 		</control>
 	</include>
+	<include name="FentasticAudioStreamSelectLayout">
+		<control type="group">
+			<centertop>50%</centertop>
+			<centerleft>50%</centerleft>
+			<height>750</height>
+			<width>1220</width>
+			<include content="DialogBackgroundCommons">
+				<param name="width" value="1220" />
+				<param name="height" value="775" />
+				<param name="header_label" value="" />
+				<param name="header_id" value="1" />
+				<param name="diffusetexture" value="masks/landscape-502.png" />
+			</include>
+			<control type="list" id="3">
+				<left>20</left>
+				<top>100</top>
+				<width>880</width>
+				<bottom>20</bottom>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<onleft>9001</onleft>
+				<onright>61</onright>
+				<pagecontrol>61</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<include content="DefaultSimpleListLayout">
+					<param name="width" value="880" />
+					<param name="list_id" value="3" />
+					<param name="diffuse" value="masks/focus-long.png" />
+				</include>
+			</control>
+			<control type="list" id="6">
+				<left>20</left>
+				<top>100</top>
+				<width>880</width>
+				<bottom>20</bottom>
+				<onup>6</onup>
+				<ondown>6</ondown>
+				<onleft>9001</onleft>
+				<onright>61</onright>
+				<pagecontrol>61</pagecontrol>
+				<scrolltime>200</scrolltime>
+				<!-- Audio dialog only: two-line stream metadata, without changing all other selection dialogs. -->
+				<itemlayout height="125" width="880">
+					<control type="label">
+						<left>35</left><top>14</top><right>25</right><height>48</height>
+						<font>font14</font><aligny>center</aligny>
+						<label>$INFO[ListItem.Label]$INFO[ListItem.Property(stream.description), - ]</label><textcolor>unfocused_text</textcolor>
+					</control>
+					<control type="label">
+						<left>35</left><top>68</top><right>25</right><height>36</height>
+						<font>font12</font><aligny>center</aligny>
+						<label>$INFO[ListItem.Property(stream.codecdesc)]$INFO[ListItem.Property(stream.channels), | ]</label><textcolor>grey</textcolor>
+					</control>
+				</itemlayout>
+				<focusedlayout height="125" width="880">
+					<control type="image">
+						<left>25</left><top>0</top><right>25</right><bottom>0</bottom>
+						<texture colordiffuse="button_focus">masks/focus.png</texture>
+						<visible>Control.HasFocus(6)</visible>
+					</control>
+					<control type="label">
+						<left>35</left><top>14</top><right>40</right><height>48</height>
+						<font>font14</font><aligny>center</aligny><scroll>true</scroll>
+						<label>[B]$INFO[ListItem.Label]$INFO[ListItem.Property(stream.description), - ][/B]</label><textcolor>focused_text</textcolor>
+					</control>
+					<control type="label">
+						<left>35</left><top>68</top><right>40</right><height>36</height>
+						<font>font12</font><aligny>center</aligny><scroll>true</scroll>
+						<label>$INFO[ListItem.Property(stream.codecdesc)]$INFO[ListItem.Property(stream.channels), | ]</label><textcolor>focused_text</textcolor>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="scrollbar" id="61">
+				<left>892</left>
+				<top>100</top>
+				<width>12</width>
+				<bottom>20</bottom>
+				<onleft condition="Control.IsVisible(3)">3</onleft>
+				<onleft condition="Control.IsVisible(6)">6</onleft>
+				<onright>9001</onright>
+				<orientation>vertical</orientation>
+			</control>
+			<control type="label">
+				<left>880</left>
+				<bottom>10</bottom>
+				<width>275</width>
+				<height>35</height>
+				<font>font12</font>
+				<align>right</align>
+				<textcolor>grey</textcolor>
+				<label>$VAR[SelectLabel]</label>
+			</control>
+			<control type="grouplist" id="9001">
+				<left>920</left>
+				<top>100</top>
+				<onleft>61</onleft>
+				<itemgap>dialogbuttons_itemgap</itemgap>
+				<onright>3</onright>
+				<include content="DefaultDialogButton">
+					<param name="id" value="5" />
+					<param name="label" value="" />
+				</include>
+				<include content="DefaultDialogButton">
+					<param name="id" value="8" />
+					<param name="label" value="" />
+				</include>
+				<include content="DefaultDialogButton">
+					<param name="id" value="7" />
+					<param name="label" value="$LOCALIZE[222]" />
+				</include>
+			</control>
+		</control>
+	</include>
 	<include name="GameDialogSelectSaveLayout">
 		<control type="group">
 			<centertop>50%</centertop>
