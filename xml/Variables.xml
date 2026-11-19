@@ -1093,4 +1093,51 @@
 	</variable>
 
     <!-- FENTASTIC_QUERY_READY_GUARD_V3 -->
+
+<variable name="ActiveVideoPlayerSubtitle">
+		<value condition="Window.IsActive(Custom_1101_SettingsDialog.xml) + !VideoPlayer.HasSubtitles">$LOCALIZE[36623]</value>
+		<value condition="Window.IsActive(Custom_1101_SettingsDialog.xml) + VideoPlayer.HasSubtitles + !VideoPlayer.SubtitlesEnabled">$LOCALIZE[1223]</value>
+		<value condition="Window.IsActive(Custom_1101_SettingsDialog.xml) + VideoPlayer.HasSubtitles + VideoPlayer.SubtitlesEnabled + String.IsEmpty(VideoPlayer.SubtitleCodec)">$LOCALIZE[13205]</value>
+		<value condition="Window.IsActive(Custom_1101_SettingsDialog.xml) + VideoPlayer.HasSubtitles + VideoPlayer.SubtitlesEnabled + !String.IsEmpty(VideoPlayer.SubtitleCodec)">$VAR[SubtitleCodecVar]</value>
+	</variable>
+	
+
+<variable name="ActiveVideoPlayerAudioLanguage">
+		<value condition="String.IsEmpty(VideoPlayer.AudioLanguage) | String.IsEqual(VideoPlayer.AudioLanguage,und)">$LOCALIZE[13205]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.AudioLanguage)">$INFO[VideoPlayer.AudioLanguage]</value>
+	</variable>
+	
+
+<variable name="VideoCodecVar">
+		<value condition="Window.IsActive(fullscreenvideo)">$MAP[DefaultCodecMap, VideoPlayer.VideoCodec]</value>
+		<value>$MAP[DefaultCodecMap, ListItem.VideoCodec]</value>
+	</variable>
+	
+
+<variable name="VideoResolutionTypeVar">
+		<value condition="Window.IsActive(fullscreenvideo)">$MAP[DefaultResolutionMap, VideoPlayer.VideoResolution]</value>
+		<value>$MAP[DefaultResolutionMap, ListItem.VideoResolution]</value>
+	</variable>
+	
+
+<variable name="VideoHDRTypeVar">
+		<value condition="Window.IsActive(fullscreenvideo)">$MAP[DefaultHdrMap, VideoPlayer.HdrType]</value>
+		<value>$MAP[DefaultHdrMap, ListItem.HdrType]</value>
+	</variable>
+	
+
+<variable name="AudioCodecVar">
+		<value condition="Window.IsActive(fullscreenvideo)">$MAP[DefaultAltAudioMap, VideoPlayer.AudioCodec]</value>
+		<value condition="Window.IsActive(visualisation)">$MAP[DefaultAltAudioMap, MusicPlayer.Codec]</value>
+		<value>$MAP[DefaultAltAudioMap, ListItem.AudioCodec]</value>
+	</variable>
+	
+
+<variable name="AudioChannelsVar">
+		<value condition="Window.IsActive(fullscreenvideo)">$INFO[VideoPlayer.AudioChannels(DefaultLayout)]</value>
+		<value condition="Window.IsActive(visualisation)">$INFO[MusicPlayer.Channels(DefaultLayout)]</value>
+		<value condition="Container.Content(albums) | Window.IsActive(10502)">$INFO[ListItem.MusicChannels(DefaultLayout)]</value>
+		<value>$INFO[ListItem.AudioChannels(DefaultLayout)]</value>
+	</variable>
+	
 </includes>

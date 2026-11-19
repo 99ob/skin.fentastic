@@ -374,4 +374,22 @@
 			</control>
 		</focusedlayout>
 	</include>
+
+<include name="Estuary22DialogSettingButton">
+		<param name="width">700</param>
+		<param name="height">70</param>
+		<param name="textoffsetx">40</param>
+		<definition>
+			<textoffsetx>$PARAM[textoffsetx]</textoffsetx>
+			<top>0</top>
+			<width>$PARAM[width]</width>
+			<height>$PARAM[height]</height>
+			<aligny>center</aligny>
+			<invalidcolor>invalid</invalidcolor>
+			<selectedcolor>selected</selectedcolor>
+			<texturefocus colordiffuse="button_focus">lists/focus.png</texturefocus>
+			<texturenofocus colordiffuse="dialog_tint">colors/white.png</texturenofocus>
+		</definition>
+	</include>
+	
 </includes>
