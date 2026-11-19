@@ -199,7 +199,7 @@
 						<include content="OSDButton">
 							<param name="texture" value="osd/fullscreen/buttons/streams.png"/>
 						</include>
-						<onclick>SetProperty(settingslist_content,osd,home)</onclick>
+						<onclick>SetProperty(settingslist_content,streamselection,home)</onclick>
 						<onclick>SetProperty(settingslist_header,$LOCALIZE[13392],home)</onclick>
 						<onclick>ActivateWindow(1101)</onclick>
 					</control>
@@ -216,7 +216,7 @@
 						<include content="OSDButton">
 							<param name="texture" value="osd/fullscreen/buttons/settings.png"/>
 						</include>
-						<onclick>SetProperty(settingslist_content,osd,home)</onclick>
+						<onclick>SetProperty(settingslist_content,streamselection,home)</onclick>
 						<onclick>SetProperty(settingslist_header,$LOCALIZE[5],home)</onclick>
 						<onclick>ActivateWindow(1101)</onclick>
 					</control>

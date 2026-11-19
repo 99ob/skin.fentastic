@@ -22,8 +22,39 @@
 			<control type="group" id="11000">
 				<left>25</left>
 				<top>100</top>
+				<control type="grouplist" id="12100">
+					<visible>String.IsEqual(window(home).Property(settingslist_content),streamselection)</visible>
+					<width>700</width>
+					<height>350</height>
+					<itemgap>0</itemgap>
+					<orientation>vertical</orientation>
+					<control type="button" id="12101">
+						<width>700</width>
+						<include>DialogSettingButton</include>
+						<label>$LOCALIZE[31115]</label>
+						<label2>$INFO[VideoPlayer.SubtitleLanguage]</label2>
+						<onclick>DialogSelectSubtitle</onclick>
+						<enable>VideoPlayer.HasSubtitles</enable>
+					</control>
+					<control type="button" id="12102">
+						<width>700</width>
+						<include>DialogSettingButton</include>
+						<label>$LOCALIZE[31112]</label>
+						<label2>$INFO[VideoPlayer.AudioCodec] | $INFO[VideoPlayer.AudioLanguage]</label2>
+						<onclick>DialogSelectAudio</onclick>
+						<enable>Integer.IsGreater(VideoPlayer.AudioStreamCount,1)</enable>
+					</control>
+					<control type="button" id="12103">
+						<width>700</width>
+						<include>DialogSettingButton</include>
+						<label>$LOCALIZE[31109]</label>
+						<label2>$INFO[VideoPlayer.VideoCodec] | $INFO[VideoPlayer.VideoResolution]</label2>
+						<onclick>DialogSelectVideo</onclick>
+						<enable>Integer.IsGreater(VideoPlayer.VideoStreamCount,1)</enable>
+					</control>
+				</control>
 				<control type="grouplist" id="11100">
-					<visible>String.IsEqual(window(home).Property(settingslist_content),osd)</visible>
+					<visible>[String.IsEqual(window(home).Property(settingslist_content),videosettings) | String.IsEqual(window(home).Property(settingslist_content),osd)]</visible>
 					<width>700</width>
 					<height>350</height>
 					<itemgap>0</itemgap>
@@ -92,6 +123,13 @@
 						<onclick>Dialog.Close(1101)</onclick>
 						<onclick>ActivateWindow(1110)</onclick>
 						<visible>Player.TempoEnabled</visible>
+					</control>
+					<control type="button" id="11112">
+						<width>700</width>
+						<include>DialogSettingButton</include>
+						<label>$LOCALIZE[31597]</label>
+						<onclick>Dialog.Close(1101)</onclick>
+						<onclick>ActivateWindow(playerprocessinfo)</onclick>
 					</control>
 				</control>
 				<control type="grouplist" id="13100">
